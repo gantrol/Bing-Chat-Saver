@@ -1,43 +1,41 @@
-# Bing Chat Saver
+# 必应聊天分享与保存
 
-[![en](https://img.shields.io/badge/看我-中文-red.svg)](README.zh_CN.md)
+## 功能
 
-> Note: alpha developing
-
-## Feature
-
-This edge extension adds a Button for exporting Bing Chat Content as: 
+通过添加相关按钮，这个插件添加可以将聊天记录导出，目前支持的格式为：
 
 - PNG
 
-And it removes the welcome message.
+> 注意：为了避免欢迎页占用过多篇幅，这个插件直接移除了欢迎页面，后续将考虑作为选项。
 
-## Usage
+## 用法
 
-Click Button below feedback button at right bottom of the chat UI.
+安装插件后，在与必应聊天的界面（非搜索侧边栏），右下角原先只有反馈按钮，会增加系列按钮。如PNG即为导出为PNG。
 
 ![image](https://user-images.githubusercontent.com/31330732/218730012-7a7a7f0d-1762-4d9c-b9b9-d6cb05f21382.png)
 
-Current result:
+
+现阶段结果示例（可导出长图）：
 
 ![image](https://user-images.githubusercontent.com/31330732/218725995-79a6bcae-757a-40f6-a6d9-d004685e4a6a.png)
 
-> As you can see, some ref is not rendered correctly now. It might be issue for `modern-screenshot`. However, this package is the best one.
+> 目前引用部分的导出仍有部分问题，这可能是依赖包 `modern-screenshot`的缺陷。而这已经是个人能找到最好的依赖包了，后续会先查明原因，实在不行就另行实现。
 
-## Download
+## 下载
 
-- Go to release, download `.zip` and load unpacked at `edge://extensions/` . As the bing saying, you can reference [this acticle](https://dev.to/ben/how-to-install-chrome-extensions-manually-from-github-1612#:~:text=How%20to%20install%20Chrome%20extensions%20manually%20from%20GitHub,navivigate%20to%20the%20folder%20you%20downloaded%20from%20GitHub)
-- Edge store download is coming soon.
+- 去[releases页面](https://github.com/gantrol/Bing-Chat-Saver/releases/), 下载 `.zip`并到 `edge://extensions/`加载插件。正如上图必应所说，你可就着浏览器翻译功能，参考[这篇文章](https://www.howtogeek.com/510543/how-to-install-and-use-extensions-in-the-new-microsoft-edge/)
+- Edge商城的下载正待审核
 
-## Main TODO
+## 接下来的主要 TODO
 
-1. export as Markdown, JSON
-2. reload chat with JSON
-3. auto cache the history session
+1. 导出格式添加JSON、Markdown
+2. 通过导入 JSON，“重新加载”对话
+3. 自动缓存历史对话列表
 
 Others are placed in [todo.md](todo.md)
 
-## Dev
+## 开发（先不翻译了，情人节忙得很）
+
 This is a [Plasmo extension](https://docs.plasmo.com/) project bootstrapped with [`plasmo init`](https://www.npmjs.com/package/plasmo).
 
 ### Getting Started
