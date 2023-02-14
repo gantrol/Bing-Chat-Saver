@@ -15,10 +15,9 @@
 
 ## 用法
 
-安装插件后，在与必应聊天的界面（非搜索侧边栏），右下角原先只有反馈按钮，会增加系列按钮。如PNG即为导出为PNG。
+安装插件后，在与必应聊天的界面（非搜索侧边栏），右下角原先只有反馈按钮，会增加相应导出按钮。如PNG即为导出为PNG。
 
-![image](https://user-images.githubusercontent.com/31330732/218730012-7a7a7f0d-1762-4d9c-b9b9-d6cb05f21382.png)
-
+![1676378602296](https://user-images.githubusercontent.com/31330732/218741972-65e4d64a-35a7-4c7e-83fd-1a9720afbd66.png)
 
 现阶段结果示例（可导出长图）：
 
