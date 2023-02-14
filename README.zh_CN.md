@@ -8,6 +8,11 @@
 
 > 注意：为了避免欢迎页占用过多篇幅，这个插件直接移除了欢迎页面，后续将考虑作为选项。
 
+## 下载
+
+- 去[releases页面](https://github.com/gantrol/Bing-Chat-Saver/releases/), 下载 `.zip`并到 `edge://extensions/`加载插件。正如下文结果示意图必应所说，你可就着浏览器翻译功能，参考[这篇文章](https://www.howtogeek.com/510543/how-to-install-and-use-extensions-in-the-new-microsoft-edge/)
+- Edge商城的下载正待审核
+
 ## 用法
 
 安装插件后，在与必应聊天的界面（非搜索侧边栏），右下角原先只有反馈按钮，会增加系列按钮。如PNG即为导出为PNG。
@@ -17,14 +22,9 @@
 
 现阶段结果示例（可导出长图）：
 
-![image](https://user-images.githubusercontent.com/31330732/218725995-79a6bcae-757a-40f6-a6d9-d004685e4a6a.png)
+![image](https://user-images.githubusercontent.com/31330732/218740485-168e6f0c-1922-4e0c-969f-92fe748ef915.png)
 
 > 目前引用部分的导出仍有部分问题，这可能是依赖包 `modern-screenshot`的缺陷。而这已经是个人能找到最好的依赖包了，后续会先查明原因，实在不行就另行实现。
-
-## 下载
-
-- 去[releases页面](https://github.com/gantrol/Bing-Chat-Saver/releases/), 下载 `.zip`并到 `edge://extensions/`加载插件。正如上图必应所说，你可就着浏览器翻译功能，参考[这篇文章](https://www.howtogeek.com/510543/how-to-install-and-use-extensions-in-the-new-microsoft-edge/)
-- Edge商城的下载正待审核
 
 ## 接下来的主要 TODO
 
