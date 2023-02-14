@@ -1,5 +1,7 @@
 # Bing Chat Saver
 
+[![en](https://img.shields.io/badge/看我-中文-red.svg)](README.zh_CN.md)
+
 > Note: alpha developing
 
 ## Feature
@@ -13,6 +15,8 @@ And it removes the welcome message.
 ## Usage
 
 Click Button below feedback button at right bottom of the chat UI.
+
+![image](https://user-images.githubusercontent.com/31330732/218730012-7a7a7f0d-1762-4d9c-b9b9-d6cb05f21382.png)
 
 Current result:
 
