@@ -84,7 +84,7 @@ const forImage = () => {
   // TODO: 2 调整参数，以免导出排版有问题的图片
   // 1. 调整基线
   // 2. (optional) 白色背景
-  html2canvas(main).then(async function(canvas) {
+  html2canvas(<HTMLElement>main).then(async (canvas) => {
     const imgData = canvas.toDataURL("image/png");
     requestAnimationFrame(() => {
       const binaryData = atob(imgData.split("base64,")[1]);
