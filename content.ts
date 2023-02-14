@@ -1,5 +1,4 @@
-import html2canvas from "html2canvas";
-
+import { domToPng } from 'modern-screenshot'
 const PNG = "PNG";
 const MD = "Markdown";
 const JSON = "JSON";
@@ -79,24 +78,19 @@ const addButton = (actionsArea, WaitingButton, type) => {
   actionsArea.appendChild(downloadButton);
 };
 
-const forImage = () => {
-  const main = getMain();
-  // TODO: 2 调整参数，以免导出排版有问题的图片
-  // 1. 调整基线
-  // 2. (optional) 白色背景
-  html2canvas(<HTMLElement>main).then(async (canvas) => {
-    const imgData = canvas.toDataURL("image/png");
-    requestAnimationFrame(() => {
-      const binaryData = atob(imgData.split("base64,")[1]);
-      const data = [];
-      for (let i = 0; i < binaryData.length; i++) {
-        data.push(binaryData.charCodeAt(i));
-      }
-      const blob = new Blob([new Uint8Array(data)], { type: "image/png" });
-      const url = URL.createObjectURL(blob);
+const forImage = async () => {
+  const main = <HTMLElement> getMain();
+  const dataURL = await domToPng(main);
+  requestAnimationFrame(() => {
+    const binaryData = atob(dataURL.split("base64,")[1]);
+    const data = [];
+    for (let i = 0; i < binaryData.length; i++) {
+      data.push(binaryData.charCodeAt(i));
+    }
+    const blob = new Blob([new Uint8Array(data)], { type: "image/png" });
+    const url = URL.createObjectURL(blob);
 
-      window.open(url, "_blank");
-    });
+    window.open(url, "_blank");
   });
 };
 

@@ -10,7 +10,7 @@
     "package": "plasmo package"
   },
   "dependencies": {
-    "html2canvas": "^1.4.1",
+    "modern-screenshot": "^4.3.3",
     "plasmo": "0.65.0",
     "svelte": "3.55.1",
     "svelte-preprocess": "5.0.1"
