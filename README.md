@@ -12,14 +12,18 @@ And it removes the welcome message.
 
 ## Usage
 
-Click Button below feedback:
-
-![image](https://user-images.githubusercontent.com/31330732/218634757-ba052dd0-036c-4532-9f80-ab0bb9124739.png)
+Click Button below feedback button at right bottom of the chat UI.
 
 Current result:
 
-![image](https://user-images.githubusercontent.com/31330732/218634932-f7e69b2b-a345-420c-bf12-65a73b80d573.png)
+![image](https://user-images.githubusercontent.com/31330732/218725995-79a6bcae-757a-40f6-a6d9-d004685e4a6a.png)
 
+> As you can see, some ref is not rendered correctly now. It might be issue for `modern-screenshot`. However, this package is the best one.
+
+## Download
+
+- As the bing saying, you can reference [this acticle](https://dev.to/ben/how-to-install-chrome-extensions-manually-from-github-1612#:~:text=How%20to%20install%20Chrome%20extensions%20manually%20from%20GitHub,navivigate%20to%20the%20folder%20you%20downloaded%20from%20GitHub)
+- Edge store download is coming soon.
 
 ## Main TODO
 
