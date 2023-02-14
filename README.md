@@ -8,7 +8,7 @@ This edge extension adds a Button for exporting Bing Chat Content as:
 
 - PNG
 
-And it remove the welcome message.
+And it removes the welcome message.
 
 ## Usage
 
