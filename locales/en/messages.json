@@ -1,0 +1,10 @@
+{
+  "extensionName": {
+    "message": "Bing Chat saver",
+    "description": "Name of the extension."
+  },
+  "extensionDescription": {
+    "message": "Saving Bing Chat for you, for sharing",
+    "description": "Description of the extension."
+  }
+}

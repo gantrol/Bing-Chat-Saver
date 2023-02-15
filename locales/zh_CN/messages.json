@@ -1,0 +1,10 @@
+{
+  "extensionName": {
+    "message": "必应聊天导出保存",
+    "description": "Name of the extension."
+  },
+  "extensionDescription": {
+    "message": "导出你的必应聊天记录",
+    "description": "Description of the extension."
+  }
+}
