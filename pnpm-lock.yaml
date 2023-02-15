@@ -4,7 +4,7 @@ specifiers:
   '@plasmohq/prettier-plugin-sort-imports': 3.6.1
   '@types/chrome': 0.0.210
   '@types/node': 18.11.18
-  modern-screenshot: ^4.3.3
+  modern-screenshot: ^4.3.4
   plasmo: 0.65.0
   prettier: 2.8.3
   svelte: 3.55.1
@@ -12,7 +12,7 @@ specifiers:
   typescript: 4.9.4
 
 dependencies:
-  modern-screenshot: 4.3.3
+  modern-screenshot: 4.3.4
   plasmo: 0.65.0
   svelte: 3.55.1
   svelte-preprocess: 5.0.1_atrrhq7vg4ekua4nnyrpuardle
@@ -3923,8 +3923,8 @@ packages:
     resolution: {integrity: sha512-kysx9gAGbvrzuFYxKkcRjnsg/NK61ovJOV4F1cHTRl9T5leg+bo6WI0pWIvOFh1Z/yDL0cjA5R3EEGPPLDv/XA==}
     dev: false
 
-  /modern-screenshot/4.3.3:
-    resolution: {integrity: sha512-rDKvWnQEIIIhhAgWNE31uDrXDFfqYkJzBq+DV4w9aEZcdWTtKehS0pwdhJfcreP3y5RVW5N/QHcfWnOxKQILhg==}
+  /modern-screenshot/4.3.4:
+    resolution: {integrity: sha512-zB298wd27E20tkx/fE5BiTz7FiBP/JJk4jP7pBx9NCBnjFnc4QH47I82+pYwPZGjV6PuEbThCXFPL82H6wQ4Ug==}
     dev: false
 
   /ms/2.1.2:

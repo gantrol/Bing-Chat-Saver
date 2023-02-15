@@ -19,5 +19,11 @@
 
 ## others
 
+- [ ] how to add unittest for shadow-roots?
 - [ ] 通过重排元素来渲染图片？目前的脚注部分还有点好
 - [ ] 改英文文档
+
+## current
+
+- [ ] 将所有的链接的a的 font-weight: 400
+- [ ] WARN   | default_locale not set, fallback to en
