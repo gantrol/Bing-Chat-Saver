@@ -1,8 +1,8 @@
 {
-  "name": "bing-saver",
-  "displayName": "Bing saver",
+  "name": "bing-chat-saver",
+  "displayName": "Bing Chat saver",
   "version": "0.0.1",
-  "description": "A basic Plasmo extension.",
+  "description": "Saving Bing Chat for you, for sharing",
   "author": "gantrol",
   "scripts": {
     "dev": "plasmo dev",
@@ -23,6 +23,7 @@
     "typescript": "4.9.4"
   },
   "manifest": {
+    "name": "__MSG_extensionName__",
     "host_permissions": [
       "https://www.bing.com/search*"
     ],
