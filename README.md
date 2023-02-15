@@ -1,6 +1,6 @@
 # Bing Chat Saver
 
-[![en](https://img.shields.io/badge/看我-中文-red.svg)](README.zh_CN.md)
+[![cn](https://img.shields.io/badge/看我-中文-red.svg)](README.zh_CN.md)
 
 > Note: alpha developing
 
@@ -35,7 +35,7 @@ Current result:
 2. reload chat with JSON
 3. auto cache the history session
 
-Others are placed in [todo.md](todo.md)
+Others: [bing-search-saver broad](https://github.com/users/gantrol/projects/5)
 
 ## Dev
 This is a [Plasmo extension](https://docs.plasmo.com/) project bootstrapped with [`plasmo init`](https://www.npmjs.com/package/plasmo).
