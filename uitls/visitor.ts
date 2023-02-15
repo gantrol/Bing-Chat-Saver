@@ -1,4 +1,4 @@
-import { QAList, Page } from "./bingPage";
+import { Page } from "./bingPage";
 import { domToJpeg, domToPng } from "modern-screenshot";
 
 export class DownloadVisitor {
@@ -49,6 +49,15 @@ export class DownloadVisitor {
   };
 
   static forJSON = () => {
-
+    const result = Page.getQAsJSON();
+    console.log(result);
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(result));
+    const downloadAnchorNode = document.createElement('a');
+    downloadAnchorNode.setAttribute("href",     dataStr);
+    const timestamp = Date.now().toString();
+    downloadAnchorNode.setAttribute("download",   `bing-chat-${timestamp}.json`);
+    document.body.appendChild(downloadAnchorNode); // required for firefox
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
   };
 }

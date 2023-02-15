@@ -33,7 +33,9 @@
 
 Others are placed in [todo.md](todo.md)
 
-## 开发（先不翻译了，情人节忙得很）
+## 开发
+
+> 以下是`Plasmo`库的文档。后续有空再调整为中文。
 
 This is a [Plasmo extension](https://docs.plasmo.com/) project bootstrapped with [`plasmo init`](https://www.npmjs.com/package/plasmo).
 

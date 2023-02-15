@@ -21,6 +21,7 @@ const init = async () => {
 const addButtonGroups = (actionsArea, WaitingButton) => {
   addButton(actionsArea, WaitingButton, PNG);
   addButton(actionsArea, WaitingButton, JPG);
+  addButton(actionsArea, WaitingButton, JSON);
 };
 
 const addButton = (actionsArea, WaitingButton, type) => {
