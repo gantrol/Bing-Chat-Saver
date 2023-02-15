@@ -86,18 +86,7 @@ const addButton = (actionsArea, WaitingButton, type) => {
 const forImage = async (func, type, way='download') => {
   const main = <HTMLElement> getMain();
   const dataURL = await func(main, {
-    backgroundColor: "radial-gradient(" +
-      "61.04% 89.69% at 100% 100%, " +
-      "rgba(200, 250, 255, 0.08) 0%, " +
-      "rgba(28, 210, 229, 0.08) 40.63%, " +
-      "rgba(28, 210, 229, 0) 100%), " +
-      "radial-gradient(43.78% 64.34% at 60.31% 100%, " +
-      "rgba(23, 74, 228, 0.08) 0%, " +
-      "rgba(23, 74, 228, 0) 100%), " +
-      "linear-gradient(180deg, rgba(23, 74, 228, 0) 29.44%, " +
-      "rgba(23, 74, 228, 0.06) 100%), " +
-      "linear-gradient(90deg, #F3F3F7 0%, #EBF0F9 100%" +
-      ")"
+    backgroundColor: "rgb(217, 230, 249)"
   });
   if (way === 'newTab') {
     requestAnimationFrame(() => {
