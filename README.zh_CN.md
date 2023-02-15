@@ -5,6 +5,8 @@
 通过添加相关按钮，这个插件添加可以将聊天记录导出，目前支持的格式为：
 
 - PNG
+- JPG
+- JSON
 
 > 注意：为了避免欢迎页占用过多篇幅，这个插件直接移除了欢迎页面，后续将考虑作为选项。
 
@@ -17,7 +19,7 @@
 
 安装插件后，在与必应聊天的界面（非搜索侧边栏），右下角原先只有反馈按钮，会增加相应导出按钮。如PNG即为导出为PNG。
 
-![1676378602296](https://user-images.githubusercontent.com/31330732/218741972-65e4d64a-35a7-4c7e-83fd-1a9720afbd66.png)
+![buttons](assets/demo_cn_buttons.png)
 
 现阶段结果示例（可导出长图）：
 
@@ -27,19 +29,19 @@
 
 ## 接下来的主要 TODO
 
-1. 导出格式添加JSON、Markdown
+1. 导出格式添加Markdown
 2. 通过导入 JSON，“重新加载”对话
 3. 自动缓存历史对话列表
 
-Others are placed in [todo.md](todo.md)
+其他详见[项目看板](https://github.com/users/gantrol/projects/5)
 
 ## 开发
 
 > 以下是`Plasmo`库的文档。后续有空再调整为中文。
 
-This is a [Plasmo extension](https://docs.plasmo.com/) project bootstrapped with [`plasmo init`](https://www.npmjs.com/package/plasmo).
+这是一个以 [Plasmo 插件开发框架](https://docs.plasmo.com/) 为基础的插件应用（改代码不用手工reload）
 
-### Getting Started
+### 起步
 
 First, make sure to replace `type="ts"` with `lang="ts"` in your Svelte components.
 

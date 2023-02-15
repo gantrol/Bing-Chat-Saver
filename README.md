@@ -9,14 +9,16 @@
 This edge extension adds a Button for exporting Bing Chat Content as: 
 
 - PNG
+- JPG
+- JSON
 
 And it removes the welcome message.
 
 ## Usage
 
-Click Button below feedback button at right bottom of the chat UI.
+Click Buttons below feedback button at right bottom of the chat UI.
 
-![buttons](https://user-images.githubusercontent.com/31330732/218730012-7a7a7f0d-1762-4d9c-b9b9-d6cb05f21382.png)
+![buttons](assets/demo_buttons.png)
 
 Current result:
 
@@ -31,7 +33,7 @@ Current result:
 
 ## Main TODO
 
-1. export as Markdown, JSON
+1. export as Markdown
 2. reload chat with JSON
 3. auto cache the history session
 
