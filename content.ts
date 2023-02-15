@@ -83,7 +83,7 @@ const addButton = (actionsArea, WaitingButton, type) => {
   actionsArea.appendChild(downloadButton);
 };
 
-const forImage = async (func, type, way='download') => {
+const forImage = async (func, type, way='newTab') => {
   const main = <HTMLElement> getMain();
   const dataURL = await func(main, {
     backgroundColor: "rgb(217, 230, 249)"
