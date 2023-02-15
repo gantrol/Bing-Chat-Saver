@@ -16,11 +16,11 @@ And it removes the welcome message.
 
 Click Button below feedback button at right bottom of the chat UI.
 
-![image](https://user-images.githubusercontent.com/31330732/218730012-7a7a7f0d-1762-4d9c-b9b9-d6cb05f21382.png)
+![buttons](https://user-images.githubusercontent.com/31330732/218730012-7a7a7f0d-1762-4d9c-b9b9-d6cb05f21382.png)
 
 Current result:
 
-![image](https://user-images.githubusercontent.com/31330732/218725995-79a6bcae-757a-40f6-a6d9-d004685e4a6a.png)
+![demo](assets/demo.png)
 
 > As you can see, some ref is not rendered correctly now. It might be issue for `modern-screenshot`. However, this package is the best one.
 

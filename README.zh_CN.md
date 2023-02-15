@@ -21,7 +21,7 @@
 
 现阶段结果示例（可导出长图）：
 
-![image](https://user-images.githubusercontent.com/31330732/218740485-168e6f0c-1922-4e0c-969f-92fe748ef915.png)
+![image](assets/demo_cn.png)
 
 > 目前引用部分的导出仍有部分问题，这可能是依赖包 `modern-screenshot`的缺陷。而这已经是个人能找到最好的依赖包了，后续会先查明原因，实在不行就另行实现。
 
