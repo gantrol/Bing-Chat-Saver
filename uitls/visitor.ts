@@ -50,7 +50,6 @@ export class DownloadVisitor {
 
   static forJSON = () => {
     const result = Page.getQAsJSON();
-    console.log(result);
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(result));
     const downloadAnchorNode = document.createElement('a');
     downloadAnchorNode.setAttribute("href",     dataStr);

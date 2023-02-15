@@ -25,6 +25,7 @@ export class Page {
 
   static handleRefs = (ansFrame: HTMLElement, setFontWeight=true, returnJSON=false) => {
     // ansFrame's css selector is cib-message[type="text"]
+    if (ansFrame === null) return;
     const refsBlock = ansFrame
       .shadowRoot
       .querySelector("cib-message-attributions");
@@ -37,6 +38,7 @@ export class Page {
         }
         if (returnJSON) {
           return {
+            index: linkElm.getAttribute("tabindex"),
             title: linkElm.getAttribute("title"),
             href: linkElm.getAttribute("href")
           };
