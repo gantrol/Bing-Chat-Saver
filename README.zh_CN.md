@@ -25,8 +25,6 @@
 
 ![image](assets/demo_cn.png)
 
-> 目前引用部分的导出仍有部分问题，这可能是依赖包 `modern-screenshot`的缺陷。而这已经是个人能找到最好的依赖包了，后续会先查明原因，实在不行就另行实现。
-
 ## 接下来的主要 TODO
 
 1. 导出格式添加Markdown

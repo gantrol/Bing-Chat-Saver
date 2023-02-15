@@ -24,8 +24,6 @@ Current result:
 
 ![demo](assets/demo.png)
 
-> As you can see, some ref is not rendered correctly now. It might be issue for `modern-screenshot`. However, this package is the best one.
-
 ## Download
 
 - Go to release, download `.zip` and load unpacked at `edge://extensions/` . As the bing saying, you can reference [this acticle](https://dev.to/ben/how-to-install-chrome-extensions-manually-from-github-1612#:~:text=How%20to%20install%20Chrome%20extensions%20manually%20from%20GitHub,navivigate%20to%20the%20folder%20you%20downloaded%20from%20GitHub)
