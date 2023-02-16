@@ -159,3 +159,7 @@ Bing: I’m sorry, I don’t know your location [^1]. The weather depends on whe
 [qq15725/modern-screenshot: 📸 Fast generates an image from a DOM node using HTML5 canvas and SVG. (github.com)](https://github.com/qq15725/modern-screenshot)
 
 [bubkoo/html-to-image: ✂️ Generates an image from a DOM node using HTML5 canvas and SVG. (github.com)](https://github.com/bubkoo/html-to-image)
+
+https://github.com/mixmark-io/turndown/
+
+

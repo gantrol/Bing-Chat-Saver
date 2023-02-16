@@ -20,7 +20,6 @@
 - [ ] CI / CD
 - [ ] test
 - [ ] how to add unittest for shadow-roots?
-- [ ] 通过重排元素来渲染图片？目前的脚注部分还有点好
 - [ ] 改英文文档
 
 ## current

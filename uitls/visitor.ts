@@ -1,5 +1,6 @@
 import { Page } from "./bingPage";
 import { domToJpeg, domToPng } from "modern-screenshot";
+import { QasJSON2MarkdownParser } from "~uitls/md/parser";
 
 export class DownloadVisitor {
   static async forImage(func, type, way = "newTab") {
@@ -45,16 +46,25 @@ export class DownloadVisitor {
   };
 
   static forMD = () => {
-
+    const jsonResult = Page.getQAsJSON();
+    const qasp = new QasJSON2MarkdownParser(jsonResult);
+    const [md, title] = qasp.md();
+    const dataStr = "data:text/md;charset=utf-8," + encodeURIComponent(md);
+    const downloadAnchorNode = document.createElement("a");
+    downloadAnchorNode.setAttribute("href", dataStr);
+    downloadAnchorNode.setAttribute("download", `${title}.md`);
+    document.body.appendChild(downloadAnchorNode); // required for firefox
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
   };
 
   static forJSON = () => {
     const result = Page.getQAsJSON();
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(result));
-    const downloadAnchorNode = document.createElement('a');
-    downloadAnchorNode.setAttribute("href",     dataStr);
+    const downloadAnchorNode = document.createElement("a");
+    downloadAnchorNode.setAttribute("href", dataStr);
     const timestamp = Date.now().toString();
-    downloadAnchorNode.setAttribute("download",   `bing-chat-${timestamp}.json`);
+    downloadAnchorNode.setAttribute("download", `bing-chat-${timestamp}.json`);
     document.body.appendChild(downloadAnchorNode); // required for firefox
     downloadAnchorNode.click();
     downloadAnchorNode.remove();

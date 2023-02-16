@@ -19,9 +19,11 @@ const init = async () => {
 
 
 const addButtonGroups = (actionsArea, WaitingButton) => {
+  // TODO: 加折叠，或者
   addButton(actionsArea, WaitingButton, PNG);
   addButton(actionsArea, WaitingButton, JPG);
   addButton(actionsArea, WaitingButton, JSON);
+  addButton(actionsArea, WaitingButton, MD);
 };
 
 const addButton = (actionsArea, WaitingButton, type) => {
@@ -43,5 +45,6 @@ const addButton = (actionsArea, WaitingButton, type) => {
   downloadButton.onclick = getOnClickByType(type);
   actionsArea.appendChild(downloadButton);
 };
+
 
 init();

@@ -23,7 +23,7 @@ export class Page {
       .querySelectorAll("cib-chat-turn");
   };
 
-  static handleRefs = (ansFrame: HTMLElement, setFontWeight=true, returnJSON=false) => {
+  static handleRefs = (ansFrame: HTMLElement, setFontWeight = true, returnJSON = false) => {
     // ansFrame's css selector is cib-message[type="text"]
     if (ansFrame === null) return;
     const refsBlock = ansFrame
@@ -32,20 +32,20 @@ export class Page {
     if (refsBlock) {
       const refsElement = refsBlock.shadowRoot.querySelector("div[role=\"list\"]");
       const linkElementList = Array.from(refsElement.querySelectorAll("a"));
-      return linkElementList.map(linkElm => {
+      return linkElementList.map((linkElm, index) => {
         if (setFontWeight) {
           linkElm.style.fontWeight = "400";
         }
         if (returnJSON) {
           return {
-            index: linkElm.getAttribute("tabindex"),
+            index: index,
             title: linkElm.getAttribute("title"),
             href: linkElm.getAttribute("href")
           };
         }
       });
     }
-  }
+  };
 
   static setFontWeightForAllRefs = () => {
     const groups_roots = Page.getQAsElement();
@@ -56,7 +56,7 @@ export class Page {
         if (group.getAttribute("source") === "bot") {
           // Answer
           const messagesShadowRoot = group.shadowRoot;
-          const ansFrame = <HTMLElement> messagesShadowRoot.querySelector("cib-message[type=\"text\"]");
+          const ansFrame = <HTMLElement>messagesShadowRoot.querySelector("cib-message[type=\"text\"]");
           Page.handleRefs(ansFrame);
         }
       }
@@ -93,7 +93,7 @@ export class Page {
   static getQAsJSON = () => {
     const qas = new QAList(Page.getQAsElement());
     return qas.qaList;
-  }
+  };
 }
 
 export class QAList {
@@ -125,7 +125,7 @@ export class QAList {
         // Answer
         const answer = {
           meta: [],
-          body: "",
+          text: "",
           html: "",
           refs: []
           //   hints: [],  TODO if realtime
@@ -144,8 +144,11 @@ export class QAList {
         if (ansFrame) {
           const ansHTML = ansFrame
             .shadowRoot.querySelector("div.ac-textBlock");
-          answer.html = ansHTML.innerHTML;
-          answer.body = ansHTML.textContent;
+          // fix:  Cannot read properties of null (reading 'innerHTML')
+          if (ansHTML) {
+            answer.html = ansHTML.innerHTML;
+            answer.text = ansHTML.textContent;
+          }
         }
         // Note: refs is optional
         answer.refs = Page.handleRefs(ansFrame, false, true);
