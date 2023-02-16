@@ -26,7 +26,9 @@
 - meta-text
 - body
 - learn more
-- tips
+- tips (ignore for now)
+
+## transform
 
 ### JSON example
 
@@ -36,39 +38,80 @@
 {
     "QAs":[
         {
-            "A": [{"body": "Hello"}]
+            "answers": [{"body": "Hello"}]
         }, {
-            "Q": [{"body": "What date is it today?"}],
-            "A": [{"body": "Hello, this is Bing. Today is Wednesday, February 15, 2023."}]
+            "questions": [{"body": "What date is it today?"}],
+            "answers": [{
+              "body": "Hello, this is Bing. Today is Wednesday, February 15, 2023.",
+              "html": "..."
+            }]
         }, {
-            "Q": [{"body": "What date is it today?"}],
-            "A": [{
+            "questions": [{"body": "What's the weather like today?"}],
+            "answers": [{
               "meta": [
                 "Searching for: weather",
                 "Searching for: user location",
                 "Generating answers for you…"
               ],
-              "body": "I’m sorry, I don’t know your location 0. The weather depends on where you are. You can try searching for the weather in your city or country. 1",
+              "body": "I’m sorry, I don’t know your location 1. The weather depends on where you are. You can try searching for the weather in your city or country. 2",
+              "html": "...",
               "refs": [
                 {
-                  "index": 0,
+                  "index": 1,
+                  "title": "Bing Weather",
                   "link": "https://bing.com/search?q=weather"
                 }, {
-                  "index": 1,
+                  "index": 2,
+                  "title": "accuweather",
                   "link": "https://www.accuweather.com/en/de/nuremberg/90402/weather-forecast/167559"
                 }
               ]
             }]
         }, {
-            "Q": [{"body": "Goodbye"}]
+            "questions": [{"body": "Goodbye"}]
         }
     ]
 }
 ```
 
-#### html version?
+### Markdown example
 
-for A, add a html field
+> should render by html in json for keeping links
+> 
+> 多个links好像不好处理
+
+```markdown
+# Bing Chat at ${YYYY-MM-DD}
+
+## 1
+Bing: Hello
+
+## 2
+
+Q: What date is it today?
+
+Bing: Hello, this is Bing. Today is Wednesday, February 15, 2023.
+
+## 3
+
+Q: What's the weather like today?
+
+> Searching for: weather
+> 
+> Searching for: user location
+> 
+> Generating answers for you…
+
+Bing: I’m sorry, I don’t know your location [^1]. The weather depends on where you are. You can try searching for the weather in your city or country. [^2]
+
+## Ref
+
+[^1]: https://bing.com/search?q=weather 	"Bing Weather"
+[^2]: https://www.accuweather.com/en/de/nuremberg/90402/weather-forecast/167559	"accuweather"
+
+```
+
+
 
 ### feedback
 

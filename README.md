@@ -2,8 +2,6 @@
 
 [![cn](https://img.shields.io/badge/看我-中文-red.svg)](README.zh_CN.md)
 
-> Note: alpha developing
-
 ## Feature
 
 This edge extension adds a Button for exporting Bing Chat Content as: 
@@ -38,6 +36,9 @@ Current result:
 Others: [bing-search-saver broad](https://github.com/users/gantrol/projects/5)
 
 ## Dev
+
+> Plasmo default document below, other develop infomation at [manual](./docs/manual.md)
+
 This is a [Plasmo extension](https://docs.plasmo.com/) project bootstrapped with [`plasmo init`](https://www.npmjs.com/package/plasmo).
 
 ### Getting Started

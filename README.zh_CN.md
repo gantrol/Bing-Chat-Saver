@@ -35,15 +35,30 @@
 
 ## 开发
 
-> 以下是`Plasmo`库的文档。后续有空再调整为中文。
+> 以下是`Plasmo`库的文档（Svelte版本）。其他开发信息见[手册](./docs/manual.md)
 
 这是一个以 [Plasmo 插件开发框架](https://docs.plasmo.com/) 为基础的插件应用（改代码不用手工reload）
 
 ### 起步
 
-First, make sure to replace `type="ts"` with `lang="ts"` in your Svelte components.
+> 确保在你的Svelte组件中把type="ts"替换成lang="ts"
 
-Second, run the development server:
+克隆项目
+
+```bash
+git clone https://github.com/gantrol/Bing-Chat-Saver.git
+cd Bing-Chat-Saver/
+```
+
+安装依赖
+
+```bash
+pnpm i
+# or
+npm run i
+```
+
+运行:
 
 ```bash
 pnpm dev
@@ -51,11 +66,15 @@ pnpm dev
 npm run dev
 ```
 
-Open your browser and load the appropriate development build. For example, if you are developing for the chrome browser, using manifest v3, use: `build/chrome-mv3-dev`.
+打开浏览器，加载适当的dev build（目前配置里只有chrome的build，毕竟新必应在其他浏览器也用不了）。 例如，如果你在使用manifest v3为chrome浏览器开发插件，请使用。`build/chrome-mv3-dev`。
 
-You can start editing the popup by modifying `popup.tsx`. It should auto-update as you make changes. To add an options page, simply add a `options.tsx` file to the root of the project, with a react component default exported. Likewise to add a content page, add a `content.ts` file to the root of the project, importing some module and do some logic, then reload the extension on your browser.
+你可以通过修改`popup.svelte`来编辑弹出窗口。它应该在你做修改时自动更新。
 
-For further guidance, [visit our Documentation](https://docs.plasmo.com/)
+> 注：有时连接会失败，还是要手动重新加载
+
+要添加一个选项页，只需在项目的根部添加一个`options.svelte`文件，并默认导出一个react组件。同样，要添加`context`，在项目的根部添加一个`content.ts`文件，编写完毕后，在浏览器上重新加载扩展。
+
+如需更多指引，[可访问plasmo的官方文档](https://docs.plasmo.com/)
 
 ### Making production build
 

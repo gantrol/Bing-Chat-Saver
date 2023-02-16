@@ -4,10 +4,8 @@
 
 ## main
 
-- [ ] markdown output
-- [ ] json output
 - [ ] reload chat with JSON 
-- [ ] HTML
+- [ ] extension main page for HTML
 - [ ] JSON Viewer (render to HTML)
 
 ## design & modified
@@ -19,6 +17,8 @@
 
 ## others
 
+- [ ] CI / CD
+- [ ] test
 - [ ] how to add unittest for shadow-roots?
 - [ ] 通过重排元素来渲染图片？目前的脚注部分还有点好
 - [ ] 改英文文档
