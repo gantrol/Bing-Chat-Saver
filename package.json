@@ -1,7 +1,7 @@
 {
   "name": "bing-chat-saver",
   "displayName": "Bing Chat saver",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "description": "Saving Bing Chat for you, for sharing",
   "author": "gantrol",
   "scripts": {
@@ -32,13 +32,6 @@
     "typescript": "4.9.4"
   },
   "manifest": {
-    "name": "__MSG_extensionName__",
-    "host_permissions": [
-      "https://www.bing.com/search*"
-    ],
-    "permissions": [
-      "activeTab",
-      "scripting"
-    ]
+    "name": "__MSG_extensionName__"
   }
 }

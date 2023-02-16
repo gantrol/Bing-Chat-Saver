@@ -1,6 +1,13 @@
 import { Page } from "~uitls/bingPage";
 import { DownloadVisitor } from "~uitls/visitor";
 
+import type { PlasmoCSConfig } from "plasmo"
+
+export const config: PlasmoCSConfig = {
+  matches: ["https://www.bing.com/search*"],
+  all_frames: true
+}
+
 
 const PNG = "PNG";
 const JPG = "JPG";
