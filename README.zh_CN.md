@@ -1,5 +1,8 @@
 # 必应聊天分享与保存
 
+[![谷歌安装](https://img.shields.io/badge/谷歌-安装-critical.svg?style=for-the-badge&logo=appveyor)](https://chrome.google.com/webstore/detail/bing-chat-saver/ficbllnhlgldegblbimkeldcdhfjppkg?hl=zh-CN)
+
+
 ## 功能
 
 通过添加相关按钮，这个插件添加可以将聊天记录导出，目前支持的格式为：
@@ -12,6 +15,7 @@
 
 ## 下载
 
+- [Chrome Store](https://chrome.google.com/webstore/detail/bing-chat-saver/ficbllnhlgldegblbimkeldcdhfjppkg?hl=en)获取稳定版本（更新有延迟，一般是两天）
 - 去[releases页面](https://github.com/gantrol/Bing-Chat-Saver/releases/), 下载 `.zip`并到 `edge://extensions/`加载插件。正如下文结果示意图必应所说，你可就着浏览器翻译功能，参考[这篇文章](https://www.howtogeek.com/510543/how-to-install-and-use-extensions-in-the-new-microsoft-edge/)
 - Edge商城的下载正待审核
 
