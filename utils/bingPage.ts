@@ -51,7 +51,6 @@ export class Page {
     const groups_roots = Page.getQAsElement();
     for (const groups_root of groups_roots) {
       for (let group of groups_root.shadowRoot.querySelectorAll("cib-message-group")) {
-        console.log(`setFontWeightForAllRefs: ${group}`);
         // check user or bot
         if (group.getAttribute("source") === "bot") {
           // Answer
@@ -89,6 +88,7 @@ export class Page {
       });
     });
   };
+
 
   static getQAsJSON = () => {
     const qas = new QAList(Page.getQAsElement());
@@ -158,7 +158,7 @@ export class QAList {
         // Question, source is user
         const html = group.shadowRoot.querySelector("cib-message")
           .shadowRoot.querySelector("div.content");
-        QA.questions.push({ text: html.textContent });
+        QA.questions.push({ text: html.textContent?.trim() });
       }
     }
     return QA;

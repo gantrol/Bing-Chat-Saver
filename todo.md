@@ -4,16 +4,14 @@
 
 ## main
 
-- [ ] reload chat with JSON 
+- [ ] reload chat with JSON
 - [ ] extension main page for HTML
 - [ ] JSON Viewer (render to HTML)
 
 ## design & modified
 
-- [ ] ButtonGroups，改为Export一个按钮，提供下载选项(popup或类似feedback的小窗口)
-- [ ] 图片默认下载，并且在右下方生成小窗口
-- [ ] ignore element (`.cib-welcome-container`) instead of remove it. May add a option to remove it 
-- [ ] icon 改为箭头
+- [ ] Preview改为在右下方生成小窗口
+- [ ] icon 改为箭头？
 
 ## others
 
@@ -21,8 +19,20 @@
 - [ ] test
 - [ ] how to add unittest for shadow-roots?
 - [ ] 改英文文档
+- [ ] markdown add "meta" searching info
 
 ## current
 
-- [ ] 将所有的链接的a的 font-weight: 400
-- [ ] WARN   | default_locale not set, fallback to en
+### main
+
+- [ ] extension main page for HTML -> Plasmo doc for extension's tab
+
+### modified
+
+- [ ] 尝试往导出加一个微软图标
+- [ ] add to zip when download multiply
+- [ ] JS doc
+
+## 废案
+
+- [x] ~~实验录屏 (成果上传不了哔哩哔哩，鸡肋；还不如Windows + Alt + R)~~

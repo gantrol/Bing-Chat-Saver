@@ -1,5 +1,5 @@
 import { describe, expect, it } from "@jest/globals";
-import { QasJSON2MarkdownParser } from "~uitls/md/parser";
+import { QasJSON2MarkdownParser } from "~utils/md/parser";
 
 
 // TODO: read a file instead

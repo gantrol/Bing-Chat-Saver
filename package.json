@@ -1,18 +1,17 @@
 {
   "name": "bing-chat-saver",
   "displayName": "Bing Chat saver",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Saving Bing Chat for you, for sharing",
   "author": "gantrol",
   "scripts": {
     "dev": "plasmo dev",
     "test": "jest",
     "build": "plasmo build",
-
     "package": "plasmo package"
   },
   "dependencies": {
-    "modern-screenshot": "^4.3.4",
+    "modern-screenshot": "^4.4.0",
     "plasmo": "0.65.0",
     "svelte": "3.55.1",
     "svelte-preprocess": "5.0.1",
@@ -32,6 +31,10 @@
     "typescript": "4.9.4"
   },
   "manifest": {
-    "name": "__MSG_extensionName__"
+    "name": "__MSG_extensionName__",
+    "permissions": [
+      "storage"
+    ],
+    "default_locale": "en"
   }
 }

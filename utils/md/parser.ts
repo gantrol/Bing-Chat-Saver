@@ -1,4 +1,4 @@
-import { getNowWithFormat } from "~uitls/time";
+import { getNowWithFormat } from "~utils/time";
 
 export {};
 

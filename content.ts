@@ -1,55 +1,48 @@
-import { Page } from "~uitls/bingPage";
-import { DownloadVisitor } from "~uitls/visitor";
+import { Page } from "~utils/bingPage";
+import { DownloadVisitor } from "~utils/visitor";
 
 import type { PlasmoCSConfig } from "plasmo"
+import { exportActions, Settings } from "~utils/constants";
+import { handleElementVisibility } from "~utils/viewmodel";
 
 export const config: PlasmoCSConfig = {
   matches: ["https://www.bing.com/search*"],
   all_frames: true
 }
 
-
-const PNG = "PNG";
-const JPG = "JPG";
-const MD = "Markdown";
-const JSON = "JSON";
-
-
 const init = async () => {
   await Page.waitForElm("#b_sydConvCont > cib-serp");
-  // remove welcome bar
-  Page.getWelcome().remove();
-  const feedbackGroup = Page.getFeedbackBar();
+  await handleElementVisibility(<HTMLElement>Page.getWelcome(), Settings.WELCOME)
+  const feedbackGroup =Page.getFeedbackBar();
   const feedbackButton = feedbackGroup.querySelector("#fbpgbt");
+
   addButtonGroups(feedbackGroup, feedbackButton);
+
+  await handleElementVisibility(<HTMLElement>feedbackButton, Settings.FEEDBACK, 'block');
 };
 
 
 const addButtonGroups = (actionsArea, WaitingButton) => {
-  // TODO: 加折叠，或者
-  addButton(actionsArea, WaitingButton, PNG);
-  addButton(actionsArea, WaitingButton, JPG);
-  addButton(actionsArea, WaitingButton, JSON);
-  addButton(actionsArea, WaitingButton, MD);
+  // TODO: i18n
+  addButton(actionsArea, WaitingButton, exportActions.ALL);
+  addButton(actionsArea, WaitingButton, exportActions.PREVIEW);
 };
 
-const addButton = (actionsArea, WaitingButton, type) => {
+const addButton = (actionsArea, WaitingButton, action) => {
   const downloadButton = WaitingButton.cloneNode(true);
-  downloadButton.id = `${type}-download-button`;
-  downloadButton.innerText = type;
+  downloadButton.id = `${action}-download-button`;
+  downloadButton.innerText = action;
 
-  const getOnClickByType = (type) => {
-    if (type === PNG) {
-      return DownloadVisitor.forPNG;
-    } else if (type === JPG) {
-      return DownloadVisitor.forJPG;
-    } else if (type === MD) {
-      return DownloadVisitor.forMD;
-    } else if (type === JSON) {
-      return DownloadVisitor.forJSON;
+  const getOnClickByAction = (action) => {
+    if (action === exportActions.ALL) {
+      return DownloadVisitor.forAll;
+    } else if (action === exportActions.PREVIEW) {
+      return DownloadVisitor.forPreview;
+    } else {
+      throw new Error(`There is not action type of ${action}`);
     }
   };
-  downloadButton.onclick = getOnClickByType(type);
+  downloadButton.onclick = getOnClickByAction(action);
   actionsArea.appendChild(downloadButton);
 };
 
