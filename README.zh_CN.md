@@ -10,6 +10,7 @@
 - PNG
 - JPG
 - JSON
+- Markdown
 
 > 注意：为了避免欢迎页占用过多篇幅，这个插件直接移除了欢迎页面，后续将考虑作为选项。
 
@@ -29,10 +30,9 @@
 
 ![image](assets/demo_cn.png)
 
-## 接下来的主要 TODO
+## 接下来的主要待办
 
-1. 导出格式添加Markdown
-2. 通过导入 JSON，“重新加载”对话
+1. 通过导入 JSON，“重新加载”对话
 3. 自动缓存历史对话列表
 
 其他详见[项目看板](https://github.com/users/gantrol/projects/5)
@@ -80,9 +80,9 @@ npm run dev
 
 如需更多指引，[可访问plasmo的官方文档](https://docs.plasmo.com/)
 
-### Making production build
+### 构建生成包
 
-Run the following:
+执行：
 
 ```bash
 pnpm build
@@ -92,6 +92,6 @@ npm run build
 
 This should create a production bundle for your extension, ready to be zipped and published to the stores.
 
-### Submit to the webstores
+### 提交到插件商城
 
 The easiest way to deploy your Plasmo extension is to use the built-in [bpp](https://bpp.browser.market) GitHub action. Prior to using this action however, make sure to build your extension and upload the first version to the store to establish the basic credentials. Then, simply follow [this setup instruction](https://docs.plasmo.com/framework/workflows/submit) and you should be on your way for automated submission!

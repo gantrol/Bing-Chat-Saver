@@ -11,6 +11,7 @@ This edge extension adds a Button for exporting Bing Chat Content as:
 - PNG
 - JPG
 - JSON
+- Markdown
 
 And it removes the welcome message.
 
@@ -32,8 +33,7 @@ Current result:
 
 ## Main TODO
 
-1. export as Markdown
-2. reload chat with JSON
+1. reload chat with JSON
 3. auto cache the history session
 
 Others: [bing-search-saver broad](https://github.com/users/gantrol/projects/5)

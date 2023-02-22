@@ -146,6 +146,55 @@ Bing: I’m sorry, I don’t know your location [^1]. The weather depends on whe
 }
 ```
 
+## chat
+
+store a chat-like record in browser
+
+indexedDB
+
+### structure
+
+- user
+  - id
+  - chats
+    - chat1
+      - id
+      - name
+      - chat-content-json
+    - chat2
+
+### user id
+
+#### set by user(by hand...)
+
+create a uuid, a user name
+
+#### others
+
+> edge cannot use, ref: [api-support](https://github.com/MicrosoftDocs/edge-developer/blob/main/microsoft-edge/extensions-chromium/developer-guide/api-support.md)
+
+- chrome.identity.getProfileUserInfo
+- chrome.identity
+
+
+### chat id 
+
+generator a uuid
+
+### chat name
+
+first chat question of chat json
+
+## Request
+
+### fake Edge
+
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36 Edg/110.0.1587.50
+
+### fake not mainland
+
+X-Forwarded-For: 1.36.5.8
+
 ## Library
 
 ### Library Examples
