@@ -137,7 +137,7 @@ export class QAList {
           return meta
             .shadowRoot
             .querySelector("div.meta-text")
-            .textContent;
+            .textContent?.trim();
         });
         // body, optional, e.g., meta is loading, but wss does not response
         const ansFrame = <HTMLElement>messagesShadowRoot.querySelector("cib-message[type=\"text\"]");
@@ -147,7 +147,7 @@ export class QAList {
           // fix:  Cannot read properties of null (reading 'innerHTML')
           if (ansHTML) {
             answer.html = ansHTML.innerHTML;
-            answer.text = ansHTML.textContent;
+            answer.text = ansHTML.textContent?.trim();
           }
         }
         // Note: refs is optional
