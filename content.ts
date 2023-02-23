@@ -6,7 +6,7 @@ import { exportActions, Settings } from "~utils/constants";
 import { handleElementVisibility } from "~utils/viewmodel";
 
 export const config: PlasmoCSConfig = {
-  matches: ["https://www.bing.com/search*"],
+  matches: ["https://www.bing.com/*"],
   all_frames: true
 }
 

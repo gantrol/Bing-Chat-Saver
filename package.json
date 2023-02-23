@@ -33,7 +33,11 @@
   "manifest": {
     "name": "__MSG_extensionName__",
     "permissions": [
-      "storage"
+      "storage",
+      "declarativeNetRequest"
+    ],
+    "host_permissions": [
+      "*://*.bing.com/*"
     ],
     "default_locale": "en"
   }
