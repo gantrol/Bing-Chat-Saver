@@ -103,21 +103,26 @@ export class DownloadVisitor {
    */
   static forAll = async () => {
     const resultJson = await handleExportSetting();
-    for (let item of resultJson) {
-      if (item.on) {
-        const type = item.type;
-        if (type === exportTypes.PNG) {
-          await DownloadVisitor.forPNG();
-        } else if (type === exportTypes.JPG) {
-          await DownloadVisitor.forJPG();
-        } else if (type === exportTypes.MD) {
-          await DownloadVisitor.forMD();
-        } else if (type === exportTypes.JSON) {
-          await DownloadVisitor.forJSON();
-        } else {
-          throw Error(`Not type of ${type}`);
+    if (resultJson) {
+      for (let item of resultJson) {
+        if (item.on) {
+          const type = item.type;
+          if (type === exportTypes.PNG) {
+            await DownloadVisitor.forPNG();
+          } else if (type === exportTypes.JPG) {
+            await DownloadVisitor.forJPG();
+          } else if (type === exportTypes.MD) {
+            await DownloadVisitor.forMD();
+          } else if (type === exportTypes.JSON) {
+            await DownloadVisitor.forJSON();
+          } else {
+            throw Error(`Not type of ${type}`);
+          }
         }
       }
+    } else {
+      // TODO: alert for setting?
+      await DownloadVisitor.forPNG()
     }
   };
 
