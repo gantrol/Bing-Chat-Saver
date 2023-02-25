@@ -1,14 +1,9 @@
 import { Page } from "~utils/bingPage";
 import { DownloadVisitor } from "~utils/visitor";
 
-import type { PlasmoCSConfig } from "plasmo"
 import { exportActions, Settings } from "~utils/constants";
 import { handleElementVisibility } from "~utils/viewmodel";
 
-export const config: PlasmoCSConfig = {
-  matches: ["https://www.bing.com/*"],
-  all_frames: true
-}
 
 const init = async () => {
   await Page.waitForElm("#b_sydConvCont > cib-serp");

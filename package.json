@@ -39,6 +39,15 @@
     "host_permissions": [
       "*://*.bing.com/*"
     ],
+    "declarative_net_request": {
+      "rule_resources": [
+        {
+          "id": "test_rules",
+          "enabled": true,
+          "path": "~rules.json"
+        }
+      ]
+    },
     "default_locale": "en"
   }
 }
