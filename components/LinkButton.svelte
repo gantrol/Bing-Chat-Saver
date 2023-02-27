@@ -4,8 +4,6 @@
   export let text;
   export let type = 'inner';
 
-  import { getText } from "~utils/i18n";
-
   const handleClassByType = (type) => {
     if (type === 'bing') {
       return 'btn-secondary'
@@ -22,5 +20,5 @@
           url: url
         })
       }}>
-  {getText(text)}
+  {text}
 </button>

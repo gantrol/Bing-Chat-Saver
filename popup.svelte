@@ -1,10 +1,9 @@
 <script>
-  import { exportTypes, LinkType, popupPageI18nKey } from "~utils/constants";
+  import { exportTypes, LinkType, popupPageI18nValue } from "~utils/constants";
   import { exportSettings, feedbackHiddenSetting, welcomeHiddenSetting } from "~utils/store/stores";
   import Collepse from "~components/Collepse.svelte";
   import SimpleCheckbox from "~components/SimpleCheckbox.svelte";
   import LinkButton from "~components/LinkButton.svelte";
-  import { getText } from "~utils/i18n";
 
   let promises = [
     exportSettings.init(),
@@ -26,26 +25,31 @@
 <!--collapse all Collepse by changing default_open to false-->
 <div class="main">
   {#await Promise.all(promises)}
-    <p>{getText(popupPageI18nKey.WAITING)}</p>
+    <p>{popupPageI18nValue.WAITING}</p>
   {:then _}
     <!--TODO: 抽出组件-->
     <Collepse
-      title={popupPageI18nKey.LINK_TITLE}
+      title={popupPageI18nValue.LINK_TITLE}
       default_open={true}
     >
       <LinkButton
         url="/tabs/chats.html"
-        text={popupPageI18nKey.CHAT_RECORD_LINK}
+        text={popupPageI18nValue.CHAT_RECORD_LINK}
         type={LinkType.INNER}
       />
       <LinkButton
         url="https://www.bing.com/search?q=Bing+AI&showconv=1&FORM=hpcodx"
-        text={popupPageI18nKey.BING_CHAT_LINK}
+        text={popupPageI18nValue.BING_CHAT_LINK}
+        type={LinkType.BING}
+      />
+      <LinkButton
+        url="https://www.bing.com/new"
+        text={popupPageI18nValue.BING_NEW_LINK}
         type={LinkType.BING}
       />
     </Collepse>
     <Collepse
-      title={popupPageI18nKey.EXPORT_SETTINGS_TITLE}
+      title={popupPageI18nValue.EXPORT_SETTINGS_TITLE}
       default_open={true}
     >
       {#each $exportSettings as message, i}
@@ -68,17 +72,17 @@
       {/each}
     </Collepse>
     <Collepse
-      title={popupPageI18nKey.UI_SETTINGS_TITLE}
+      title={popupPageI18nValue.UI_SETTINGS_TITLE}
       default_open={true}
     >
       <div class="form-control">
         <SimpleCheckbox
           isChecked={welcomeHiddenSetting}
-          text={popupPageI18nKey.HIDDEN_WELCOME}
+          text={popupPageI18nValue.HIDDEN_WELCOME}
         />
         <SimpleCheckbox
           isChecked={feedbackHiddenSetting}
-          text={popupPageI18nKey.HIDDEN_FEEDBACK}
+          text={popupPageI18nValue.HIDDEN_FEEDBACK}
         />
       </div>
     </Collepse>

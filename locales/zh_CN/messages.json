@@ -7,6 +7,14 @@
     "message": "导出你的必应聊天记录",
     "description": "Description of the extension."
   },
+  "content_export_all_button": {
+    "message": "导出",
+    "description": "Export all button"
+  },
+  "content_preview_button": {
+    "message": "预览",
+    "description": "Preview button"
+  },
   "popup_chat_record_button": {
     "message": "查看聊天记录",
     "description": "Record button"
@@ -14,6 +22,10 @@
   "popup_bing_chat_website_button": {
     "message": "必应聊天界面",
     "description": "Bing Website button"
+  },
+  "popup_bing_new_website_button": {
+    "message": "必应官方示例",
+    "description": "Bing New Website button"
   },
   "popup_link_title": {
     "message": "置顶链接",

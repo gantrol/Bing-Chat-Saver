@@ -1,5 +1,4 @@
 import { exportTypes, Settings } from "~utils/constants";
-// import { localStore } from "~utils/store/localStore";
 import { chromeSyncStorage } from "~utils/store/chrome";
 
 const defaultSize = 300;
