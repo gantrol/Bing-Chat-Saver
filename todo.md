@@ -4,9 +4,7 @@
 
 ## main
 
-- [ ] reload chat with JSON
-- [ ] extension main page for HTML
-- [ ] JSON Viewer (render to HTML)
+- [ ] reload chat with JSON？
 
 ## design & modified
 
@@ -15,8 +13,6 @@
 
 ## others
 
-- [ ] CI / CD
-- [ ] test
 - [ ] how to add unittest for shadow-roots?
 - [ ] 改英文文档
 - [ ] markdown add "meta" searching info
@@ -25,7 +21,9 @@
 
 ### main
 
-- [ ] extension main page for HTML -> Plasmo doc for extension's tab
+- [ ] i18n for chinese
+- [ ] 引入单元测试，以及copilot
+- [ ] git action for pushing to chrome store...
 
 ### modified
 
@@ -34,7 +32,6 @@
 - [ ] 改ip（默认不勾选）、Fake Edge（默认勾选）浏览器的选项，加一个设置
 - [ ] 尝试往导出加一个微软图标
 - [ ] add to zip when download multiply
-- [ ] git action for pushing to chrome store...
 - [ ] JS doc
 - [ ] content ui script, https://docs.plasmo.com/framework/content-scripts-ui
 - [ ] can be installed as -D ?
