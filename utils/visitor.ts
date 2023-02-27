@@ -112,7 +112,7 @@ export class DownloadVisitor {
   static forAll = async () => {
     DownloadVisitor.forDB().catch(error => {
       console.log(error);
-    })
+    });
     const resultJson = await handleExportSetting();
     if (resultJson) {
       for (let item of resultJson) {

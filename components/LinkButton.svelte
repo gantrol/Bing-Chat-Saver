@@ -2,17 +2,17 @@
 
   export let url;
   export let text;
-  export let type = 'inner';
+  export let type = "inner";
 
   const handleClassByType = (type) => {
-    if (type === 'bing') {
-      return 'btn-secondary'
-    } else if (type === 'inner') {
-      return 'btn-primary'
+    if (type === "bing") {
+      return "btn-secondary";
+    } else if (type === "inner") {
+      return "btn-primary";
     } else {
-      return ''
+      return "";
     }
-  }
+  };
 </script>
 
 <button class="btn {handleClassByType(type)}" on:click={() => {

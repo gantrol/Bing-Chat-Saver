@@ -7,13 +7,13 @@ import { handleElementVisibility } from "~utils/viewmodel";
 
 const init = async () => {
   await Page.waitForElm("#b_sydConvCont > cib-serp");
-  await handleElementVisibility(<HTMLElement>Page.getWelcome(), Settings.WELCOME)
-  const feedbackGroup =Page.getFeedbackBar();
+  await handleElementVisibility(<HTMLElement>Page.getWelcome(), Settings.WELCOME);
+  const feedbackGroup = Page.getFeedbackBar();
   const feedbackButton = feedbackGroup.querySelector("#fbpgbt");
 
   addButtonGroups(feedbackGroup, feedbackButton);
 
-  await handleElementVisibility(<HTMLElement>feedbackButton, Settings.FEEDBACK, 'block');
+  await handleElementVisibility(<HTMLElement>feedbackButton, Settings.FEEDBACK, "block");
 };
 
 
