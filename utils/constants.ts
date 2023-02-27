@@ -70,5 +70,11 @@ const objectMap = (object, map) => {
 }
 
 export const exportActions = <exportActionsInterface>objectMap(exportActionsI18nKeys, getText);
-export const exportTypes = <exportTypesInterface>objectMap(exportTypesI18nKeys, getText);
+export const exportTypes = {
+  PNG: "PNG",
+  JPG: "JPG",
+  MD: "Markdown",
+  JSON: "JSON",
+}
+
 export const popupPageI18nValue = objectMap(popupPageI18nKey, getText);
