@@ -8,6 +8,7 @@ export const exportTypes = {
   JPG,
   MD,
   JSON: JSON_STR,
+  DB: "DB",
 }
 
 export const exportActions = {
@@ -20,4 +21,8 @@ export const Settings = {
   WELCOME: "welcome-settings",
   FEEDBACK: "feedback-settings",
   EXPORT: "export-settings",
+}
+
+export const Messages = {
+  SAVE_CHAT: "save-chat",
 }

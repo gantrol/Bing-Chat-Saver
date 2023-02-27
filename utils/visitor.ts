@@ -2,7 +2,7 @@ import { Page } from "./bingPage";
 import { domToJpeg, domToPng } from "modern-screenshot";
 import { QasJSON2MarkdownParser } from "~utils/md/parser";
 import { handleExportSetting } from "~utils/viewmodel";
-import { exportTypes } from "~utils/constants";
+import { exportTypes, Messages } from "~utils/constants";
 
 export class DownloadVisitor {
   static async forImage(func, type, way = "newTab") {
@@ -10,10 +10,7 @@ export class DownloadVisitor {
     // 处理链接分行的问题
     Page.setFontWeightForAllRefs();
     const dataURL = await func(main, {
-      backgroundColor: "rgb(217, 230, 249)",
-      // filter: (node: HTMLElement) => {
-      //   return node.tagName?.toLowerCase() !== 'cib-welcome-container';
-      // }
+      backgroundColor: "rgb(217, 230, 249)"
     });
 
     if (way === "newTab") {
@@ -72,6 +69,17 @@ export class DownloadVisitor {
     downloadAnchorNode.click();
     downloadAnchorNode.remove();
   };
+
+  static forDB = async () => {
+    const qAsJSON = Page.getQAsJSON();
+    const response = await chrome.runtime.sendMessage({
+      type: Messages.SAVE_CHAT,
+      body: qAsJSON,
+    });
+    // do something with response here, not outside the function
+    console.log(response);
+  };
+
   /**
    * demo input :
    *    [
@@ -102,6 +110,9 @@ export class DownloadVisitor {
    *    ]
    */
   static forAll = async () => {
+    DownloadVisitor.forDB().catch(error => {
+      console.log(error);
+    })
     const resultJson = await handleExportSetting();
     if (resultJson) {
       for (let item of resultJson) {
@@ -122,11 +133,16 @@ export class DownloadVisitor {
       }
     } else {
       // TODO: alert for setting?
-      await DownloadVisitor.forPNG()
+      await DownloadVisitor.forPNG();
     }
   };
 
   static forPreview = async () => {
-    await DownloadVisitor.forImage(domToPng, "png");
+    DownloadVisitor.forDB().catch(error => {
+      console.log(error);
+    });
+    DownloadVisitor.forImage(domToPng, "png").catch(error => {
+      console.log(error);
+    });
   };
 }

@@ -11,6 +11,7 @@
     "package": "plasmo package"
   },
   "dependencies": {
+    "dexie": "^3.2.3",
     "modern-screenshot": "^4.4.0",
     "plasmo": "0.65.0",
     "svelte": "3.55.1",
@@ -33,11 +34,22 @@
   "manifest": {
     "name": "__MSG_extensionName__",
     "permissions": [
-      "storage",
-      "declarativeNetRequest"
+      "scripting",
+      "declarativeNetRequest",
+      "storage"
     ],
     "host_permissions": [
       "*://*.bing.com/*"
+    ],
+    "web_accessible_resources": [
+      {
+        "matches": [
+          "<all_urls>"
+        ],
+        "resources": [
+          "tabs/chats.html"
+        ]
+      }
     ],
     "declarative_net_request": {
       "rule_resources": [

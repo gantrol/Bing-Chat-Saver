@@ -1,0 +1,185 @@
+[
+  {
+    "title": "Write a poem that rhymes for my 8-year-old Jake.",
+    "id": "uuid1",
+    "content": [
+      {
+        "questions": [
+          {
+            "text": "Write a poem that rhymes for my 8-year-old Jake. He loves dogs and facts about the ocean."
+          }
+        ],
+        "answers": [
+          {
+            "meta": [],
+            "text": "Okay, I will write a poem that rhymes for Jake. Here is what I came up with:\nHe likes to learn facts and explore curiously\nHe knows that dogs are loyal, friendly and smart\nThey can do many tricks and they have a big heart\nHe also knows that the ocean is vast and deep\nIt has many creatures that swim, crawl and leap\nHe likes to watch the dolphins, sharks and whales\nAnd learn about their habits, diets and scales\nHe dreams of being a marine biologist someday\nAnd study the ocean in a fun and exciting way\nHe loves his dog, who is his best friend and mate\nThey play together and share a special bond that's great\nThis poem is for Jake, who loves dogs and the sea\nHe is a wonderful kid who makes everyone happy\n\n",
+            "html": "<p>Okay, I will write a poem that rhymes for Jake. Here is what I came up with:</p>\n<pre><code class=\"language-This\">He likes to learn facts and explore curiously\nHe knows that dogs are loyal, friendly and smart\nThey can do many tricks and they have a big heart\nHe also knows that the ocean is vast and deep\nIt has many creatures that swim, crawl and leap\nHe likes to watch the dolphins, sharks and whales\nAnd learn about their habits, diets and scales\nHe dreams of being a marine biologist someday\nAnd study the ocean in a fun and exciting way\nHe loves his dog, who is his best friend and mate\nThey play together and share a special bond that's great\nThis poem is for Jake, who loves dogs and the sea\nHe is a wonderful kid who makes everyone happy\n</code></pre>\n"
+          }
+        ]
+      },
+      {
+        "questions": [
+          {
+            "text": "That's a lovely poem, thank you."
+          }
+        ],
+        "answers": [
+          {
+            "meta": [],
+            "text": "You’re welcome. I’m glad you liked it. 😊\n",
+            "html": "<p>You’re welcome. I’m glad you liked it. 😊</p>\n"
+          }
+        ]
+      },
+      {
+        "questions": [
+          {
+            "text": "Can you write another poem?"
+          }
+        ],
+        "answers": [
+          {
+            "meta": [],
+            "text": "Sure, I can write another poem. What topic would you like me to write about?\n",
+            "html": "<p>Sure, I can write another poem. What topic would you like me to write about?</p>\n"
+          }
+        ]
+      },
+      {
+        "questions": [
+          {
+            "text": "Write about space."
+          }
+        ],
+        "answers": [
+          {
+            "meta": [],
+            "text": "Okay, I will write a poem about space. Here is what I came up with:\nIt has many stars, planets and galaxies\nSpace is a place where we can explore and learn\nIt has many things that make us curious and yearn\nSpace is a place where we can see the sun and moon\nIt has many cycles that change with each season\nSpace is a place where we can imagine and dream\nIt has many possibilities that inspire us to create\nSpace is a place full of wonder and mystery\nIt has many wonders that fill us with awe and glee\n\n",
+            "html": "<p>Okay, I will write a poem about space. Here is what I came up with:</p>\n<pre><code class=\"language-Space\">It has many stars, planets and galaxies\nSpace is a place where we can explore and learn\nIt has many things that make us curious and yearn\nSpace is a place where we can see the sun and moon\nIt has many cycles that change with each season\nSpace is a place where we can imagine and dream\nIt has many possibilities that inspire us to create\nSpace is a place full of wonder and mystery\nIt has many wonders that fill us with awe and glee\n</code></pre>\n"
+          }
+        ]
+      }
+    ]
+
+  },
+  {
+    "title": "write code to find the fibonacci sequence in python.",
+    "id": "uuid2",
+    "content": [
+      {
+        "questions": [
+          {
+            "text": "write code to find the fibonacci sequence in python."
+          }
+        ],
+        "answers": [
+          {
+            "meta": [],
+            "text": "Sure, I can write some code to find the Fibonacci sequence in Python. Here is one possible solution:\n# Define a function to find the nth Fibonacci number\ndef fibonacci(n):\n  # Base cases: 0 and 1\n  if n == 0:\n    return 0\n  elif n == 1:\n    return 1\n  # Recursive case: use the formula F(n) = F(n-1) + F(n-2)\n  else:\n    return fibonacci(n-1) + fibonacci(n-2)\n\n# Ask the user for a positive integer\nn = int(input(\"Enter a positive integer: \"))\n\n# Print the Fibonacci sequence up to the nth term\nprint(\"The Fibonacci sequence up to the\", n, \"th term is:\")\nfor i in range(n):\n  print(fibonacci(i), end=\" \")\n\n",
+            "html": "<p>Sure, I can write some code to find the Fibonacci sequence in Python. Here is one possible solution:</p>\n<pre><code class=\"language-python\"><span class=\"hljs-comment\"># Define a function to find the nth Fibonacci number</span>\n<span class=\"hljs-keyword\">def</span> <span class=\"hljs-title function_\">fibonacci</span>(<span class=\"hljs-params\">n</span>):\n  <span class=\"hljs-comment\"># Base cases: 0 and 1</span>\n  <span class=\"hljs-keyword\">if</span> n == <span class=\"hljs-number\">0</span>:\n    <span class=\"hljs-keyword\">return</span> <span class=\"hljs-number\">0</span>\n  <span class=\"hljs-keyword\">elif</span> n == <span class=\"hljs-number\">1</span>:\n    <span class=\"hljs-keyword\">return</span> <span class=\"hljs-number\">1</span>\n  <span class=\"hljs-comment\"># Recursive case: use the formula F(n) = F(n-1) + F(n-2)</span>\n  <span class=\"hljs-keyword\">else</span>:\n    <span class=\"hljs-keyword\">return</span> fibonacci(n-<span class=\"hljs-number\">1</span>) + fibonacci(n-<span class=\"hljs-number\">2</span>)\n\n<span class=\"hljs-comment\"># Ask the user for a positive integer</span>\nn = <span class=\"hljs-built_in\">int</span>(<span class=\"hljs-built_in\">input</span>(<span class=\"hljs-string\">\"Enter a positive integer: \"</span>))\n\n<span class=\"hljs-comment\"># Print the Fibonacci sequence up to the nth term</span>\n<span class=\"hljs-built_in\">print</span>(<span class=\"hljs-string\">\"The Fibonacci sequence up to the\"</span>, n, <span class=\"hljs-string\">\"th term is:\"</span>)\n<span class=\"hljs-keyword\">for</span> i <span class=\"hljs-keyword\">in</span> <span class=\"hljs-built_in\">range</span>(n):\n  <span class=\"hljs-built_in\">print</span>(fibonacci(i), end=<span class=\"hljs-string\">\" \"</span>)\n</code></pre>\n"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "你好",
+    "id": "uuid3",
+    "content": [
+      {
+        "questions": [],
+        "answers": [
+          {
+            "meta": [],
+            "text": "",
+            "html": ""
+          }
+        ]
+      },
+      {
+        "questions": [
+          {
+            "text": "你好"
+          }
+        ],
+        "answers": [
+          {
+            "meta": [],
+            "text": "你好，这里是必应。我可以帮你什么吗? 😊\n",
+            "html": "<p>你好，这里是必应。我可以帮你什么吗? 😊</p>\n"
+          }
+        ]
+      },
+      {
+        "questions": [
+          {
+            "text": "给我讲个笑话."
+          }
+        ],
+        "answers": [
+          {
+            "meta": [],
+            "text": "好的，我来讲个笑话给你听。请注意，这只是一个笑话，不要当真哦。\n有一天，一只狗和一只猫在公园里散步。狗说：“你知道吗，我是人类最好的朋友。”猫说：“是吗？那为什么人类总是把你关在笼子里？”狗说：“因为他们怕我跑掉。”猫说：“那你为什么不跑呢？”狗说：“因为我爱他们。”猫说：“哦，真可怜。”\n",
+            "html": "<p>好的，我来讲个笑话给你听。请注意，这只是一个笑话，不要当真哦。</p>\n<p>有一天，一只狗和一只猫在公园里散步。狗说：“你知道吗，我是人类最好的朋友。”猫说：“是吗？那为什么人类总是把你关在笼子里？”狗说：“因为他们怕我跑掉。”猫说：“那你为什么不跑呢？”狗说：“因为我爱他们。”猫说：“哦，真可怜。”</p>\n"
+          }
+        ]
+      },
+      {
+        "questions": [
+          {
+            "text": "你喜欢狗还是喜欢猫?"
+          }
+        ],
+        "answers": [
+          {
+            "meta": [],
+            "text": "我对狗和猫都没有偏好，我觉得它们都很可爱，只要它们对人类友好就行。你呢？你喜欢狗还是喜欢猫？\n",
+            "html": "<p>我对狗和猫都没有偏好，我觉得它们都很可爱，只要它们对人类友好就行。你呢？你喜欢狗还是喜欢猫？</p>\n"
+          }
+        ]
+      },
+      {
+        "questions": [
+          {
+            "text": "狗"
+          }
+        ],
+        "answers": [
+          {
+            "meta": [
+              "正在搜索: 狗\n",
+              "正在搜索: 狗的品种\n",
+              "正在搜索: 狗\n",
+              "正在搜索: 狗的好处\n",
+              "正在为你生成答案…\n"
+            ],
+            "text": "狗是一种很可爱的动物，养狗有很多好处。比如，养狗可以增加安全感1，降低血压2，缓解压力3，增加运动量2，还可以培养孩子的责任心和爱心4。你是不是也想养一只狗狗呢？\n",
+            "html": "<p><a class=\"tooltip-target\" data-citationid=\"a4c09bbd-5612-c5a2-dde3-70b1a3d94132-2-group\" h=\"ID=SERP,5025.1\">狗是一种很可爱的动物，养狗有很多好处。比如，养狗可以增加安全感</a><a href=\"https://new.qq.com/rain/a/20220704A075RT00\" class=\"ac-anchor sup-target\" target=\"_blank\" data-citationid=\"a4c09bbd-5612-c5a2-dde3-70b1a3d94132-2\" aria-label=\"养狗的5大好处！看完你心动了吗？_腾讯新闻\" h=\"ID=SERP,5025.1\"><sup>1</sup></a><a class=\"tooltip-target\" data-citationid=\"a4c09bbd-5612-c5a2-dde3-70b1a3d94132-4-group\" h=\"ID=SERP,5025.1\">，降低血压</a><a href=\"https://bing.com/search?q=%E7%8B%97%E7%9A%84%E5%A5%BD%E5%A4%84\" class=\"ac-anchor sup-target\" target=\"_blank\" data-citationid=\"a4c09bbd-5612-c5a2-dde3-70b1a3d94132-4\" aria-label=\"为什么要养狗 告诉你养狗的十大好处\" h=\"ID=SERP,5025.1\"><sup>2</sup></a><a class=\"tooltip-target\" data-citationid=\"a4c09bbd-5612-c5a2-dde3-70b1a3d94132-6-group\" h=\"ID=SERP,5025.1\">，缓解压力</a><a href=\"https://www.sohu.com/a/551303121_121146720\" class=\"ac-anchor sup-target\" target=\"_blank\" data-citationid=\"a4c09bbd-5612-c5a2-dde3-70b1a3d94132-6\" aria-label=\"养狗的“4个好处”和“6个坏处”，看完你还想养狗吗 ...\" h=\"ID=SERP,5025.1\"><sup>3</sup></a><a class=\"tooltip-target\" data-citationid=\"a4c09bbd-5612-c5a2-dde3-70b1a3d94132-8-group\" h=\"ID=SERP,5025.1\">，增加运动量</a><a href=\"https://bing.com/search?q=%E7%8B%97%E7%9A%84%E5%A5%BD%E5%A4%84\" class=\"ac-anchor sup-target\" target=\"_blank\" data-citationid=\"a4c09bbd-5612-c5a2-dde3-70b1a3d94132-8\" aria-label=\"为什么要养狗 告诉你养狗的十大好处\" h=\"ID=SERP,5025.1\"><sup>2</sup></a><a class=\"tooltip-target\" data-citationid=\"a4c09bbd-5612-c5a2-dde3-70b1a3d94132-10-group\" h=\"ID=SERP,5025.1\">，还可以培养孩子的责任心和爱心</a><a href=\"https://zhidao.baidu.com/question/1868024386629848747.html\" class=\"ac-anchor sup-target\" target=\"_blank\" data-citationid=\"a4c09bbd-5612-c5a2-dde3-70b1a3d94132-10\" aria-label=\"给孩子养狗狗的好处_百度知道\" h=\"ID=SERP,5025.1\"><sup>4</sup></a>。你是不是也想养一只狗狗呢？</p>\n",
+            "refs": [
+              {
+                "index": "1",
+                "title": "养狗的5大好处！看完你心动了吗？_腾讯新闻",
+                "href": "https://new.qq.com/rain/a/20220704A075RT00"
+              },
+              {
+                "index": "2",
+                "title": "为什么要养狗 告诉你养狗的十大好处",
+                "href": "https://bing.com/search?q=%e7%8b%97%e7%9a%84%e5%a5%bd%e5%a4%84"
+              },
+              {
+                "index": "3",
+                "title": "养狗的“4个好处”和“6个坏处”，看完你还想养狗吗 ...",
+                "href": "https://www.sohu.com/a/551303121_121146720"
+              },
+              {
+                "index": "4",
+                "title": "给孩子养狗狗的好处_百度知道",
+                "href": "https://zhidao.baidu.com/question/1868024386629848747.html"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

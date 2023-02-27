@@ -47,6 +47,12 @@
     {:catch err}
     <p>{err}</p>
   {/await}
+  <button on:click={() => {
+        chrome.tabs.create({
+          url: '/tabs/chats.html'
+        })
+      }}>open tab page</button>
+  <a href={chrome.runtime.getURL("/tabs/chats.html")} rel="noreferrer">chats</a>
 </div>
 
 <style>
