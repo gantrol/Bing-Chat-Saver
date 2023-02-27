@@ -6,5 +6,57 @@
   "extensionDescription": {
     "message": "Saving Bing Chat for you, for sharing",
     "description": "Description of the extension."
+  },
+  "popup_chat_record_button": {
+    "message": "Chat Record",
+    "description": "Record button"
+  },
+  "popup_bing_chat_website_button": {
+    "message": "Bing Chat Website",
+    "description": "Bing Website button"
+  },
+  "popup_link_title": {
+    "message": "Links",
+    "description": "Link title"
+  },
+  "popup_export_settings_title": {
+    "message": "Export Settings",
+    "description": "Export title"
+  },
+  "popup_ui_settings_title": {
+    "message": "UI Settings",
+    "description": "UI title"
+  },
+  "popup_hidden_welcome": {
+    "message": "Hide welcome bar",
+    "description": "Hidden Welcome"
+  },
+  "popup_hidden_feedback": {
+    "message": "Hide feedback button",
+    "description": "Hidden Feedback"
+  },
+  "popup_waiting": {
+    "message": "Waiting...",
+    "description": "Waiting"
+  },
+  "popup_export_type_png": {
+    "message": "PNG",
+    "description": "Export PNG button"
+  },
+  "popup_export_type_jpg": {
+    "message": "JPG",
+    "description": "Export JPG button"
+  },
+  "popup_export_type_markdown": {
+    "message": "Markdown",
+    "description": "Export Markdown button"
+  },
+  "popup_export_type_json": {
+    "message": "JSON",
+    "description": "Export JSON button"
+  },
+  "end": {
+    "message": "End",
+    "description": "Just for end"
   }
 }

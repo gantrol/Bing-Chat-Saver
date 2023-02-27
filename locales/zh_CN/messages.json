@@ -6,5 +6,57 @@
   "extensionDescription": {
     "message": "导出你的必应聊天记录",
     "description": "Description of the extension."
+  },
+  "popup_chat_record_button": {
+    "message": "查看聊天记录",
+    "description": "Record button"
+  },
+  "popup_bing_chat_website_button": {
+    "message": "必应聊天界面",
+    "description": "Bing Website button"
+  },
+  "popup_link_title": {
+    "message": "置顶链接",
+    "description": "Link title"
+  },
+  "popup_export_settings_title": {
+    "message": "导出设置",
+    "description": "Export title"
+  },
+  "popup_ui_settings_title": {
+    "message": "界面设置",
+    "description": "UI title"
+  },
+  "popup_hidden_welcome": {
+    "message": "隐藏欢迎界面",
+    "description": "Hidden Welcome"
+  },
+  "popup_hidden_feedback": {
+    "message": "隐藏反馈按钮",
+    "description": "Hidden Feedback"
+  },
+  "popup_waiting": {
+    "message": "请稍等……",
+    "description": "Waiting"
+  },
+  "popup_export_type_png": {
+    "message": "PNG",
+    "description": "Export PNG button"
+  },
+  "popup_export_type_jpg": {
+    "message": "JPG",
+    "description": "Export JPG button"
+  },
+  "popup_export_type_markdown": {
+    "message": "Markdown文本",
+    "description": "Export Markdown button"
+  },
+  "popup_export_type_json": {
+    "message": "JSON",
+    "description": "Export JSON button"
+  },
+  "end": {
+    "message": "End",
+    "description": "结尾的占位符"
   }
 }

@@ -1,9 +1,10 @@
 <script>
-  import { exportTypes } from "~utils/constants";
+  import { exportTypes, LinkType, popupPageI18nKey } from "~utils/constants";
   import { exportSettings, feedbackHiddenSetting, welcomeHiddenSetting } from "~utils/store/stores";
   import Collepse from "~components/Collepse.svelte";
   import SimpleCheckbox from "~components/SimpleCheckbox.svelte";
-
+  import LinkButton from "~components/LinkButton.svelte";
+  import { getText } from "~utils/i18n";
 
   let promises = [
     exportSettings.init(),
@@ -22,32 +23,30 @@
     }
 
 </style>
+<!--collapse all Collepse by changing default_open to false-->
 <div class="main">
   {#await Promise.all(promises)}
-    <p>Waiting...</p>
+    <p>{getText(popupPageI18nKey.WAITING)}</p>
   {:then _}
     <!--TODO: 抽出组件-->
     <Collepse
-      title="Links"
-      default_open="true"
+      title={popupPageI18nKey.LINK_TITLE}
+      default_open={true}
     >
-      <button class="btn btn-primary" on:click={() => {
-        chrome.tabs.create({
-          url: '/tabs/chats.html'
-        })
-      }}>
-        Chat Record
-      </button>
-      <button class="btn btn-secondary" on:click={() => {
-        chrome.tabs.create({
-          url: 'https://www.bing.com/search?q=Bing+AI&showconv=1&FORM=hpcodx'
-        })
-      }}>Bing Chat
-      </button>
+      <LinkButton
+        url="/tabs/chats.html"
+        text={popupPageI18nKey.CHAT_RECORD_LINK}
+        type={LinkType.INNER}
+      />
+      <LinkButton
+        url="https://www.bing.com/search?q=Bing+AI&showconv=1&FORM=hpcodx"
+        text={popupPageI18nKey.BING_CHAT_LINK}
+        type={LinkType.BING}
+      />
     </Collepse>
     <Collepse
-      title="Export Setting"
-      default_open="true"
+      title={popupPageI18nKey.EXPORT_SETTINGS_TITLE}
+      default_open={true}
     >
       {#each $exportSettings as message, i}
         <div class="form-control">
@@ -69,17 +68,17 @@
       {/each}
     </Collepse>
     <Collepse
-      title="UI Settings"
-      default_open="true"
+      title={popupPageI18nKey.UI_SETTINGS_TITLE}
+      default_open={true}
     >
       <div class="form-control">
         <SimpleCheckbox
           isChecked={welcomeHiddenSetting}
-          text="Hide welcome bar"
+          text={popupPageI18nKey.HIDDEN_WELCOME}
         />
         <SimpleCheckbox
           isChecked={feedbackHiddenSetting}
-          text="Hide feedback button"
+          text={popupPageI18nKey.HIDDEN_FEEDBACK}
         />
       </div>
     </Collepse>
