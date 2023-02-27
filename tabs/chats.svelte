@@ -4,7 +4,8 @@
   import { db } from "~utils/store/indexedDB";
 
   // TODO: paging for list of chat
-
+  // TODO: add copy to bubbles...
+  // TODO: change to await?
   let selected_chat;
   let current_messages;
   let chats = liveQuery(async () => {
@@ -26,57 +27,77 @@
     });
   }
 </script>
+
 <style>
-    .main {
-        min-width: 300px;
-        display: flex;
-        flex-direction: row;
-    }
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
 
-    .chat-title {
-        padding: 10px;
-    }
-
-    .list {
-        min-width: 200px;
-    }
-
-    .question {
-        background: deepskyblue;
-    }
-
-    .answer {
-        background: blanchedalmond;
-    }
 </style>
-
-
-<div class="main">
-  <div class="list">
-    {#each ($chats || []) as chat (chat.id)}
-      <div class="chat-title" on:click={() => {
+<div class="drawer drawer-mobile text-lg">
+  <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
+  <div class="drawer-content flex flex-col">
+    <!-- Navbar -->
+    <div class="w-full navbar bg-base-300">
+      <div class="flex-none">
+        <label for="my-drawer-3" class="btn btn-square btn-ghost drawer-button lg:hidden">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+               class="inline-block w-6 h-6 stroke-current">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </label>
+      </div>
+      {#if selected_chat}
+        <article class="prose lg:prose-xl">
+          <!--          TODO: in one line-->
+          <h3 class="flex-1 md:prose-lg lg:prose-xl">{selected_chat.title}</h3>
+        </article>
+      {/if}
+      <div class="flex-none hidden lg:block">
+        <ul class="menu menu-horizontal">
+          <!--          TODO: ...-->
+          <!-- Navbar menu content here -->
+          <!--          <li><a>Navbar Item 1</a></li>-->
+          <!--          <li><a>Navbar Item 2</a></li>-->
+        </ul>
+      </div>
+    </div>
+    {#if selected_chat}
+      <div class="detail">
+        {#if current_messages}
+          {#each ($current_messages || []) as message}
+            {#if message.is_bing}
+              <div class="chat chat-start">
+                <div class="chat-bubble chat-bubble-info">
+                  <!--                  TODO: add refs, metas...-->
+                  {message.body}
+                </div>
+              </div>
+            {:else}
+              <div class="chat chat-end">
+                <div class="chat-bubble bg-base-200 text-base-content">
+                  {message.body}
+                </div>
+              </div>
+            {/if}
+          {/each}
+        {/if}
+      </div>
+    {/if}
+  </div>
+  <div class="drawer-side">
+    <label for="my-drawer-3" class="drawer-overlay"></label>
+    <ul class="menu bg-base-100 w-56 p-2">
+      <!-- Sidebar content here -->
+      <!--      TODO: 搜索、删除、超过后怎么办？-->
+      {#each ($chats || []) as chat (chat.id)}
+        <li class="chat-title" on:click={() => {
         selected_chat = chat;
       }}>
-        {chat.title}
-      </div>
-    {/each}
+          <a class={selected_chat.id === chat.id? 'active': ''}>{chat.title}</a>
+        </li>
+      {/each}
+    </ul>
+
   </div>
-  {#if selected_chat}
-    <div class="detail">
-      <h3>{selected_chat.title}</h3>
-      {#if current_messages}
-        {#each ($current_messages || []) as message}
-          {#if message.is_bing}
-            <div class="answer">
-              {message.body}
-            </div>
-          {:else}
-            <div class="question">
-              {message.body}
-            </div>
-          {/if}
-        {/each}
-      {/if}
-    </div>
-  {/if}
 </div>

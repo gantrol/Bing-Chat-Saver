@@ -35,6 +35,13 @@
 - [ ] JS doc
 - [ ] git action for pushing to chrome store...
 - [ ] 改ip（默认不勾选）、Fake Edge（默认勾选）浏览器的选项，加一个设置
+- [ ] can be installed as -D ?
+```markdown
+
+
+    "svelte": "3.55.1",
+    "svelte-preprocess": "5.0.1",
+```
 
 ## 废案
 
