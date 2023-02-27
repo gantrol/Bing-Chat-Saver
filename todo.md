@@ -4,13 +4,11 @@
 
 ## main
 
-- [ ] reload chat with JSON
 - [ ] extension main page for HTML
 - [ ] JSON Viewer (render to HTML)
 
 ## design & modified
 
-- [ ] Preview改为在右下方生成小窗口
 - [ ] icon 改为箭头？
 
 ## others
@@ -32,7 +30,10 @@
 - [ ] 尝试往导出加一个微软图标
 - [ ] add to zip when download multiply
 - [ ] JS doc
+- [ ] 改ip（默认不勾选）、Fake Edge（默认勾选）浏览器的选项，加一个设置
 
 ## 废案
 
-- [x] ~~实验录屏 (成果上传不了哔哩哔哩，鸡肋；还不如Windows + Alt + R)~~
+- [ ] ~~实验录屏 (成果上传不了哔哩哔哩，鸡肋；还不如Windows + Alt + R)~~
+- [ ] ~~reload chat with JSON~~ (必应聊天问题数量不能超过6个了，鸡肋)
+- [ ] ~~Preview改为在右下方生成小窗口~~
