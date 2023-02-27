@@ -5,30 +5,50 @@
 
 ## 功能
 
-通过添加相关按钮，这个插件添加可以将聊天记录导出，目前支持的格式为：
+这个插件添加可以将聊天记录导出，同时保存相关数据到本地存储，方便稍后查阅，目前支持的格式为：
 
 - PNG
 - JPG
 - JSON
 - Markdown
 
-> 注意：为了避免欢迎页占用过多篇幅，这个插件直接移除了欢迎页面，后续将考虑作为选项。
+它能让你在Chrome上使用必应聊天。
+
+同时，可以隐藏欢迎界面或反馈按钮。
 
 ## 下载
 
 - [Chrome Store](https://chrome.google.com/webstore/detail/bing-chat-saver/ficbllnhlgldegblbimkeldcdhfjppkg?hl=en)获取稳定版本（更新有延迟，一般是两天）
 - 去[releases页面](https://github.com/gantrol/Bing-Chat-Saver/releases/), 下载 `.zip`并到 `edge://extensions/`加载插件。正如下文结果示意图必应所说，你可就着浏览器翻译功能，参考[这篇文章](https://www.howtogeek.com/510543/how-to-install-and-use-extensions-in-the-new-microsoft-edge/)
-- Edge商城的下载正待审核
+- Edge商城的下载正待审核……
 
 ## 用法
 
-安装插件后，在与必应聊天的界面（非搜索侧边栏），右下角原先只有反馈按钮，会增加相应导出按钮。如PNG即为导出为PNG。
+### 新按钮
+
+安装插件后，在与必应聊天的界面（非搜索侧边栏），右下角原先只有反馈按钮，会增加相应导出按钮。如预览会打开一个新的PNG网页，导出会按格式设置导出（具体可单击插件图标，查看popup设置）。
 
 ![buttons](assets/demo_cn_buttons.png)
 
 现阶段结果示例（可导出长图）：
 
 ![image](assets/demo_cn.png)
+
+### 选项
+
+popup有更多选项，如导出为Markdown、隐藏欢迎界面等：
+
+![popup](assets/demo_popup_cn.png)
+
+### 历史
+
+点击 Popup 的 `查看聊天记录`按钮后:
+
+![chats](assets/demo_cn_chats.png)
+
+### Demo results
+
+![demo](assets/demo_cn.png)
 
 ## 接下来的主要待办
 

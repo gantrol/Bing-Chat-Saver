@@ -4,12 +4,8 @@
 
 ## main
 
+- [ ] auto save the history session?
 - [ ] reload chat with JSON？
-
-## design & modified
-
-- [ ] Preview改为在右下方生成小窗口
-- [ ] icon 改为箭头？
 
 ## others
 
@@ -21,8 +17,8 @@
 
 ### main
 
-- [ ] i18n for chinese
-- [ ] 引入单元测试，以及copilot
+- [ ] 导出图片时可设置图片宽度，计划有两个选项，一个是“如所见”，as seeing，另一个是“手机宽度”，取iPhone 13的宽度，为375px（copilot提示的，要验证）
+- [ ] 引入单元测试
 - [ ] git action for pushing to chrome store...
 - [ ] chat page render more detail
 
@@ -45,4 +41,6 @@
 
 ## 废案
 
-- [x] ~~实验录屏 (成果上传不了哔哩哔哩，鸡肋；还不如Windows + Alt + R)~~
+- [ ] ~~实验录屏 (成果上传不了哔哩哔哩，鸡肋；还不如Windows + Alt + R)~~
+- [ ] ~~Preview改为在右下方生成小窗口~~
+- [ ] ~~icon 改为箭头？~~

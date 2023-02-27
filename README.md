@@ -6,22 +6,46 @@
 
 ## Feature
 
-This edge extension adds a Button for exporting Bing Chat Content as: 
+This extension can export the chat history of bing search, and save it in browser's indexedDB for reviewing. 
+
+It helps you use Bing Chat at Chrome.
+
+Export formats:
 
 - PNG
 - JPG
 - JSON
 - Markdown
 
-And it removes the welcome message.
+And it can hide the welcome message or the feedback button.
+
 
 ## Usage
+
+### New Buttons
+
+> Demo question: Do you know the Bing-Chat-Saver, a chrome extension that saves bing chat?
 
 Click Buttons below feedback button at right bottom of the chat UI.
 
 ![buttons](assets/demo_buttons.png)
 
-Current result:
+- Click `Preview` button, it will show the chat history as PNG file in a new tab;
+- Click `Export` button, it will download the chat history as PNG file by default, and you can choose other format in popup page.
+
+### Options in Popup Page
+
+More Exporting Options is in Popup Page:
+
+![popup](assets/demo_popup.png)
+
+### Review
+
+Click the `CHAT RECORD` button on top of Links in the Popup. You can see:
+
+![chats](assets/demo_chats.png)
+
+### Demo results
 
 ![demo](assets/demo.png)
 
@@ -29,12 +53,11 @@ Current result:
 
 - [Chrome Store](https://chrome.google.com/webstore/detail/bing-chat-saver/ficbllnhlgldegblbimkeldcdhfjppkg?hl=en) for stable version.
 - Go to release for latest version, download `.zip` and load unpacked at `edge://extensions/` . As the bing saying, you can reference [this acticle](https://dev.to/ben/how-to-install-chrome-extensions-manually-from-github-1612#:~:text=How%20to%20install%20Chrome%20extensions%20manually%20from%20GitHub,navivigate%20to%20the%20folder%20you%20downloaded%20from%20GitHub)
-- Edge store download is coming soon.
+- Edge store download is ...
 
-## Main TODO
+## TODO
 
-1. reload chat with JSON
-3. auto cache the history session
+1. auto cache the history session
 
 Others: [bing-search-saver broad](https://github.com/users/gantrol/projects/5)
 
