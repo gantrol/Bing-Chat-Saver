@@ -24,6 +24,7 @@
 - [ ] i18n for chinese
 - [ ] 引入单元测试，以及copilot
 - [ ] git action for pushing to chrome store...
+- [ ] chat page render more detail
 
 ### modified
 

@@ -33,7 +33,7 @@
 ## 接下来的主要待办
 
 1. 通过导入 JSON，“重新加载”对话
-3. 自动缓存历史对话列表
+2. 自动缓存历史对话列表
 
 其他详见[项目看板](https://github.com/users/gantrol/projects/5)
 

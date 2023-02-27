@@ -39,7 +39,6 @@
   "manifest": {
     "name": "__MSG_extensionName__",
     "permissions": [
-      "scripting",
       "declarativeNetRequest",
       "storage"
     ],
