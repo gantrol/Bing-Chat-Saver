@@ -11,7 +11,7 @@ chrome.runtime.onMessage.addListener(
     if (request.type === Messages.SAVE_CHAT) {
       // TODO: 完善日志体系……
       await saveChatToDB(request.body);
-      sendResponse({success: true});
+      sendResponse({ success: true });
     }
   }
 );
@@ -22,19 +22,20 @@ const saveChatToDB = async (qAsJSON) => {
   const title = handleTitle(firstQuestionText, chat_id);
   const currentUsers = db.users.where("login").equals(1);
   const currentUser = await currentUsers.first();
-  const user_id = currentUser.id
+  const user_id = currentUser.id;
   const chat: Chat = {
     id: chat_id,
     title: title,
     user_id: user_id,
     created_time: new Date(),
-    updated_time: new Date(),
-  }
+    updated_time: new Date()
+  };
   db.chats.put(chat);
 
   const messages = [];
+
   function isIterable(obj) {
-    return obj != null && typeof obj[Symbol.iterator] === 'function';
+    return obj != null && typeof obj[Symbol.iterator] === "function";
   }
 
   for (let chat_turn of qAsJSON) {
@@ -47,25 +48,27 @@ const saveChatToDB = async (qAsJSON) => {
           is_bing: false,
           chat_id,
           user_id,
-          created_time: new Date(),
-        }
+          order: messages.length,
+          created_time: new Date()
+        };
         messages.push(result_question);
       }
     }
     if (isIterable(chat_turn.answers)) {
       for (let answer of chat_turn.answers) {
-        const result_question: Message = {
+        const result_answer: Message = {
           id: getUUID(),
           body: answer.text,
           html: answer.html,
           meta: answer.meta,
           refs: answer.refs,
-          is_bing: false,
+          is_bing: true,
           chat_id,
           user_id,
-          created_time: new Date(),
-        }
-        messages.push(result_question);
+          order: messages.length,
+          created_time: new Date()
+        };
+        messages.push(result_answer);
       }
     }
   }
@@ -73,27 +76,27 @@ const saveChatToDB = async (qAsJSON) => {
   db.messages.bulkAdd(messages).catch(error => {
     console.log(error);
   });
-}
+};
 
 
 const getFirstQuestionText = (input) => {
   for (let chat_turn of input) {
     if (chat_turn.questions) {
-      return chat_turn.questions[0]?.text
+      return chat_turn.questions[0]?.text;
     } else {
 
     }
   }
   return null;
-}
+};
 const handleTitle = (firstQuestion, id) => {
   if (firstQuestion) {
-    if (firstQuestion.length > 10) {
-      return firstQuestion.substring(0, 10);
-    } else {
-      return firstQuestion;
-    }
+    // if (firstQuestion.length > 10) {
+    //   return firstQuestion.substring(0, 10);
+    // } else {
+    return firstQuestion;
+    // }
   } else {
     return id;
   }
-}
+};

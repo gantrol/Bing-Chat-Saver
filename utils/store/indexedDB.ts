@@ -27,15 +27,16 @@ export interface Ref {
 }
 
 export interface Message {
-  id: string;
-  body: string;
-  html?: string;
-  meta?: [string];
-  refs?: [Ref];
-  is_bing: boolean;
-  chat_id: string;
-  user_id: string;
-  created_time: Date;
+  id: string,
+  body: string,
+  html?: string,
+  meta?: [string],
+  refs?: [Ref],
+  is_bing: boolean,
+  chat_id: string,
+  user_id: string,
+  order: number,
+  created_time: Date,
 }
 
 export class ChatDB extends Dexie {
@@ -77,9 +78,10 @@ db.on("populate", (tx: Transaction) => {
       user_id: firstUser,
       created_time: new Date(),
       is_bing: true,
+      order: 0,
       body: "Hello!"
     },
-    { id: getUUID(), chat_id: chatID, user_id: firstUser, created_time: new Date(), is_bing: false, body: "Hi" }
+    { id: getUUID(), chat_id: chatID, user_id: firstUser, created_time: new Date(), is_bing: false, order: 1, body: "Hi" }
   ]);
 });
 

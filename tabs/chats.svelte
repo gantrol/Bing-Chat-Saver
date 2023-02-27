@@ -3,6 +3,8 @@
   import { liveQuery } from "dexie";
   import { db } from "~utils/store/indexedDB";
 
+  // TODO: paging for list of chat
+
   let selected_chat;
   let current_messages;
   let chats = liveQuery(async () => {
@@ -10,7 +12,7 @@
     const currentUser = await currentUsers.first();
     const user_id = currentUser.id;
     const chatsObserver = db.chats.where("user_id").equals(user_id);
-    const result = chatsObserver.toArray();
+    const result = chatsObserver.reverse().sortBy("created_time");
     result.then((r) => {
       selected_chat = r && r.length > 0 ? r[0] : selected_chat;
     }).catch((error) => {
@@ -20,7 +22,7 @@
   });
   $: if (selected_chat) {
     current_messages = liveQuery(async () => {
-      return db.messages.where("chat_id").equals(selected_chat.id).toArray();
+      return db.messages.where("chat_id").equals(selected_chat.id).sortBy("order");
     });
   }
 </script>
@@ -65,11 +67,11 @@
       {#if current_messages}
         {#each ($current_messages || []) as message}
           {#if message.is_bing}
-            <div class="question">
+            <div class="answer">
               {message.body}
             </div>
           {:else}
-            <div class="answer">
+            <div class="question">
               {message.body}
             </div>
           {/if}
