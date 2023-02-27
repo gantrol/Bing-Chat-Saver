@@ -52,11 +52,11 @@
     "description": "Waiting"
   },
   "popup_export_type_png": {
-    "message": "PNG",
+    "message": "PNG图片",
     "description": "Export PNG button"
   },
   "popup_export_type_jpg": {
-    "message": "JPG",
+    "message": "JPG图片",
     "description": "Export JPG button"
   },
   "popup_export_type_markdown": {
