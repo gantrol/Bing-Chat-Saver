@@ -17,7 +17,8 @@
 
 ### main
 
-- [ ] 导出图片时可设置图片宽度，计划有两个选项，一个是“如所见”，as seeing，另一个是“手机宽度”，取iPhone 13的宽度，为375px（copilot提示的，要验证）
+- [ ] 导出图片时可设置图片宽度，计划有两个选项，一个是“如所见”，as seeing，另一个是“手机宽”，取iPhone 13的宽度，为375px（copilot提示的，要验证）
+- [ ] 新增pdf格式
 - [ ] 引入单元测试
 - [ ] git action for pushing to chrome store...
 - [ ] chat page render more detail
