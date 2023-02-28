@@ -1,7 +1,7 @@
 <script>
   import { exportTypes, LinkType, popupPageI18nValue } from "~utils/constants";
   import { exportSettings, feedbackHiddenSetting, welcomeHiddenSetting } from "~utils/store/stores";
-  import Collepse from "~components/Collepse.svelte";
+  import Collapse from "~components/Collapse.svelte";
   import SimpleCheckbox from "~components/SimpleCheckbox.svelte";
   import LinkButton from "~components/LinkButton.svelte";
 
@@ -28,7 +28,7 @@
     <p>{popupPageI18nValue.WAITING}</p>
   {:then _}
     <!--TODO: 抽出组件-->
-    <Collepse
+    <Collapse
       title={popupPageI18nValue.LINK_TITLE}
       default_open={true}
     >
@@ -47,8 +47,8 @@
         text={popupPageI18nValue.BING_NEW_LINK}
         type={LinkType.BING}
       />
-    </Collepse>
-    <Collepse
+    </Collapse>
+    <Collapse
       title={popupPageI18nValue.EXPORT_SETTINGS_TITLE}
       default_open={true}
     >
@@ -70,8 +70,8 @@
           </div>
         </div>
       {/each}
-    </Collepse>
-    <Collepse
+    </Collapse>
+    <Collapse
       title={popupPageI18nValue.UI_SETTINGS_TITLE}
       default_open={true}
     >
@@ -85,7 +85,7 @@
           text={popupPageI18nValue.HIDDEN_FEEDBACK}
         />
       </div>
-    </Collepse>
+    </Collapse>
   {:catch err}
     <p>{err}</p>
   {/await}
