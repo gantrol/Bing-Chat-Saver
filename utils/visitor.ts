@@ -2,16 +2,31 @@ import { Page } from "./bingPage";
 import { domToJpeg, domToPng } from "modern-screenshot";
 import { QasJSON2MarkdownParser } from "~utils/md/parser";
 import { handleExportSetting } from "~utils/viewmodel";
-import { exportTypes, Messages } from "~utils/constants";
+import { exportTypes, exportWidthTemplateKeys, Messages } from "~utils/constants";
+import type { Options } from "modern-screenshot/options";
+
+const DEFAULT_WITDH = 0;
 
 export class DownloadVisitor {
-  static async forImage(func, type, way = "newTab") {
+  static async forImage(func, type, way = "newTab", width = DEFAULT_WITDH) {
+
+    const options: Options =
+      {
+        backgroundColor: "rgb(217, 230, 249)"
+      };
+
+    const callback = await DownloadVisitor.window_handler(width);
+
+    // TODO: try to remove sleep...
+    //  for now, it promise the windows is resized
+    await (new Promise((resolve) => {
+      setTimeout(resolve, 10);
+    }));
+
     const main = Page.getMain();
     // 处理链接分行的问题
     Page.setFontWeightForAllRefs();
-    const dataURL = await func(main, {
-      backgroundColor: "rgb(217, 230, 249)"
-    });
+    const dataURL = await func(main, options);
 
     if (way === "newTab") {
       requestAnimationFrame(() => {
@@ -34,14 +49,16 @@ export class DownloadVisitor {
       link.click();
       link.remove();
     }
+
+    await callback();
   }
 
-  static forPNG = async () => {
-    await DownloadVisitor.forImage(domToPng, "png", "download");
+  static forPNG = async (width = DEFAULT_WITDH) => {
+    await DownloadVisitor.forImage(domToPng, "png", "download", width);
   };
 
-  static forJPG = async () => {
-    await DownloadVisitor.forImage(domToJpeg, "jpeg", "download");
+  static forJPG = async (width = DEFAULT_WITDH) => {
+    await DownloadVisitor.forImage(domToJpeg, "jpeg", "download", width);
   };
 
   static forMD = () => {
@@ -74,7 +91,7 @@ export class DownloadVisitor {
     const qAsJSON = Page.getQAsJSON();
     const response = await chrome.runtime.sendMessage({
       type: Messages.SAVE_CHAT,
-      body: qAsJSON,
+      body: qAsJSON
     });
     // do something with response here, not outside the function
     console.log(response);
@@ -117,11 +134,16 @@ export class DownloadVisitor {
     if (resultJson) {
       for (let item of resultJson) {
         if (item.on) {
+          let width = DEFAULT_WITDH;
+          // TODO: width = item.width;
+          if (item.size_template === exportWidthTemplateKeys.MOBILE) {
+            width = 375;
+          }
           const type = item.type;
           if (type === exportTypes.PNG) {
-            await DownloadVisitor.forPNG();
+            await DownloadVisitor.forPNG(width);
           } else if (type === exportTypes.JPG) {
-            await DownloadVisitor.forJPG();
+            await DownloadVisitor.forJPG(width);
           } else if (type === exportTypes.MD) {
             await DownloadVisitor.forMD();
           } else if (type === exportTypes.JSON) {
@@ -145,4 +167,45 @@ export class DownloadVisitor {
       console.log(error);
     });
   };
+
+  static window_handler = async (width) => {
+    // TODO: set font size?
+    if (width > 50) {
+      let prev_window
+      const size = await chrome.runtime.sendMessage({
+        type: Messages.GET_WINDOW_SIZE
+      });
+
+      prev_window = {...size};
+      size.width = width;
+      size.state = 'normal';
+      console.log(`Set to normal STATE: ${size.state}`)
+
+      const response = await chrome.runtime.sendMessage({
+        type: Messages.RESIZE_WINDOW,
+        body: size
+      });
+      console.log(response)
+      console.log(prev_window)
+      // while check current window state
+      let current_size;
+      do {
+        current_size = await chrome.runtime.sendMessage({
+          type: Messages.GET_WINDOW_SIZE
+        });
+        console.log(`Current STATE: ${current_size.state}`)
+      } while (current_size.state !== size.state)
+      const callback = async () => {
+        await chrome.runtime.sendMessage({
+          type: Messages.RESIZE_WINDOW_2,
+          body: prev_window
+        }).catch((error) => {
+          console.error(error);
+        })
+      }
+      return callback
+    } else {
+      return () => {};
+    }
+  }
 }
