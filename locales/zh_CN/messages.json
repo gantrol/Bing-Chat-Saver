@@ -27,6 +27,10 @@
     "message": "必应官方示例",
     "description": "Bing New Website button"
   },
+  "popup_bing_demo_website_button": {
+    "message": "必应官方示例1",
+    "description": "Bing Demo Website button"
+  },
   "popup_link_title": {
     "message": "置顶链接",
     "description": "Link title"
@@ -66,6 +70,26 @@
   "popup_export_type_json": {
     "message": "JSON",
     "description": "Export JSON button"
+  },
+  "popup_export_type_as_seen": {
+    "message": "如所见",
+    "description": "Export as seen button"
+  },
+  "popup_export_type_mobile": {
+    "message": "手机宽",
+    "description": "Export mobile button"
+  },
+  "popup_request_setting": {
+    "message": "请求设置",
+    "description": "Request setting"
+  },
+  "popup_request_browser": {
+    "message": "在谷歌浏览器用新必应",
+    "description": "Request browser"
+  },
+  "popup_request_ip": {
+    "message": "避免跳转到cn.bing.com",
+    "description": "Request IP"
   },
   "end": {
     "message": "End",

@@ -18,7 +18,6 @@ const init = async () => {
 
 
 const addButtonGroups = (actionsArea, WaitingButton) => {
-  // TODO: i18n
   addButton(actionsArea, WaitingButton, exportActions.ALL);
   addButton(actionsArea, WaitingButton, exportActions.PREVIEW);
 };

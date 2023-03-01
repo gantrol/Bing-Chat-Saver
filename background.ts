@@ -1,7 +1,37 @@
 import { getUUID } from "~utils/uuid";
 import { Chat, db, Message } from "~utils/store/indexedDB";
-import { Messages } from "~utils/constants";
+import { Messages, Settings } from "~utils/constants";
+import { ip_rule, ua_rule } from '~utils/rules';
+import { chromeSyncGet } from "~utils/store/chrome";
 
+
+chrome.declarativeNetRequest.updateDynamicRules({
+  // remove exist rules
+  // TODO: 1 is the rule in rules.json...check if it's necessary
+  removeRuleIds: [1, ip_rule.id, ua_rule.id]
+}).then(r => {
+  console.log(r);
+  chromeSyncGet(Settings.REQUEST_IP).then(r => {
+    console.log(r);
+    if (r) {
+      chrome.declarativeNetRequest.updateDynamicRules({
+        addRules: [ip_rule]
+      }).then(r => {
+        console.log(r);
+      });
+    }
+  });
+  chromeSyncGet(Settings.REQUEST_UA).then(r => {
+    console.log(r);
+    if (r) {
+      chrome.declarativeNetRequest.updateDynamicRules({
+        addRules: [ua_rule]
+      }).then(r => {
+        console.log(r);
+      });
+    }
+  });
+});
 
 chrome.runtime.onMessage.addListener(
   async (request, sender, sendResponse) => {
@@ -12,6 +42,39 @@ chrome.runtime.onMessage.addListener(
       // TODO: 完善日志体系……
       await saveChatToDB(request.body);
       sendResponse({ success: true });
+    } else if (request.type === Messages.RESIZE_WINDOW) {
+      console.log(request.body);
+      const r1 = await chrome.windows.update(request.body.id, {
+        width: request.body.width,
+        height: request.body.height,
+        state: request.body.state,
+      }).catch(error => {
+          console.log(error);
+        }
+      );
+      await sendResponse(r1);
+    } else if (request.type === Messages.RESIZE_WINDOW_2) {
+      // Have no idea why RESIZE_WINDOW is not working when resizing from small to large
+      await chrome.windows.update(request.body.id, {
+        width: request.body.width,
+        height: request.body.height,
+      }).catch(error => {
+          console.log(error);
+        }
+      );
+      const r2 = await chrome.windows.update(request.body.id, {
+        state: request.body.state,
+      }).catch(error => {
+          console.log(error);
+        }
+      )
+      await sendResponse(r2);
+
+    } else if (request.type === Messages.GET_WINDOW_SIZE) {
+      chrome.windows.getCurrent((currentWindow) => {
+        console.log(currentWindow);
+        sendResponse(currentWindow);
+      });
     }
   }
 );
