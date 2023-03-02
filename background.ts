@@ -74,48 +74,64 @@ chromeSyncGet(Settings.REQUEST_UA).then(r => {
 
 
 chrome.runtime.onMessage.addListener(
-  async (request, sender, sendResponse) => {
+  (request, sender, sendResponse) => {
     console.log(sender.tab ?
       "from a content script:" + sender.tab.url :
       "from the extension");
-    if (request.type === Messages.SAVE_CHAT) {
-      // TODO: 完善日志体系……
+    const saveChat = async () => {
       await saveChatToDB(request.body);
       sendResponse({ success: true });
-    } else if (request.type === Messages.RESIZE_WINDOW) {
+    }
+    const handleGetWindowSize = async (request, sendResponse) => {
+      console.log(`GET_WINDOW_SIZE: ${request.body}`);
+      const currentWindow = await chrome.windows.getCurrent();
+      console.log(`GET_WINDOW_SIZE:currentWindow`);
+      console.log(currentWindow);
+      sendResponse(currentWindow);
+    }
+
+    async function resizeWindow() {
       console.log(request.body);
       const r1 = await chrome.windows.update(request.body.id, {
         width: request.body.width,
         height: request.body.height,
-        state: request.body.state,
+        state: request.body.state
       }).catch(error => {
           console.log(error);
         }
       );
       await sendResponse(r1);
-    } else if (request.type === Messages.RESIZE_WINDOW_2) {
-      // Have no idea why RESIZE_WINDOW is not working when resizing from small to large
+    }
+
+    async function resizeWindow2() {
       await chrome.windows.update(request.body.id, {
         width: request.body.width,
-        height: request.body.height,
+        height: request.body.height
       }).catch(error => {
           console.log(error);
         }
       );
       const r2 = await chrome.windows.update(request.body.id, {
-        state: request.body.state,
+        state: request.body.state
       }).catch(error => {
           console.log(error);
         }
-      )
+      );
       await sendResponse(r2);
-
-    } else if (request.type === Messages.GET_WINDOW_SIZE) {
-      chrome.windows.getCurrent((currentWindow) => {
-        console.log(currentWindow);
-        sendResponse(currentWindow);
-      });
     }
+
+    if (request.type === Messages.SAVE_CHAT) {
+      // TODO: 完善日志体系……
+      saveChat();
+    } else if (request.type === Messages.RESIZE_WINDOW) {
+      resizeWindow();
+    } else if (request.type === Messages.RESIZE_WINDOW_2) {
+      // Have no idea why RESIZE_WINDOW is not working when resizing from small to large
+      resizeWindow2();
+    } else if (request.type === Messages.GET_WINDOW_SIZE) {
+      handleGetWindowSize(request, sendResponse);
+    }
+    return true;
   }
 );
 

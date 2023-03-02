@@ -19,10 +19,12 @@ export class DownloadVisitor {
 
     // TODO: try to remove sleep...
     //  for now, it promise the windows is resized
+    console.log("sleep 20ms");
     await (new Promise((resolve) => {
-      setTimeout(resolve, 10);
+      setTimeout(resolve, 20);
     }));
 
+    console.log("start to download");
     const main = Page.getMain();
     // 处理链接分行的问题
     Page.setFontWeightForAllRefs();
@@ -175,37 +177,43 @@ export class DownloadVisitor {
       const size = await chrome.runtime.sendMessage({
         type: Messages.GET_WINDOW_SIZE
       });
+      console.log(`GET window, Current STATE: ${size.state}`);
+      console.log(size);
+      if (size) {
+        prev_window = {...size};
+        // Uncaught (in promise) TypeError: Cannot set properties of undefined (setting 'width')
+        size.width = width;
+        size.state = 'normal';
+        console.log(`Set to normal STATE: ${size.state}`)
 
-      prev_window = {...size};
-      size.width = width;
-      size.state = 'normal';
-      console.log(`Set to normal STATE: ${size.state}`)
-
-      const response = await chrome.runtime.sendMessage({
-        type: Messages.RESIZE_WINDOW,
-        body: size
-      });
-      console.log(response)
-      console.log(prev_window)
-      // while check current window state
-      let current_size;
-      do {
-        current_size = await chrome.runtime.sendMessage({
-          type: Messages.GET_WINDOW_SIZE
+        const response = await chrome.runtime.sendMessage({
+          type: Messages.RESIZE_WINDOW,
+          body: size
         });
-        console.log(`Current STATE: ${current_size.state}`)
-      } while (current_size.state !== size.state)
-      const callback = async () => {
-        await chrome.runtime.sendMessage({
-          type: Messages.RESIZE_WINDOW_2,
-          body: prev_window
-        }).catch((error) => {
-          console.error(error);
-        })
+        console.log(response)
+        console.log(prev_window)
+        // while check current window state
+        let current_size;
+        do {
+          current_size = await chrome.runtime.sendMessage({
+            type: Messages.GET_WINDOW_SIZE
+          });
+          console.log(`Current STATE: ${current_size.state}`)
+        } while (current_size.state !== size.state)
+        const callback = async () => {
+          await chrome.runtime.sendMessage({
+            type: Messages.RESIZE_WINDOW_2,
+            body: prev_window
+          }).catch((error) => {
+            console.error(error);
+          })
+        }
+        return callback
+      } else {
+        throw Error('Cannot get window size')
       }
-      return callback
-    } else {
-      return () => {};
     }
+    return () => {};
+
   }
 }
