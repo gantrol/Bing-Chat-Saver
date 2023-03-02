@@ -1,7 +1,7 @@
 {
   "name": "bing-chat-saver",
   "displayName": "Bing Chat saver",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Saving Bing Chat for you, for sharing",
   "author": "gantrol",
   "scripts": {
@@ -45,15 +45,6 @@
     "host_permissions": [
       "*://*.bing.com/*"
     ],
-    "declarative_net_request": {
-      "rule_resources": [
-        {
-          "id": "test_rules",
-          "enabled": true,
-          "path": "~rules.json"
-        }
-      ]
-    },
     "default_locale": "en"
   }
 }
