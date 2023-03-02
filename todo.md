@@ -41,7 +41,8 @@
 - [ ] 改ip（默认不勾选）、Fake Edge（默认勾选）浏览器的选项，加一个设置
 - [ ] 尝试往导出加一个微软图标
 - [ ] add to zip when download multiply
-
+- [ ] welcome page cancel hidden the "对话样式"
+- [ ] popup 字号搞小一点
 
 ## 废案
 

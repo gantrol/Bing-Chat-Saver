@@ -17,5 +17,6 @@ export const welcomeHiddenSetting =  chromeSyncStorage(Settings.WELCOME, true);
 export const feedbackHiddenSetting =  chromeSyncStorage(Settings.FEEDBACK, false);
 
 export const requestIpSetting =  chromeSyncStorage(Settings.REQUEST_IP, false);
+export const requestSetting =  chromeSyncStorage(Settings.REQUEST, { ip: false, ua: true });
 
 export const requestUserAgentSetting =  chromeSyncStorage(Settings.REQUEST_UA, true);

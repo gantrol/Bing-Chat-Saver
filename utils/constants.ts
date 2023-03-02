@@ -37,6 +37,7 @@ const exportActionsI18nKeys: exportActionsInterface = {
 export const Settings = {
   WELCOME: "welcome-settings",
   FEEDBACK: "feedback-settings",
+  REQUEST: "request-settings",
   REQUEST_UA: "request-ua-settings",
   REQUEST_IP: "request-ip-settings",
   EXPORT: "export-settings"

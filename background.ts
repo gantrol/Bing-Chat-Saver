@@ -4,34 +4,74 @@ import { Messages, Settings } from "~utils/constants";
 import { ip_rule, ua_rule } from '~utils/rules';
 import { chromeSyncGet } from "~utils/store/chrome";
 
+// TODO: debug mode
+// chrome.storage.onChanged.addListener(console.log.bind(console))
 
-chrome.declarativeNetRequest.updateDynamicRules({
-  // remove exist rules
-  // TODO: 1 is the rule in rules.json...check if it's necessary
-  removeRuleIds: [1, ip_rule.id, ua_rule.id]
-}).then(r => {
-  console.log(r);
-  chromeSyncGet(Settings.REQUEST_IP).then(r => {
-    console.log(r);
-    if (r) {
-      chrome.declarativeNetRequest.updateDynamicRules({
-        addRules: [ip_rule]
-      }).then(r => {
-        console.log(r);
-      });
+// TODO: refactor this
+chrome.storage.onChanged.addListener(
+  (changes, areaName) => {
+if (areaName === "sync") {
+      if (changes[Settings.REQUEST_IP]) {
+        const rules = [];
+        if (changes[Settings.REQUEST_IP].newValue) {
+          rules.push(ip_rule);
+        } else {
+        }
+        chrome.declarativeNetRequest.updateDynamicRules({
+          removeRuleIds: [1, ip_rule.id],
+          addRules: rules
+        }).then(r => {
+          console.log(`REQUEST_IP 2: ${r}`);
+        });
+      }
+      if (changes[Settings.REQUEST_UA]) {
+        const rules = [];
+        if (changes[Settings.REQUEST_UA].newValue) {
+          rules.push(ua_rule);
+        } else {
+        }
+        chrome.declarativeNetRequest.updateDynamicRules({
+          removeRuleIds: [1, ua_rule.id],
+          addRules: rules
+        }).then(r => {
+          console.log(`REQUEST_IP 2: ${r}`);
+        });
+      }
     }
-  });
-  chromeSyncGet(Settings.REQUEST_UA).then(r => {
-    console.log(r);
-    if (r) {
-      chrome.declarativeNetRequest.updateDynamicRules({
-        addRules: [ua_rule]
-      }).then(r => {
-        console.log(r);
-      });
-    }
+  }
+)
+
+chromeSyncGet(Settings.REQUEST_IP).then(r => {
+  const rules = [];
+  console.log(`REQUEST_IP: ${r}`);
+  if (r) {
+    rules.push(ip_rule);
+  } else {
+  }
+  chrome.declarativeNetRequest.updateDynamicRules({
+    removeRuleIds: [1, ip_rule.id],
+    addRules: rules
+  }).then(r => {
+    console.log(`REQUEST_IP 2: ${r}`);
   });
 });
+chromeSyncGet(Settings.REQUEST_UA).then(r => {
+  console.log(r);
+  const rules = [];
+  console.log(`REQUEST_IP: ${r}`);
+  if (r) {
+    rules.push(ua_rule);
+  } else {
+  }
+  chrome.declarativeNetRequest.updateDynamicRules({
+    removeRuleIds: [1, ua_rule.id],
+    addRules: rules
+  }).then(r => {
+    console.log(r);
+  });
+});
+
+
 
 chrome.runtime.onMessage.addListener(
   async (request, sender, sendResponse) => {
