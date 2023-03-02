@@ -2,6 +2,26 @@
 
 带 ？ 的是不一定做的
 
+## Doing
+
+### main
+
+- [ ] export: add button "add" and "minus" for export more or less content
+- [ ] export: pdf
+- [ ] remove records of chat
+
+### modified
+
+- [ ] record & content: copy text, copy code
+- [ ] refract: components the chat
+- [ ] add `github repo` to link?
+- [ ] 尝试往导出加一个微软图标
+- [ ] add to zip when download multiply
+- [ ] welcome page cancel hidden the "对话样式"
+- [ ] popup 字号搞小一点
+
+## TODO
+
 ## main
 
 - [ ] auto save the history session?
@@ -24,25 +44,6 @@
     "svelte": "3.55.1",
     "svelte-preprocess": "5.0.1",
 ```
-
-## current
-
-### main
-
-- [ ] export: add button "add" and "minus" for export more or less content
-- [ ] 导出：新增pdf格式
-- [ ] remove chat
-
-### modified
-
-- [ ] record: copy text, copy code
-- [ ] refract: componentize the popup and chat
-- [ ] add `github repo` to link?
-- [ ] 改ip（默认不勾选）、Fake Edge（默认勾选）浏览器的选项，加一个设置
-- [ ] 尝试往导出加一个微软图标
-- [ ] add to zip when download multiply
-- [ ] welcome page cancel hidden the "对话样式"
-- [ ] popup 字号搞小一点
 
 ## 废案
 
