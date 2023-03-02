@@ -5,7 +5,7 @@
 </script>
 
 <select
-  class="select"
+  class="select select-sm"
   bind:value="{bind_value}">
   {#each Object.keys(keys) as key}
     <option value={keys[key]}>

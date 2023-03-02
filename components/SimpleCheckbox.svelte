@@ -7,7 +7,7 @@
 
 <div class="input-group">
   <label class="label cursor-pointer">
-    <input type="checkbox" bind:checked={$isChecked} class="checkbox checkbox-primary" />
+    <input type="checkbox" bind:checked={$isChecked} class="checkbox checkbox-primary checkbox-xs" />
   </label>
   <span class="label-text bg-base-100">{text}</span>
 </div>

@@ -33,6 +33,7 @@
 ## others
 
 - [ ] logger
+- [ ] popup: page resize
 - [ ] make some function appear only in dev mode
 - [ ] how to add unittest for shadow-roots?
 - [ ] 改英文文档

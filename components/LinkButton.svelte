@@ -15,7 +15,7 @@
   };
 </script>
 
-<button class="btn {handleClassByType(type)}" on:click={() => {
+<button class="btn btn-sm {handleClassByType(type)}" on:click={() => {
         chrome.tabs.create({
           url: url
         })

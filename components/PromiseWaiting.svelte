@@ -1,13 +1,15 @@
 <script>
-  import { popupPageI18nValue } from "~utils/constants";
-
   export let promises;
+  export let hidden = false;
 </script>
 
-{#await Promise.all(promises)}
-  <p>{popupPageI18nValue.WAITING}</p>
-{:then _}
-  <slot></slot>
-{:catch err}
-  <p>{err}</p>
-{/await}
+<div class:hidden={hidden}>
+  {#await Promise.all(promises)}
+    <progress class="progress w-56"></progress>
+  {:then _}
+    <slot></slot>
+  {:catch err}
+    <p>{err}</p>
+  {/await}
+</div>
+

@@ -1,9 +1,9 @@
 <script>
-  import Collapse from "~components/Collapse.svelte";
   import { popupPageI18nValue } from "~utils/constants";
   import SimpleCheckbox from "~components/SimpleCheckbox.svelte";
   import { feedbackHiddenSetting, welcomeHiddenSetting } from "~utils/store/stores";
   import PromiseWaiting from "~components/PromiseWaiting.svelte";
+  export let hidden = false;
 
   let promises = [
     welcomeHiddenSetting.init(),
@@ -11,11 +11,7 @@
   ];
 </script>
 
-<PromiseWaiting {promises}>
-<Collapse
-  title={popupPageI18nValue.UI_SETTINGS_TITLE}
-  default_open={true}
->
+<PromiseWaiting {promises} {hidden}>
   <div class="form-control">
     <SimpleCheckbox
       isChecked={welcomeHiddenSetting}
@@ -26,5 +22,4 @@
       text={popupPageI18nValue.HIDDEN_FEEDBACK}
     />
   </div>
-</Collapse>
 </PromiseWaiting>

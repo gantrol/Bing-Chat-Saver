@@ -20,11 +20,11 @@
     "description": "Record button"
   },
   "popup_bing_chat_website_button": {
-    "message": "Bing Chat Website",
+    "message": "Bing Chat",
     "description": "Bing Website button"
   },
   "popup_bing_new_website_button": {
-    "message": "Bing Chat Demo",
+    "message": "Chat Demo",
     "description": "Bing New Website button"
   },
   "popup_bing_demo_website_button": {
@@ -36,11 +36,11 @@
     "description": "Link title"
   },
   "popup_export_settings_title": {
-    "message": "Export Settings",
+    "message": "Export",
     "description": "Export title"
   },
   "popup_ui_settings_title": {
-    "message": "UI Settings",
+    "message": "UI",
     "description": "UI title"
   },
   "popup_hidden_welcome": {
@@ -72,7 +72,7 @@
     "description": "Export JSON button"
   },
   "popup_request_setting": {
-    "message": "Request Settings",
+    "message": "Request",
     "description": "Request Setting"
   },
   "popup_export_type_as_seen": {
@@ -90,6 +90,10 @@
   "popup_request_ip": {
     "message": "Not jump to cn.bing.com",
     "description": "Request IP"
+  },
+  "popup_settings": {
+    "message": "Settings",
+    "description": "Settings"
   },
   "end": {
     "message": "End",

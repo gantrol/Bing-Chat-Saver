@@ -6,9 +6,9 @@
 
 
 <div tabindex="0"
-     class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
+     class="collapse collapse-arrow border bg-base-100">
   <input type="checkbox" bind:checked={default_open} />
-  <div class="collapse-title text-xl font-medium">
+  <div class="collapse-title text-lg font-medium">
     {title}
   </div>
   <div class="collapse-content">

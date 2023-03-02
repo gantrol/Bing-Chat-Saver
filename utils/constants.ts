@@ -75,6 +75,7 @@ const popupPageI18nKey = {
   HIDDEN_FEEDBACK: "popup_hidden_feedback",
   REQUEST_BROWSER: "popup_request_browser",
   REQUEST_IP: "popup_request_ip",
+  SETTINGS: "popup_settings",
   WAITING: "popup_waiting"
 };
 

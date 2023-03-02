@@ -36,11 +36,11 @@
     "description": "Link title"
   },
   "popup_export_settings_title": {
-    "message": "导出设置",
+    "message": "导出",
     "description": "Export title"
   },
   "popup_ui_settings_title": {
-    "message": "界面设置",
+    "message": "界面",
     "description": "UI title"
   },
   "popup_hidden_welcome": {
@@ -80,7 +80,7 @@
     "description": "Export mobile button"
   },
   "popup_request_setting": {
-    "message": "请求设置",
+    "message": "请求",
     "description": "Request setting"
   },
   "popup_request_browser": {
@@ -90,6 +90,10 @@
   "popup_request_ip": {
     "message": "避免跳转到cn.bing.com",
     "description": "Request IP"
+  },
+  "popup_settings": {
+    "message": "设置",
+    "description": "Settings"
   },
   "end": {
     "message": "End",
