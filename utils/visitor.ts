@@ -216,4 +216,8 @@ export class DownloadVisitor {
     return () => {};
 
   }
+
+  static forDbAuto = () => {
+
+  }
 }

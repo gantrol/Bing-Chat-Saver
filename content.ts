@@ -1,12 +1,12 @@
 import { Page } from "~utils/bingPage";
-import { DownloadVisitor } from "~utils/visitor";
+
 
 import { exportActions, Settings } from "~utils/constants";
-import { handleElementVisibility } from "~utils/viewmodel";
+import { getDownloadFunction, handleElementVisibility, waitForChatAppear } from "~utils/viewmodel";
 
 
 const init = async () => {
-  await Page.waitForElm("#b_sydConvCont > cib-serp");
+  await waitForChatAppear();
   await handleElementVisibility(<HTMLElement>Page.getWelcome(), Settings.WELCOME);
   const feedbackGroup = Page.getFeedbackBar();
   const feedbackButton = feedbackGroup.querySelector("#fbpgbt");
@@ -14,6 +14,17 @@ const init = async () => {
   addButtonGroups(feedbackGroup, feedbackButton);
 
   await handleElementVisibility(<HTMLElement>feedbackButton, Settings.FEEDBACK, "block");
+
+  // TODO: auto save to db?
+  // get session keys
+  let session_keys;
+  while (await waitForChatAppear()) {
+    console.log("Chat appear");
+    // save to db
+
+    // sleep 5 s
+  }
+
 };
 
 
@@ -28,13 +39,7 @@ const addButton = (actionsArea, WaitingButton, action) => {
   downloadButton.innerText = action;
 
   const getOnClickByAction = (action) => {
-    if (action === exportActions.ALL) {
-      return DownloadVisitor.forAll;
-    } else if (action === exportActions.PREVIEW) {
-      return DownloadVisitor.forPreview;
-    } else {
-      throw new Error(`There is not action type of ${action}`);
-    }
+    return getDownloadFunction(action)
   };
   downloadButton.onclick = getOnClickByAction(action);
   actionsArea.appendChild(downloadButton);

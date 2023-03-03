@@ -136,6 +136,7 @@ chrome.runtime.onMessage.addListener(
 );
 
 const saveChatToDB = async (qAsJSON) => {
+  // TODO: add chat type
   const firstQuestionText = getFirstQuestionText(qAsJSON);
   const chat_id = getUUID();
   const title = handleTitle(firstQuestionText, chat_id);
