@@ -6,8 +6,9 @@
 
 ### main
 
-- [ ] export: add button "add" and "minus" for export more or less content
+- [ ] auto save the history session
 - [ ] export: pdf
+- [ ] export: add button "add" and "minus" for export more or less content
 - [ ] remove records of chat
 
 ### modified
@@ -18,13 +19,11 @@
 - [ ] 尝试往导出加一个微软图标
 - [ ] add to zip when download multiply
 - [ ] welcome page cancel hidden the "对话样式"
-- [ ] popup 字号搞小一点
 
 ## TODO
 
 ## main
 
-- [ ] auto save the history session?
 - [ ] reload chat with JSON？
 - [ ] 引入单元测试
 - [ ] git action for pushing to chrome store...
