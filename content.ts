@@ -3,6 +3,8 @@ import { Page } from "~utils/bingPage";
 
 import { exportActions, Settings } from "~utils/constants";
 import { getDownloadFunction, handleElementVisibility, waitForChatAppear } from "~utils/viewmodel";
+import { getUUID } from "~utils/uuid";
+import { DownloadVisitor } from "~utils/visitor";
 
 
 const init = async () => {
@@ -15,16 +17,38 @@ const init = async () => {
 
   await handleElementVisibility(<HTMLElement>feedbackButton, Settings.FEEDBACK, "block");
 
-  // TODO: auto save to db?
-  // get session keys
-  let session_keys;
-  while (await waitForChatAppear()) {
-    console.log("Chat appear");
-    // save to db
 
-    // sleep 5 s
+
+  const reset = () => {
+    session_keys = getUUID();
+  }
+  const saveToDB = async (reset_flag = true) => {
+    if (reset_flag) {
+      reset();
+      await DownloadVisitor.forDB(session_keys);
+    } else {
+      // TODO: update if there are needs in future,
+      //   but it is not necessary now
+    }
+  }
+  const addOnclick = (elem: HTMLElement) => {
+    elem.addEventListener("click", () => saveToDB())
   }
 
+  // - TODO: auto save, how to handle return bing search and
+  //    - re-search
+  let session_keys;
+
+  reset();
+  // it seems feedback will reload the page,
+  //   so it is not necessary to add event listener for this button,
+  //   or it will be saved twice
+  // addOnclick(Page.getFeedbackBar());
+  addOnclick(Page.getCleanButton());
+
+  window.addEventListener("beforeunload", () => {
+    saveToDB();
+  });
 };
 
 

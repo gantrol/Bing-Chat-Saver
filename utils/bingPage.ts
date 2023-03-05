@@ -65,7 +65,7 @@ export class Page {
   };
 
   static getFeedbackBar = () => {
-    return Page.getWhole()
+    return <HTMLElement> Page.getWhole()
       .querySelector("cib-serp-feedback")
       .shadowRoot
       .querySelector("div.root");
@@ -96,6 +96,11 @@ export class Page {
     const qas = new QAList(Page.getQAsElement());
     return qas.qaList;
   };
+
+  static getCleanButton = () => {
+    return <HTMLElement> Page.getWhole().querySelector("#cib-action-bar-main")
+      .shadowRoot.querySelector(".button-compose");
+  }
 }
 
 export class QAList {
@@ -154,8 +159,13 @@ export class QAList {
         }
         // Note: refs is optional
         answer.refs = Page.handleRefs(ansFrame, false, true);
-
-        QA.answers.push(answer);
+        if (answer.text !== "") {
+          console.log(answer);
+          QA.answers.push(answer);
+        } else {
+          console.log("answer is empty");
+          console.log(answer);
+        }
       } else {
         // Question, source is user
         const html = group.shadowRoot.querySelector("cib-message")

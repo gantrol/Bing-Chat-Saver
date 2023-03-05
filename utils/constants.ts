@@ -9,6 +9,7 @@ interface exportSettingsInterface {
   JPG,
   MD,
   JSON,
+  PDF,
 }
 
 interface exportActionsInterface {
@@ -21,6 +22,7 @@ const exportSettingsI18nKeys: exportSettingsInterface = {
   AS_SEEN: "popup_export_type_as_seen",
   MOBILE: "popup_export_type_mobile",
   PNG: "popup_export_type_png",
+  PDF: "popup_export_type_pdf",
   JPG: "popup_export_type_jpg",
   MD: "popup_export_type_markdown",
   JSON: "popup_export_type_json"
@@ -89,6 +91,7 @@ const objectMap = (object, map) => {
 export const exportActions = <exportActionsInterface>objectMap(exportActionsI18nKeys, getText);
 export const exportTypes = {
   PNG: "PNG",
+  PDF: "PDF",
   JPG: "JPG",
   MD: "Markdown",
   JSON: "JSON"

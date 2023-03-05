@@ -59,6 +59,10 @@
     "message": "PNG",
     "description": "Export PNG button"
   },
+  "popup_export_type_pdf": {
+    "message": "PDF",
+    "description": "Export PDF button"
+  },
   "popup_export_type_jpg": {
     "message": "JPG",
     "description": "Export JPG button"

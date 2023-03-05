@@ -89,14 +89,18 @@ export class DownloadVisitor {
     downloadAnchorNode.remove();
   };
 
-  static forDB = async () => {
+  static forDB = async (id) => {
     const qAsJSON = Page.getQAsJSON();
     const response = await chrome.runtime.sendMessage({
       type: Messages.SAVE_CHAT,
-      body: qAsJSON
+      body: {qAsJSON, id}
     });
     // do something with response here, not outside the function
     console.log(response);
+  };
+
+  static forPDF = async () => {
+
   };
 
   /**
@@ -129,9 +133,6 @@ export class DownloadVisitor {
    *    ]
    */
   static forAll = async () => {
-    DownloadVisitor.forDB().catch(error => {
-      console.log(error);
-    });
     const resultJson = await handleExportSetting();
     if (resultJson) {
       for (let item of resultJson) {
@@ -150,6 +151,8 @@ export class DownloadVisitor {
             await DownloadVisitor.forMD();
           } else if (type === exportTypes.JSON) {
             await DownloadVisitor.forJSON();
+          } else if (type === exportTypes.PDF) {
+            await DownloadVisitor.forPDF();
           } else {
             throw Error(`Not type of ${type}`);
           }
@@ -162,9 +165,6 @@ export class DownloadVisitor {
   };
 
   static forPreview = async () => {
-    DownloadVisitor.forDB().catch(error => {
-      console.log(error);
-    });
     DownloadVisitor.forImage(domToPng, "png").catch(error => {
       console.log(error);
     });
@@ -173,51 +173,52 @@ export class DownloadVisitor {
   static window_handler = async (width) => {
     // TODO: set font size?
     if (width > 50) {
-      let prev_window
+      let prev_window;
       const size = await chrome.runtime.sendMessage({
         type: Messages.GET_WINDOW_SIZE
       });
       console.log(`GET window, Current STATE: ${size.state}`);
       console.log(size);
       if (size) {
-        prev_window = {...size};
+        prev_window = { ...size };
         // Uncaught (in promise) TypeError: Cannot set properties of undefined (setting 'width')
         size.width = width;
-        size.state = 'normal';
-        console.log(`Set to normal STATE: ${size.state}`)
+        size.state = "normal";
+        console.log(`Set to normal STATE: ${size.state}`);
 
         const response = await chrome.runtime.sendMessage({
           type: Messages.RESIZE_WINDOW,
           body: size
         });
-        console.log(response)
-        console.log(prev_window)
+        console.log(response);
+        console.log(prev_window);
         // while check current window state
         let current_size;
         do {
           current_size = await chrome.runtime.sendMessage({
             type: Messages.GET_WINDOW_SIZE
           });
-          console.log(`Current STATE: ${current_size.state}`)
-        } while (current_size.state !== size.state)
+          console.log(`Current STATE: ${current_size.state}`);
+        } while (current_size.state !== size.state);
         const callback = async () => {
           await chrome.runtime.sendMessage({
             type: Messages.RESIZE_WINDOW_2,
             body: prev_window
           }).catch((error) => {
             console.error(error);
-          })
-        }
-        return callback
+          });
+        };
+        return callback;
       } else {
-        throw Error('Cannot get window size')
+        throw Error("Cannot get window size");
       }
     }
-    return () => {};
+    return () => {
+    };
 
   }
 
   static forDbAuto = () => {
 
-  }
+  };
 }

@@ -16,7 +16,6 @@ export interface Chat {
   id: string;
   title: string;
   user_id: string;
-  type: string;
   created_time: Date;
   updated_time: Date;
 }
@@ -38,11 +37,6 @@ export interface Message {
   user_id: string,
   order: number,
   created_time: Date,
-}
-
-enum ExportType {
-  EXPORT = "EXPORT",
-  AUTO = "AUTO",
 }
 
 export class ChatDB extends Dexie {
@@ -75,8 +69,8 @@ db.on("populate", (tx: Transaction) => {
     { id: firstUser, name: "Me", login: 1, created_time: new Date(), updated_time: new Date() }
   ]);
   tx.table("chats").bulkAdd([
-    { id: chatID, title: "Demo Chat auto saved", user_id: firstUser, type: ExportType.AUTO, created_time: new Date(), updated_time: new Date() },
-    { id: chatID, title: "Demo Chat saved with Export", user_id: firstUser, type: ExportType.EXPORT, created_time: new Date(), updated_time: new Date() }
+    { id: chatID, title: "Demo Chat auto saved", user_id: firstUser, created_time: new Date(), updated_time: new Date() },
+    { id: chatID, title: "Demo Chat saved with Export", user_id: firstUser, created_time: new Date(), updated_time: new Date() }
   ]);
   tx.table("messages").bulkAdd([
     {
