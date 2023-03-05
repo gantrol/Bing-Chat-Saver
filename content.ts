@@ -1,12 +1,14 @@
 import { Page } from "~utils/bingPage";
-import { DownloadVisitor } from "~utils/visitor";
+
 
 import { exportActions, Settings } from "~utils/constants";
-import { handleElementVisibility } from "~utils/viewmodel";
+import { getDownloadFunction, handleElementVisibility, waitForChatAppear } from "~utils/viewmodel";
+import { getUUID } from "~utils/uuid";
+import { DownloadVisitor } from "~utils/visitor";
 
 
 const init = async () => {
-  await Page.waitForElm("#b_sydConvCont > cib-serp");
+  await waitForChatAppear();
   await handleElementVisibility(<HTMLElement>Page.getWelcome(), Settings.WELCOME);
   const feedbackGroup = Page.getFeedbackBar();
   const feedbackButton = feedbackGroup.querySelector("#fbpgbt");
@@ -14,6 +16,39 @@ const init = async () => {
   addButtonGroups(feedbackGroup, feedbackButton);
 
   await handleElementVisibility(<HTMLElement>feedbackButton, Settings.FEEDBACK, "block");
+
+
+
+  const reset = () => {
+    session_keys = getUUID();
+  }
+  const saveToDB = async (reset_flag = true) => {
+    if (reset_flag) {
+      reset();
+      await DownloadVisitor.forDB(session_keys);
+    } else {
+      // TODO: update if there are needs in future,
+      //   but it is not necessary now
+    }
+  }
+  const addOnclick = (elem: HTMLElement) => {
+    elem.addEventListener("click", () => saveToDB())
+  }
+
+  // - TODO: auto save, how to handle return bing search and
+  //    - re-search
+  let session_keys;
+
+  reset();
+  // it seems feedback will reload the page,
+  //   so it is not necessary to add event listener for this button,
+  //   or it will be saved twice
+  // addOnclick(Page.getFeedbackBar());
+  addOnclick(Page.getCleanButton());
+
+  window.addEventListener("beforeunload", () => {
+    saveToDB();
+  });
 };
 
 
@@ -28,13 +63,7 @@ const addButton = (actionsArea, WaitingButton, action) => {
   downloadButton.innerText = action;
 
   const getOnClickByAction = (action) => {
-    if (action === exportActions.ALL) {
-      return DownloadVisitor.forAll;
-    } else if (action === exportActions.PREVIEW) {
-      return DownloadVisitor.forPreview;
-    } else {
-      throw new Error(`There is not action type of ${action}`);
-    }
+    return getDownloadFunction(action)
   };
   downloadButton.onclick = getOnClickByAction(action);
   actionsArea.appendChild(downloadButton);

@@ -135,10 +135,15 @@ chrome.runtime.onMessage.addListener(
   }
 );
 
-const saveChatToDB = async (qAsJSON) => {
+const saveChatToDB = async ({qAsJSON, id}) => {
   const firstQuestionText = getFirstQuestionText(qAsJSON);
-  const chat_id = getUUID();
-  const title = handleTitle(firstQuestionText, chat_id);
+  const chat_id = id;
+  // const title = handleTitle(firstQuestionText, chat_id);
+  if (firstQuestionText === undefined || firstQuestionText === null) {
+    // don't store record that only have bing hello message
+    return ;
+  }
+  const title = firstQuestionText;
   const currentUsers = db.users.where("login").equals(1);
   const currentUser = await currentUsers.first();
   const user_id = currentUser.id;
@@ -201,21 +206,14 @@ const saveChatToDB = async (qAsJSON) => {
 const getFirstQuestionText = (input) => {
   for (let chat_turn of input) {
     if (chat_turn.questions) {
-      return chat_turn.questions[0]?.text;
+      for (let question of chat_turn.questions) {
+        if (question.text) {
+          return question.text;
+        }
+      }
     } else {
 
     }
   }
   return null;
-};
-const handleTitle = (firstQuestion, id) => {
-  if (firstQuestion) {
-    // if (firstQuestion.length > 10) {
-    //   return firstQuestion.substring(0, 10);
-    // } else {
-    return firstQuestion;
-    // }
-  } else {
-    return id;
-  }
 };
