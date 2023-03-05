@@ -92,7 +92,7 @@ const objectMap = (object, map) => {
 export const exportActions = <exportActionsInterface>objectMap(exportActionsI18nKeys, getText);
 export const exportTypes = {
   PNG: "PNG",
-  PDF: "PDF",
+  // PDF: "PDF",
   JPG: "JPG",
   MD: "Markdown",
   JSON: "JSON"

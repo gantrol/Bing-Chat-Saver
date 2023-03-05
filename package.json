@@ -1,7 +1,7 @@
 {
   "name": "bing-chat-saver",
   "displayName": "Bing Chat saver",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Saving Bing Chat for you, for sharing",
   "author": "gantrol",
   "scripts": {

@@ -151,8 +151,8 @@ export class DownloadVisitor {
             await DownloadVisitor.forMD();
           } else if (type === exportTypes.JSON) {
             await DownloadVisitor.forJSON();
-          } else if (type === exportTypes.PDF) {
-            await DownloadVisitor.forPDF();
+          // } else if (type === exportTypes.PDF) {
+          //   await DownloadVisitor.forPDF();
           } else {
             throw Error(`Not type of ${type}`);
           }
