@@ -49,9 +49,9 @@ export class ChatDB extends Dexie {
   constructor() {
     super("chatMessage");
     console.log("init");
-    this.version(1).stores({
+    this.version(1.1).stores({
       messages: "id, chat_id, user_id, created_time",
-      chats: "id, title, user_id, created_time, updated_time",
+      chats: "id, title, user_id, type, created_time, updated_time",
       users: "login"
     });
   }
@@ -69,7 +69,8 @@ db.on("populate", (tx: Transaction) => {
     { id: firstUser, name: "Me", login: 1, created_time: new Date(), updated_time: new Date() }
   ]);
   tx.table("chats").bulkAdd([
-    { id: chatID, title: "Demo Chat", user_id: firstUser, created_time: new Date(), updated_time: new Date() }
+    { id: chatID, title: "Demo Chat auto saved", user_id: firstUser, created_time: new Date(), updated_time: new Date() },
+    { id: chatID, title: "Demo Chat saved with Export", user_id: firstUser, created_time: new Date(), updated_time: new Date() }
   ]);
   tx.table("messages").bulkAdd([
     {

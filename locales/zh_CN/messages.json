@@ -59,6 +59,10 @@
     "message": "PNG图片",
     "description": "Export PNG button"
   },
+  "popup_export_type_pdf": {
+    "message": "PDF",
+    "description": "Export PDF button"
+  },
   "popup_export_type_jpg": {
     "message": "JPG图片",
     "description": "Export JPG button"
