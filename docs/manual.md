@@ -215,6 +215,6 @@ https://daisyui.com/
 
 tailwindcss
 
-TODO: pdf
+https://tailwindcss.com/docs/typography-plugin
 
-Pdf.js?
+TODO: pdf
