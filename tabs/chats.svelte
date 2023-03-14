@@ -95,7 +95,9 @@
         <li class="chat-title" on:click={() => {
         selected_chat = chat;
       }}>
-          <a class="{selected_chat.id === chat.id? 'active line-clamp-none': 'line-clamp-2'}">{chat.title}</a>
+          <a class="pt-2 {selected_chat.id === chat.id? 'active line-clamp-none': 'line-clamp-1 leading-[3rem]'}">
+            {chat.title}
+          </a>
         </li>
       {/each}
     </ul>
