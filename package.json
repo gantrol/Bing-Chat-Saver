@@ -8,9 +8,11 @@
     "dev": "plasmo dev",
     "test": "jest",
     "build": "plasmo build",
+    "build:firefox": "plasmo build --target=firefox-mv2 --zip",
     "package": "plasmo package"
   },
   "dependencies": {
+    "@plasmohq/storage": "^1.2.3",
     "dexie": "^3.2.3",
     "modern-screenshot": "^4.4.0",
     "plasmo": "0.65.0",
@@ -20,9 +22,9 @@
   },
   "devDependencies": {
     "@jest/globals": "29.4.1",
-    "@tailwindcss/typography": "^0.5.9",
     "@jest/types": "29.4.1",
     "@plasmohq/prettier-plugin-sort-imports": "3.6.1",
+    "@tailwindcss/typography": "^0.5.9",
     "@types/chrome": "0.0.210",
     "@types/node": "18.11.18",
     "autoprefixer": "^10.4.13",

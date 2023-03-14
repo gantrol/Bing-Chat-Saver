@@ -139,7 +139,7 @@ export class DownloadVisitor {
         if (item.on) {
           let width = DEFAULT_WITDH;
           // TODO: width = item.width;
-          if (item.size_template === exportWidthTemplateKeys.MOBILE) {
+          if (item?.size_template === exportWidthTemplateKeys.MOBILE) {
             width = 375;
           }
           const type = item.type;
@@ -217,8 +217,4 @@ export class DownloadVisitor {
     };
 
   }
-
-  static forDbAuto = () => {
-
-  };
 }

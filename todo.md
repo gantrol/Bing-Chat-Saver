@@ -10,6 +10,8 @@
 - [ ] export: pdf
 - [ ] export: add button "add" and "minus" for export more or less content
 - [ ] remove records of chat
+- [ ] firefox, 
+  - pnpm install @plasmohq/storage
 
 ### modified
 
@@ -24,10 +26,13 @@
 
 ## main
 
+- [ ] 怎么做到差异化？比如按浏览器，比如按语言
 - [ ] reload chat with JSON？
 - [ ] 引入单元测试
 - [ ] git action for pushing to chrome store...
 - [ ] chat page render more detail
+
+还是弄个正经logger吧。。
 
 ## others
 

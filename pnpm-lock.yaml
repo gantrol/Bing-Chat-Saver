@@ -4,6 +4,7 @@ specifiers:
   '@jest/globals': 29.4.1
   '@jest/types': 29.4.1
   '@plasmohq/prettier-plugin-sort-imports': 3.6.1
+  '@plasmohq/storage': ^1.2.3
   '@tailwindcss/typography': ^0.5.9
   '@types/chrome': 0.0.210
   '@types/node': 18.11.18
@@ -25,6 +26,7 @@ specifiers:
   typescript: 4.9.4
 
 dependencies:
+  '@plasmohq/storage': 1.2.3
   dexie: 3.2.3
   modern-screenshot: 4.4.0
   plasmo: 0.65.0_postcss@8.4.21
@@ -2296,6 +2298,15 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@plasmohq/storage/1.2.3:
+    resolution: {integrity: sha512-/fFoQBfQKJakqab+SWWkDxNERi6wsBYnjKNGSJluRQqzcPXT5ImaA0QsvnikARwb2VYnQof1JnEaZhh46q1CDw==}
+    peerDependencies:
+      react: ^16.8.6 || ^17 || ^18
+    peerDependenciesMeta:
+      react:
+        optional: true
+    dev: false
 
   /@pnpm/network.ca-file/1.0.2:
     resolution: {integrity: sha512-YcPQ8a0jwYU9bTdJDpXjMi7Brhkr1mXsXrUJvjqM2mQDgkRiz8jFaQGOdaLxgjtUfQgZhKy/O3cG/YwmgKaxLA==}

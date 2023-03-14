@@ -70,7 +70,6 @@ db.on("populate", (tx: Transaction) => {
   ]);
   tx.table("chats").bulkAdd([
     { id: chatID, title: "Demo Chat auto saved", user_id: firstUser, created_time: new Date(), updated_time: new Date() },
-    { id: chatID, title: "Demo Chat saved with Export", user_id: firstUser, created_time: new Date(), updated_time: new Date() }
   ]);
   tx.table("messages").bulkAdd([
     {
