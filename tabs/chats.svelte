@@ -49,18 +49,17 @@
       </div>
       {#if selected_chat}
         <article class="prose lg:prose-xl">
-          <!--          TODO: in one line-->
           <h3 class="flex-1 md:prose-lg lg:prose-xl">{selected_chat.title}</h3>
         </article>
       {/if}
-      <div class="flex-none hidden lg:block">
-        <ul class="menu menu-horizontal">
-          <!--          TODO: ...-->
-          <!-- Navbar menu content here -->
-          <!--          <li><a>Navbar Item 1</a></li>-->
-          <!--          <li><a>Navbar Item 2</a></li>-->
-        </ul>
-      </div>
+<!--      <div class="flex-none hidden lg:block">-->
+<!--        <ul class="menu menu-horizontal">-->
+<!--          &lt;!&ndash;          TODO: ...&ndash;&gt;-->
+<!--          &lt;!&ndash; Navbar menu content here &ndash;&gt;-->
+<!--          &lt;!&ndash;          <li><a>Navbar Item 1</a></li>&ndash;&gt;-->
+<!--          &lt;!&ndash;          <li><a>Navbar Item 2</a></li>&ndash;&gt;-->
+<!--        </ul>-->
+<!--      </div>-->
     </div>
     {#if selected_chat}
       <div class="detail">
@@ -68,14 +67,16 @@
           {#each ($current_messages || []) as message}
             {#if message.is_bing}
               <div class="chat chat-start">
-                <div class="chat-bubble chat-bubble-info">
-                  <!--                  TODO: add refs, metas...-->
-                  {message.body}
+                <div class="chat-bubble bg-info-content/10 chat-bubble-primary">
+                  <!--                  TODO: add metas...-->
+                  <!--                  TODO: add refs, links...-->
+<!--                  TODO: overflow auto-->
+                  {@html message.html}
                 </div>
               </div>
             {:else}
               <div class="chat chat-end">
-                <div class="chat-bubble bg-base-200 text-base-content">
+                <div class="chat-bubble chat-bubble-info text-base-content">
                   {message.body}
                 </div>
               </div>
@@ -85,16 +86,16 @@
       </div>
     {/if}
   </div>
-  <div class="drawer-side">
+  <div class="drawer-side w-72">
     <label for="my-drawer-3" class="drawer-overlay"></label>
-    <ul class="menu bg-base-100 w-56 p-2">
+    <ul class="menu bg-base-100">
       <!-- Sidebar content here -->
       <!--      TODO: 搜索、删除、超过后怎么办？-->
       {#each ($chats || []) as chat (chat.id)}
         <li class="chat-title" on:click={() => {
         selected_chat = chat;
       }}>
-          <a class={selected_chat.id === chat.id? 'active': ''}>{chat.title}</a>
+          <a class="{selected_chat.id === chat.id? 'active line-clamp-none': 'line-clamp-2'}">{chat.title}</a>
         </li>
       {/each}
     </ul>
