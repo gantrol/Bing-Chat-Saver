@@ -43,7 +43,7 @@ More Exporting Options is in Popup Page:
 
 Click the `CHAT RECORD` button on top of Links in the Popup. You can see:
 
-![chats](assets/demo_chats.png)
+![chats](assets/demo_chats2.png)
 
 ### Demo results
 

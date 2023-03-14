@@ -44,7 +44,7 @@ popup有更多选项，如导出为Markdown、隐藏欢迎界面等：
 
 点击 Popup 的 `查看聊天记录`按钮后:
 
-![chats](assets/demo_cn_chats.png)
+![chats](assets/demo_chats_cn2.png)
 
 ### Demo results
 
