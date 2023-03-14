@@ -49,7 +49,7 @@
       </div>
       {#if selected_chat}
         <article class="prose lg:prose-xl">
-          <h3 class="flex-1 md:prose-lg lg:prose-xl">{selected_chat.title}</h3>
+          <h3 class="flex-1 md:prose-lg lg:prose-xl line-clamp-1">{selected_chat.title}</h3>
         </article>
       {/if}
       <!--      <div class="flex-none hidden lg:block">-->
