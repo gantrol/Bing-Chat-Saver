@@ -1,22 +1,24 @@
 import { exportTypes, exportWidthTemplateKeys, Settings } from "~utils/constants";
-import { chromeSyncStorage } from "~utils/store/chrome";
+import {  browserSyncStorage } from "~utils/store/browser";
 
 const defaultSize = 375;
 
-const defaultNewExportSetting = { on: true, size: defaultSize, size_template: exportWidthTemplateKeys.AS_SEEN, type: exportTypes.PNG };
-const defaultExportSettings = [
+export const defaultNewExportSetting = { on: true, size: defaultSize, size_template: exportWidthTemplateKeys.AS_SEEN, type: exportTypes.PNG };
+export const defaultExportSettings = [
   { id: 1, ...defaultNewExportSetting},
   { id: 2, on: false, size: defaultSize, size_template: exportWidthTemplateKeys.AS_SEEN, type: exportTypes.JPG },
   { id: 3, on: false, type: exportTypes.MD },
   { id: 4, on: false, type: exportTypes.JSON }
 ];
 
-export const exportSettings = chromeSyncStorage(Settings.EXPORT, defaultExportSettings);
+export const exportSettings = browserSyncStorage(Settings.EXPORT, defaultExportSettings);
 
-export const welcomeHiddenSetting =  chromeSyncStorage(Settings.WELCOME, true);
-export const feedbackHiddenSetting =  chromeSyncStorage(Settings.FEEDBACK, false);
+export const welcomeHiddenSetting =  browserSyncStorage(Settings.WELCOME, true);
+export const feedbackHiddenSetting =  browserSyncStorage(Settings.FEEDBACK, false);
 
-export const requestIpSetting =  chromeSyncStorage(Settings.REQUEST_IP, false);
-export const requestSetting =  chromeSyncStorage(Settings.REQUEST, { ip: false, ua: true });
+export const requestIpSetting =  browserSyncStorage(Settings.REQUEST_IP, false);
+export const requestSetting =  browserSyncStorage(Settings.REQUEST, { ip: false, ua: true });
 
-export const requestUserAgentSetting =  chromeSyncStorage(Settings.REQUEST_UA, true);
+export const requestUserAgentSetting =  browserSyncStorage(Settings.REQUEST_UA, true);
+
+export const isDebugModeSetting = browserSyncStorage(Settings.debug, false);

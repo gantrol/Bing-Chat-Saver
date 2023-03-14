@@ -1,14 +1,15 @@
 /**
  * Used for connecting UI script and `chrome.storage` api
  */
-import { chromeSyncGet } from "~utils/store/chrome";
 import { exportActions, Settings } from "~utils/constants";
 import { Page } from "~utils/bingPage";
 import { DownloadVisitor } from "~utils/visitor";
+import { browserSyncGet } from "~utils/store/browser";
+import type { defaultNewExportSetting } from "~utils/store/stores";
 
 export const handleElementVisibility = async (elem: HTMLElement, key, prevDisplay='flex') => {
   const setElementVisibility = async (elem, key) => {
-    const isHidden = await chromeSyncGet(key);
+    const isHidden = await browserSyncGet(key);
     if (isHidden) {
       elem.style.display = 'none';
     } else {
@@ -24,7 +25,7 @@ export const handleElementVisibility = async (elem: HTMLElement, key, prevDispla
 }
 
 export const handleExportSetting = async () => {
-  return await chromeSyncGet(Settings.EXPORT);
+  return await browserSyncGet<typeof defaultNewExportSetting[]>(Settings.EXPORT);
 }
 
 // Page.waitForElm("#b_sydConvCont > cib-serp");
@@ -38,8 +39,6 @@ export const getDownloadFunction = (action) => {
     return DownloadVisitor.forAll;
   } else if (action === exportActions.PREVIEW) {
     return DownloadVisitor.forPreview;
-  } else if (action === 'AUTO') {
-    return DownloadVisitor.forDbAuto;
   } else {
     throw new Error(`There is not action type of ${action}`);
   }

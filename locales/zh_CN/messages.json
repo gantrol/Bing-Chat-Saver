@@ -99,6 +99,13 @@
     "message": "设置",
     "description": "Settings"
   },
+  "popup_other_settings_title": {
+    "message": "其他",
+    "description": "Other settings title"
+  },
+  "setting_debug": {
+    "message": "调试模式"
+  },
   "end": {
     "message": "End",
     "description": "结尾的占位符"

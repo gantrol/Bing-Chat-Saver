@@ -6,6 +6,7 @@
   import RequestSettings from "~components/popup/RequestSettings.svelte";
   import Collapse from "~components/Collapse.svelte";
   import { popupPageI18nValue } from "~utils/constants";
+  import OtherSettings from "~components/popup/OtherSettings.svelte";
 
   let debug = false;
   let activeTab = "export-setting-tab";
@@ -23,7 +24,7 @@
     @tailwind components;
     @tailwind utilities;
     div.main {
-        min-width: 300px;
+        min-width: 310px;
     }
 </style>
 <div class="main">
@@ -40,11 +41,13 @@
            on:click={tabOnClick}>{popupPageI18nValue.EXPORT_SETTINGS_TITLE}</a>
         <a class="tab tab-lifted" id="ui-setting-tab" on:click={tabOnClick}>{popupPageI18nValue.UI_SETTINGS_TITLE}</a>
         <a class="tab tab-lifted" id="request-setting-tab" on:click={tabOnClick}>{popupPageI18nValue.REQUEST_SETTING}</a>
+        <a class="tab tab-lifted" id="other-setting-tab" on:click={tabOnClick}>{popupPageI18nValue.OTHER_SETTINGS_TITLE}</a>
       </div>
       <div id="setting-tab-content" class="bg-base-100">
         <ExportSettings hidden={activeTab !== "export-setting-tab"} />
         <UISettings hidden={activeTab !== "ui-setting-tab"} />
         <RequestSettings hidden={activeTab !== "request-setting-tab"} />
+        <OtherSettings hidden={activeTab !== "other-setting-tab"} />
       </div>
     </div>
   </Collapse>

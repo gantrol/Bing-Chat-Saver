@@ -2,7 +2,7 @@ import { getUUID } from "~utils/uuid";
 import { Chat, db, Message } from "~utils/store/indexedDB";
 import { Messages, Settings } from "~utils/constants";
 import { ip_rule, ua_rule } from '~utils/rules';
-import { chromeSyncGet } from "~utils/store/chrome";
+import { browserSyncGet } from "~utils/store/browser";
 
 // TODO: debug mode
 // chrome.storage.onChanged.addListener(console.log.bind(console))
@@ -41,7 +41,7 @@ if (areaName === "sync") {
   }
 )
 
-chromeSyncGet(Settings.REQUEST_IP).then(r => {
+browserSyncGet(Settings.REQUEST_IP).then(r => {
   const rules = [];
   console.log(`REQUEST_IP: ${r}`);
   if (r) {
@@ -55,7 +55,7 @@ chromeSyncGet(Settings.REQUEST_IP).then(r => {
     console.log(`REQUEST_IP 2: ${r}`);
   });
 });
-chromeSyncGet(Settings.REQUEST_UA).then(r => {
+browserSyncGet(Settings.REQUEST_UA).then(r => {
   console.log(r);
   const rules = [];
   console.log(`REQUEST_IP: ${r}`);
@@ -154,8 +154,16 @@ const saveChatToDB = async ({qAsJSON, id}) => {
     created_time: new Date(),
     updated_time: new Date()
   };
+  console.log("save chat");
+  console.log(chat);
   db.chats.put(chat);
 
+  // message
+  // :
+  // "BulkError chats.bulkAdd(): 1 of 2 operations failed. Errors: ConstraintError: Key already exists in the object store."
+  // name
+  // :
+  // "DatabaseClosedError"
   const messages = [];
 
   function isIterable(obj) {
@@ -197,7 +205,10 @@ const saveChatToDB = async ({qAsJSON, id}) => {
     }
   }
   // bulk add to db
-  db.messages.bulkAdd(messages).catch(error => {
+  // TODO: if debug
+  console.log(messages);
+  db.messages.bulkAdd(messages)
+    .catch(error => {
     console.log(error);
   });
 };

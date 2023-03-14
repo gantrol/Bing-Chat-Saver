@@ -32,7 +32,21 @@ const init = async () => {
     }
   }
   const addOnclick = (elem: HTMLElement) => {
-    elem.addEventListener("click", () => saveToDB())
+    elem.addEventListener("click", async (event) => {
+      event.preventDefault();
+      await saveToDB();
+
+      const eventName = "background-onclick";
+      const dev = document.createElement("div")
+      const customEvent = new Event(eventName);
+
+      dev.addEventListener(eventName, function() {
+        dev.click();
+      });
+
+      dev.dispatchEvent(customEvent);
+      dev.remove();
+    });
   }
 
   // - TODO: auto save, how to handle return bing search and

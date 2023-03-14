@@ -99,6 +99,14 @@
     "message": "Settings",
     "description": "Settings"
   },
+  "popup_other_settings_title": {
+    "message": "Other",
+    "description": "Other Settings"
+  },
+  "setting_debug": {
+    "message": "debug",
+    "description": "debug mode"
+  },
   "end": {
     "message": "End",
     "description": "Just for end"

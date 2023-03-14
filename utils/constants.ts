@@ -37,6 +37,7 @@ const exportActionsI18nKeys: exportActionsInterface = {
  * @description Settings for chrome sync storage
  */
 export const Settings = {
+  debug: "setting_debug",
   WELCOME: "welcome-settings",
   FEEDBACK: "feedback-settings",
   REQUEST: "request-settings",
@@ -68,6 +69,7 @@ const popupPageI18nKey = {
   EXPORT_SETTINGS_TITLE: "popup_export_settings_title",
   UI_SETTINGS_TITLE: "popup_ui_settings_title",
   REQUEST_SETTING: "popup_request_setting",
+  OTHER_SETTINGS_TITLE: "popup_other_settings_title",
   LINK_TITLE: "popup_link_title",
   CHAT_RECORD_LINK: "popup_chat_record_button",
   BING_CHAT_LINK: "popup_bing_chat_website_button",
@@ -78,6 +80,7 @@ const popupPageI18nKey = {
   REQUEST_BROWSER: "popup_request_browser",
   REQUEST_IP: "popup_request_ip",
   SETTINGS: "popup_settings",
+  isDebugModeSetting: "setting_debug",
   WAITING: "popup_waiting"
 };
 
@@ -92,7 +95,7 @@ const objectMap = (object, map) => {
 export const exportActions = <exportActionsInterface>objectMap(exportActionsI18nKeys, getText);
 export const exportTypes = {
   PNG: "PNG",
-  PDF: "PDF",
+  // PDF: "PDF",
   JPG: "JPG",
   MD: "Markdown",
   JSON: "JSON"
