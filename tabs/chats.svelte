@@ -5,27 +5,38 @@
 
   // TODO: paging for list of chat
   // TODO: add copy to bubbles...
-  // TODO: change to await?
   let selected_chat;
   let current_messages;
-  let chats = liveQuery(async () => {
-    const currentUsers = db.users.where("login").equals(1);
-    const currentUser = await currentUsers.first();
-    const user_id = currentUser.id;
-    const chatsObserver = db.chats.where("user_id").equals(user_id);
-    const result = chatsObserver.reverse().sortBy("created_time");
-    result.then((r) => {
-      selected_chat = r && r.length > 0 ? r[0] : selected_chat;
-    }).catch((error) => {
-      console.log(error);
+  let search = "";
+
+  const searchChats = (search) => {
+    return liveQuery(async () => {
+      const currentUsers = db.users.where("login").equals(1);
+      const currentUser = await currentUsers.first();
+      const user_id = currentUser.id;
+      const chatsObserver = db.chats.where("user_id").equals(user_id);
+      if (search) {
+        chatsObserver.filter((chat) => {
+          return chat.title.toLowerCase().includes(search.toLowerCase());
+        });
+      }
+      const result = chatsObserver.reverse().sortBy("created_time");
+      result.then((r) => {
+        selected_chat = r && r.length > 0 ? r[0] : selected_chat;
+      }).catch((error) => {
+        console.log(error);
+      });
+      return result;
     });
-    return result;
-  });
+  };
+
+  $: chats = searchChats(search);
   $: if (selected_chat) {
     current_messages = liveQuery(async () => {
       return db.messages.where("chat_id").equals(selected_chat.id).sortBy("order");
     });
   }
+
 </script>
 
 <style>
@@ -35,12 +46,12 @@
 
 </style>
 <div class="drawer drawer-mobile text-lg">
-  <input class="drawer-toggle" id="my-drawer-3" type="checkbox" />
+  <input class="drawer-toggle" id="chat-drawer" type="checkbox" />
   <div class="drawer-content flex flex-col">
     <!-- Navbar -->
     <div class="w-full navbar bg-base-300">
       <div class="flex-none">
-        <label class="btn btn-square btn-ghost drawer-button lg:hidden" for="my-drawer-3">
+        <label class="btn btn-square btn-ghost drawer-button lg:hidden" for="chat-drawer">
           <svg class="inline-block w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24"
                xmlns="http://www.w3.org/2000/svg">
             <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
@@ -86,22 +97,46 @@
       </div>
     {/if}
   </div>
-  <div class="drawer-side w-72">
-    <label class="drawer-overlay" for="my-drawer-3"></label>
-
-    <ul class="menu bg-base-100">
-      <input class="input w-full max-w-xs input-bordered" placeholder="Type here" type="text" />
+  <div class="drawer-side">
+    <label class="drawer-overlay" for="chat-drawer"></label>
+    <ul class="menu bg-base-100 w-72">
+      <label class="relative block">
+        <span class="sr-only">Search</span>
+        <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+          <svg
+            class="h-5 w-5"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg">
+          <path
+            class="text-blue-500"
+            clip-rule="evenodd"
+            d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+            fill-rule="evenodd" />
+        </svg>
+        </span>
+        <input
+          bind:value={search}
+          class="block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3
+              shadow-sm focus:outline-none
+              focus:border-blue-500 focus:ring-sky-300 focus:ring-0.5"
+          name="search" type="text" />
+      </label>
       <!--      TODO: 删除-->
-      {#each ($chats || []) as chat (chat.id)}
-        <li class="chat-title {selected_chat.id === chat.id? 'bordered': ''}"
-            on:click={() => {
-              selected_chat = chat;
-        }}>
+      {#if chats}
+        {#each ($chats || []) as chat (chat.id)}
+          <li class="chat-title {selected_chat.id === chat.id? 'bordered': ''}"
+              on:click={() => {
+                selected_chat = chat;
+          }}>
             <a class="pt-2 {selected_chat.id === chat.id? 'line-clamp-none': 'line-clamp-1 leading-[3rem]'}">
               {chat.title}
             </a>
-        </li>
-      {/each}
+          </li>
+        {/each}
+      {:else }
+        <progress class="progress w-72"></progress>
+      {/if}
     </ul>
 
   </div>
