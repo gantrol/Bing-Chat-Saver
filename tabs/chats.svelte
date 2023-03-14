@@ -35,15 +35,15 @@
 
 </style>
 <div class="drawer drawer-mobile text-lg">
-  <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
+  <input class="drawer-toggle" id="my-drawer-3" type="checkbox" />
   <div class="drawer-content flex flex-col">
     <!-- Navbar -->
     <div class="w-full navbar bg-base-300">
       <div class="flex-none">
-        <label for="my-drawer-3" class="btn btn-square btn-ghost drawer-button lg:hidden">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-               class="inline-block w-6 h-6 stroke-current">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        <label class="btn btn-square btn-ghost drawer-button lg:hidden" for="my-drawer-3">
+          <svg class="inline-block w-6 h-6 stroke-current" fill="none" viewBox="0 0 24 24"
+               xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
           </svg>
         </label>
       </div>
@@ -52,14 +52,14 @@
           <h3 class="flex-1 md:prose-lg lg:prose-xl">{selected_chat.title}</h3>
         </article>
       {/if}
-<!--      <div class="flex-none hidden lg:block">-->
-<!--        <ul class="menu menu-horizontal">-->
-<!--          &lt;!&ndash;          TODO: ...&ndash;&gt;-->
-<!--          &lt;!&ndash; Navbar menu content here &ndash;&gt;-->
-<!--          &lt;!&ndash;          <li><a>Navbar Item 1</a></li>&ndash;&gt;-->
-<!--          &lt;!&ndash;          <li><a>Navbar Item 2</a></li>&ndash;&gt;-->
-<!--        </ul>-->
-<!--      </div>-->
+      <!--      <div class="flex-none hidden lg:block">-->
+      <!--        <ul class="menu menu-horizontal">-->
+      <!--          &lt;!&ndash;          TODO: ...&ndash;&gt;-->
+      <!--          &lt;!&ndash; Navbar menu content here &ndash;&gt;-->
+      <!--          &lt;!&ndash;          <li><a>Navbar Item 1</a></li>&ndash;&gt;-->
+      <!--          &lt;!&ndash;          <li><a>Navbar Item 2</a></li>&ndash;&gt;-->
+      <!--        </ul>-->
+      <!--      </div>-->
     </div>
     {#if selected_chat}
       <div class="detail">
@@ -67,16 +67,16 @@
           {#each ($current_messages || []) as message}
             {#if message.is_bing}
               <div class="chat chat-start">
-                <div class="chat-bubble bg-info-content/10 chat-bubble-primary">
+                <div class="chat-bubble chat-bubble-info text-black">
                   <!--                  TODO: add metas...-->
                   <!--                  TODO: add refs, links...-->
-<!--                  TODO: overflow auto-->
+                  <!--                  TODO: overflow auto-->
                   {@html message.html}
                 </div>
               </div>
             {:else}
               <div class="chat chat-end">
-                <div class="chat-bubble chat-bubble-info text-base-content">
+                <div class="chat-bubble bg-base-200 text-blue-900">
                   {message.body}
                 </div>
               </div>
@@ -87,17 +87,19 @@
     {/if}
   </div>
   <div class="drawer-side w-72">
-    <label for="my-drawer-3" class="drawer-overlay"></label>
+    <label class="drawer-overlay" for="my-drawer-3"></label>
+
     <ul class="menu bg-base-100">
-      <!-- Sidebar content here -->
-      <!--      TODO: 搜索、删除、超过后怎么办？-->
+      <input class="input w-full max-w-xs input-bordered" placeholder="Type here" type="text" />
+      <!--      TODO: 删除-->
       {#each ($chats || []) as chat (chat.id)}
-        <li class="chat-title" on:click={() => {
-        selected_chat = chat;
-      }}>
-          <a class="pt-2 {selected_chat.id === chat.id? 'active line-clamp-none': 'line-clamp-1 leading-[3rem]'}">
-            {chat.title}
-          </a>
+        <li class="chat-title {selected_chat.id === chat.id? 'bordered': ''}"
+            on:click={() => {
+              selected_chat = chat;
+        }}>
+            <a class="pt-2 {selected_chat.id === chat.id? 'line-clamp-none': 'line-clamp-1 leading-[3rem]'}">
+              {chat.title}
+            </a>
         </li>
       {/each}
     </ul>
