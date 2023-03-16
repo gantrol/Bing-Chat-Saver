@@ -5,7 +5,12 @@ import { exportActions, Settings } from "~utils/constants";
 import { getDownloadFunction, handleElementVisibility, waitForChatAppear } from "~utils/viewmodel";
 import { getUUID } from "~utils/uuid";
 import { DownloadVisitor } from "~utils/visitor";
+import type { PlasmoCSConfig } from "plasmo"
 
+export const config: PlasmoCSConfig = {
+  matches: ["*://www.bing.com/*"],
+  all_frames: true
+}
 
 const init = async () => {
   await waitForChatAppear();
