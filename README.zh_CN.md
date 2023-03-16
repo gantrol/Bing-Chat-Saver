@@ -1,7 +1,7 @@
 # 必应聊天分享与保存
 
 [![谷歌安装](https://img.shields.io/badge/谷歌-安装-critical.svg?style=for-the-badge&logo=appveyor)](https://chrome.google.com/webstore/detail/bing-chat-saver/ficbllnhlgldegblbimkeldcdhfjppkg?hl=zh-CN)
-
+[![Edge 安装](https://img.shields.io/badge/Edge-安装-critical.svg?style=for-the-badge&logo=appveyor)](https://microsoftedge.microsoft.com/addons/detail/nkmgdpbijnpjfgpokgkomodmpmkencca)
 
 ## 功能
 
@@ -19,8 +19,8 @@
 ## 下载
 
 - [Chrome Store](https://chrome.google.com/webstore/detail/bing-chat-saver/ficbllnhlgldegblbimkeldcdhfjppkg?hl=en)获取稳定版本（更新有延迟，一般是两天）
+- [Edge插件商城](https://microsoftedge.microsoft.com/addons/detail/nkmgdpbijnpjfgpokgkomodmpmkencca) (更新延迟一周)
 - 去[releases页面](https://github.com/gantrol/Bing-Chat-Saver/releases/), 下载 `.zip`并到 `edge://extensions/`加载插件。正如下文结果示意图必应所说，你可就着浏览器翻译功能，参考[这篇文章](https://www.howtogeek.com/510543/how-to-install-and-use-extensions-in-the-new-microsoft-edge/)
-- Edge商城的下载正待审核……
 
 ## 用法
 
@@ -90,7 +90,7 @@ pnpm dev
 npm run dev
 ```
 
-打开浏览器，加载适当的dev build（目前配置里只有chrome的build，毕竟新必应在其他浏览器也用不了）。 例如，如果你在使用manifest v3为chrome浏览器开发插件，请使用。`build/chrome-mv3-dev`。
+打开浏览器，加载适当的dev build。 例如，如果你在使用manifest v3为chrome浏览器开发插件，请使用。`build/chrome-mv3-dev`。
 
 你可以通过修改`popup.svelte`来编辑弹出窗口。它应该在你做修改时自动更新。
 

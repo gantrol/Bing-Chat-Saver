@@ -1,8 +1,8 @@
 # Bing Chat Saver
 
 [![cn](https://img.shields.io/badge/看我-中文-blue.svg?style=for-the-badge&logo=appveyor)](README.zh_CN.md)
-[![install-chrome](https://img.shields.io/badge/Chrome-install-critical.svg?style=for-the-badge&logo=appveyor)](https://chrome.google.com/webstore/detail/bing-chat-saver/ficbllnhlgldegblbimkeldcdhfjppkg?hl=en)
-[![谷歌安装](https://img.shields.io/badge/谷歌-安装-critical.svg?style=for-the-badge&logo=appveyor)](https://chrome.google.com/webstore/detail/bing-chat-saver/ficbllnhlgldegblbimkeldcdhfjppkg?hl=zh-CN)
+[![Chrome Install](https://img.shields.io/badge/Chrome-install-critical.svg?style=for-the-badge&logo=appveyor)](https://chrome.google.com/webstore/detail/bing-chat-saver/ficbllnhlgldegblbimkeldcdhfjppkg)
+[![Edge Install](https://img.shields.io/badge/Edge-Install-critical.svg?style=for-the-badge&logo=appveyor)](https://microsoftedge.microsoft.com/addons/detail/nkmgdpbijnpjfgpokgkomodmpmkencca)
 
 ## Feature
 
@@ -51,9 +51,9 @@ Click the `CHAT RECORD` button on top of Links in the Popup. You can see:
 
 ## Download
 
-- [Chrome Store](https://chrome.google.com/webstore/detail/bing-chat-saver/ficbllnhlgldegblbimkeldcdhfjppkg?hl=en) for stable version.
+- [Chrome Store](https://chrome.google.com/webstore/detail/bing-chat-saver/ficbllnhlgldegblbimkeldcdhfjppkg?hl=en) for stable version. (one or two days later than stable release)
+- [Edge Addon]((https://microsoftedge.microsoft.com/addons/detail/nkmgdpbijnpjfgpokgkomodmpmkencca)) (one week later than stable release)
 - Go to release for latest version, download `.zip` and load unpacked at `edge://extensions/` . As the bing saying, you can reference [this acticle](https://dev.to/ben/how-to-install-chrome-extensions-manually-from-github-1612#:~:text=How%20to%20install%20Chrome%20extensions%20manually%20from%20GitHub,navivigate%20to%20the%20folder%20you%20downloaded%20from%20GitHub)
-- Edge store download is ...
 
 ## TODO
 
