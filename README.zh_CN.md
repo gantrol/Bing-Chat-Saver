@@ -50,12 +50,13 @@ popup有更多选项，如导出为Markdown、隐藏欢迎界面等：
 
 ![demo](assets/demo_cn.png)
 
+## Q & A
+
+- Edge侧边栏聊天无法导出？这个目前Edge没开放API给插件，这个插件也就做不了，详见：https://github.com/gantrol/Bing-Chat-Saver/issues/18
+
 ## 接下来的主要待办
 
-1. 通过导入 JSON，“重新加载”对话
-2. 自动缓存历史对话列表
-
-其他详见[项目看板](https://github.com/users/gantrol/projects/5)
+详见[项目看板](https://github.com/users/gantrol/projects/5)
 
 ## 开发
 
