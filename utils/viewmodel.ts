@@ -5,7 +5,6 @@ import { exportActions, Settings } from "~utils/constants";
 import { Page } from "~utils/bingPage";
 import { DownloadVisitor } from "~utils/visitor";
 import { browserSyncGet } from "~utils/store/browser";
-import type { defaultNewExportSetting } from "~utils/store/stores";
 
 export const handleElementVisibility = async (elem: HTMLElement, key, prevDisplay='flex') => {
   if (key === Settings.LOGO) {
@@ -33,8 +32,7 @@ export const handleWelcomeVisibility = async () => {
     // logo control
     if (child.classList.contains("container-logo")) {
       // sometimes do not work, so move to the end
-    } else
-    if (child.classList.contains("container-control")) {
+    } else if (child.classList.contains("container-control") || child.tagName.toLowerCase() === 'cib-tone-selector') {
       await handleElementVisibility(<HTMLElement>child, Settings.TONE);
     } else {
       await handleElementVisibility(<HTMLElement>child, Settings.WELCOME);
