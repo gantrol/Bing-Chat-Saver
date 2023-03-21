@@ -87,7 +87,7 @@
               </div>
             {:else}
               <div class="chat chat-end">
-                <div class="chat-bubble bg-base-200 text-blue-900">
+                <div class="chat-bubble">
                   {message.body}
                 </div>
               </div>
