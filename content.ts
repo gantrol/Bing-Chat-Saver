@@ -2,14 +2,20 @@ import { Page } from "~utils/bingPage";
 
 
 import { exportActions, Settings } from "~utils/constants";
-import { getDownloadFunction, handleElementVisibility, waitForChatAppear } from "~utils/viewmodel";
+import {
+  getDownloadFunction,
+  handleElementVisibility,
+  handleWelcomeVisibility,
+  waitForChatAppear
+} from "~utils/viewmodel";
 import { getUUID } from "~utils/uuid";
 import { DownloadVisitor } from "~utils/visitor";
 
 
 const init = async () => {
   await waitForChatAppear();
-  await handleElementVisibility(<HTMLElement>Page.getWelcome(), Settings.WELCOME);
+
+  await handleWelcomeVisibility();
   const feedbackGroup = Page.getFeedbackBar();
   const feedbackButton = feedbackGroup.querySelector("#fbpgbt");
 
@@ -18,10 +24,9 @@ const init = async () => {
   await handleElementVisibility(<HTMLElement>feedbackButton, Settings.FEEDBACK, "block");
 
 
-
   const reset = () => {
     session_keys = getUUID();
-  }
+  };
   const saveToDB = async (reset_flag = true) => {
     if (reset_flag) {
       reset();
@@ -30,24 +35,24 @@ const init = async () => {
       // TODO: update if there are needs in future,
       //   but it is not necessary now
     }
-  }
+  };
   const addOnclick = (elem: HTMLElement) => {
     elem.addEventListener("click", async (event) => {
       event.preventDefault();
       await saveToDB();
 
       const eventName = "background-onclick";
-      const dev = document.createElement("div")
+      const div = document.createElement("div");
       const customEvent = new Event(eventName);
 
-      dev.addEventListener(eventName, function() {
-        dev.click();
+      div.addEventListener(eventName, function() {
+        div.click();
       });
 
-      dev.dispatchEvent(customEvent);
-      dev.remove();
+      div.dispatchEvent(customEvent);
+      div.remove();
     });
-  }
+  };
 
   // - TODO: auto save, how to handle return bing search and
   //    - re-search
@@ -59,7 +64,12 @@ const init = async () => {
   //   or it will be saved twice
   // addOnclick(Page.getFeedbackBar());
   addOnclick(Page.getCleanButton());
-
+  // edge case for tone buttons
+  Page.getWelcome().shadowRoot
+    .querySelector("div.container-control > cib-tone-selector")
+    .shadowRoot.querySelector("#tone-options").querySelectorAll("button").forEach((elem) => {
+    addOnclick(elem);
+  });
   window.addEventListener("beforeunload", () => {
     saveToDB();
   });
@@ -77,7 +87,7 @@ const addButton = (actionsArea, WaitingButton, action) => {
   downloadButton.innerText = action;
 
   const getOnClickByAction = (action) => {
-    return getDownloadFunction(action)
+    return getDownloadFunction(action);
   };
   downloadButton.onclick = getOnClickByAction(action);
   actionsArea.appendChild(downloadButton);

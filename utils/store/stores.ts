@@ -14,6 +14,8 @@ export const defaultExportSettings = [
 export const exportSettings = browserSyncStorage(Settings.EXPORT, defaultExportSettings);
 
 export const welcomeHiddenSetting =  browserSyncStorage(Settings.WELCOME, true);
+export const logoHiddenSetting =  browserSyncStorage(Settings.LOGO, true);
+export const tuneHiddenSetting =  browserSyncStorage(Settings.TONE, false);
 export const feedbackHiddenSetting =  browserSyncStorage(Settings.FEEDBACK, false);
 
 export const requestIpSetting =  browserSyncStorage(Settings.REQUEST_IP, false);

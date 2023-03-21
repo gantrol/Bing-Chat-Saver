@@ -51,6 +51,14 @@
     "message": "隐藏反馈按钮",
     "description": "Hidden Feedback"
   },
+  "popup_hidden_tone": {
+    "message": "隐藏样式面板",
+    "description": "Hidden Tone panel (Creative, Balanced, Precise)"
+  },
+  "popup_hidden_logo": {
+    "message": "隐藏必应图标",
+    "description": "Hidden Bing"
+  },
   "popup_waiting": {
     "message": "请稍等……",
     "description": "Waiting"

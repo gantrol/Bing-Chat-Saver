@@ -51,6 +51,14 @@
     "message": "Hide feedback button",
     "description": "Hidden Feedback"
   },
+  "popup_hidden_tone": {
+    "message": "Hide Tone panel",
+    "description": "Hidden Tone panel (Creative, Balanced, Precise)"
+  },
+  "popup_hidden_logo": {
+    "message": "Hide Bing logo",
+    "description": "Hidden Bing"
+  },
   "popup_waiting": {
     "message": "Waiting...",
     "description": "Waiting"

@@ -8,6 +8,9 @@ import { browserSyncGet } from "~utils/store/browser";
 import type { defaultNewExportSetting } from "~utils/store/stores";
 
 export const handleElementVisibility = async (elem: HTMLElement, key, prevDisplay='flex') => {
+  if (key === Settings.LOGO) {
+    console.log("logo", elem);
+  }
   const setElementVisibility = async (elem, key) => {
     const isHidden = await browserSyncGet(key);
     if (isHidden) {
@@ -24,8 +27,25 @@ export const handleElementVisibility = async (elem: HTMLElement, key, prevDispla
   });
 }
 
+export const handleWelcomeVisibility = async () => {
+  const welcomeElement = <HTMLElement>Page.getWelcome();
+  for (const child of welcomeElement.shadowRoot.children) {
+    // logo control
+    if (child.classList.contains("container-logo")) {
+      // sometimes do not work, so move to the end
+    } else
+    if (child.classList.contains("container-control")) {
+      await handleElementVisibility(<HTMLElement>child, Settings.TONE);
+    } else {
+      await handleElementVisibility(<HTMLElement>child, Settings.WELCOME);
+    }
+  }
+  const logo = welcomeElement.shadowRoot.querySelector("div.container-logo");
+  await handleElementVisibility(<HTMLElement>logo, Settings.LOGO);
+}
+
 export const handleExportSetting = async () => {
-  return await browserSyncGet<typeof defaultNewExportSetting[]>(Settings.EXPORT);
+  return await browserSyncGet(Settings.EXPORT);
 }
 
 // Page.waitForElm("#b_sydConvCont > cib-serp");
