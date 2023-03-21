@@ -79,7 +79,8 @@ db.on("populate", (tx: Transaction) => {
       created_time: new Date(),
       is_bing: true,
       order: 0,
-      body: "Hello!"
+      body: "Hello!",
+      html: "<p>Hello!</p>",
     },
     { id: getUUID(), chat_id: chatID, user_id: firstUser, created_time: new Date(), is_bing: false, order: 1, body: "Hi" }
   ]);
