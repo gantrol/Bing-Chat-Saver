@@ -1,13 +1,13 @@
 {
   "name": "bing-chat-saver",
   "displayName": "Bing Chat saver",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Saving Bing Chat for you, for sharing",
   "author": "gantrol",
   "scripts": {
     "dev": "plasmo dev",
     "test": "jest",
-    "build": "plasmo build",
+    "build": "plasmo build && plasmo package",
     "build:firefox": "plasmo build --target=firefox-mv2 --zip",
     "package": "plasmo package"
   },
@@ -16,7 +16,7 @@
     "@tailwindcss/line-clamp": "^0.4.2",
     "dexie": "^3.2.3",
     "marked": "^4.2.12",
-    "modern-screenshot": "^4.4.0",
+    "modern-screenshot": "^4.4.9",
     "plasmo": "0.65.0",
     "svelte": "3.55.1",
     "svelte-preprocess": "5.0.1",

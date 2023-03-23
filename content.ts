@@ -11,6 +11,7 @@ import {
 import { getUUID } from "~utils/uuid";
 import { DownloadVisitor } from "~utils/visitor";
 
+let hasSaved = false;
 
 const init = async () => {
   await waitForChatAppear();
@@ -31,6 +32,7 @@ const init = async () => {
     if (reset_flag) {
       reset();
       await DownloadVisitor.forDB(session_keys);
+      hasSaved = true;
     } else {
       // TODO: update if there are needs in future,
       //   but it is not necessary now
@@ -54,8 +56,6 @@ const init = async () => {
     });
   };
 
-  // - TODO: auto save, how to handle return bing search and
-  //    - re-search
   let session_keys;
 
   reset();
@@ -65,13 +65,25 @@ const init = async () => {
   // addOnclick(Page.getFeedbackBar());
   addOnclick(Page.getCleanButton());
   // edge case for tone buttons
-  Page.getWelcome().shadowRoot
-    .querySelector("div.container-control > cib-tone-selector")
-    .shadowRoot.querySelector("#tone-options").querySelectorAll("button").forEach((elem) => {
-    addOnclick(elem);
-  });
+  // TODO: change the "auto saving" logic instead...
+  //  e.g. save when listen on wss event
+  //   Page.getWelcome().shadowRoot
+  //     .querySelector("div.container-control > cib-tone-selector")
+  //     .shadowRoot.querySelector("#tone-options").querySelectorAll("button").forEach((elem) => {
+  //       console.log(elem, "onload");
+  //
+  //       addOnclick(elem);
+  //   });
+
   window.addEventListener("beforeunload", () => {
+    console.log("save to db");
     saveToDB();
+  }, false);
+
+  window.addEventListener("unload", function() {
+    if (!hasSaved) {
+      saveToDB();
+    }
   });
 };
 

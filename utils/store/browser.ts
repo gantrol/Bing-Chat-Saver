@@ -35,8 +35,6 @@ export const browserSyncStorage = <T>(key: string, initial: T) => {
 export const browserSyncGet = async <T>(key: string) => {
   const storage = new Storage();
   const result = await storage.get<T>(key);
-  console.log(`browserSyncGet: ${key}`);
-  console.log(result);
   return await storage.get<T>(key);
 };
 export const browserSyncSet = async <T>(key: string, value: T) => {

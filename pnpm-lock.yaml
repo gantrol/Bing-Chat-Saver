@@ -16,7 +16,7 @@ specifiers:
   jest-environment-jsdom: 29.4.1
   jest-webextension-mock: 3.8.8
   marked: ^4.2.12
-  modern-screenshot: ^4.4.0
+  modern-screenshot: ^4.4.9
   plasmo: 0.65.0
   postcss: ^8.4.7
   prettier: 2.8.3
@@ -32,7 +32,7 @@ dependencies:
   '@tailwindcss/line-clamp': 0.4.2_tailwindcss@3.2.7
   dexie: 3.2.3
   marked: 4.2.12
-  modern-screenshot: 4.4.0
+  modern-screenshot: 4.4.9
   plasmo: 0.65.0_postcss@8.4.21
   svelte: 3.55.1
   svelte-preprocess: 5.0.1_oifjsu5oar4lzyaoppb2hxramu
@@ -5545,8 +5545,8 @@ packages:
     resolution: {integrity: sha512-kysx9gAGbvrzuFYxKkcRjnsg/NK61ovJOV4F1cHTRl9T5leg+bo6WI0pWIvOFh1Z/yDL0cjA5R3EEGPPLDv/XA==}
     dev: false
 
-  /modern-screenshot/4.4.0:
-    resolution: {integrity: sha512-gWU2kaYQAEX/RV28TAfOnvGKvolVVVzlDtZeGX/BXpjlqDrFLuyP1JByG7kgJJP2Db+oGzs4kD3DPno9yfpDUA==}
+  /modern-screenshot/4.4.9:
+    resolution: {integrity: sha512-WpQ3+OZIbjd7f8oHwHdrh8rI4W3e/eOWN1hOn42MFhdrCU8jb6GORWlxAFhN9X72MCo14fsADbg+875ChbqzTw==}
     dev: false
 
   /ms/2.1.2:
