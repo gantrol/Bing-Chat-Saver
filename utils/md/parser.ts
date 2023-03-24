@@ -10,8 +10,8 @@ export class QasJSON2MarkdownParser {
   private qas: any;
   private toMD: TurndownService;
   private sep = "\n\n";
-  private quesPrefix = "Q: ";
-  private ansPrefix = "Bing: ";
+  private quesPrefix = "> ";
+  private ansPrefix = "";
 
   constructor(qasJson) {
     // https://github.com/mixmark-io/turndown/blob/master/README.md
@@ -33,12 +33,14 @@ export class QasJSON2MarkdownParser {
   turns(objs) {
     const turn_md_list = objs.map(obj => this.turn(obj));
     const formatNow = getNowWithFormat();
-    const sections = [];
-    for (let i = 0; i < turn_md_list.length; i++) {
-      sections.push(
-        `## ${i + 1}${this.sep}${turn_md_list[i]}`
-      );
-    }
+    const sections = turn_md_list;
+    // const sections = [];
+    // for (let i = 0; i < turn_md_list.length; i++) {
+    //   sections.push(
+    //     `## ${i + 1}${this.sep}${turn_md_list[i]}`
+    //   );
+    // }
+    // TODO: modified title
     const title = `Bing Chat at ${formatNow}`;
     return [`# ${title}${this.sep}${sections.join(this.sep)}`, title];
   }
@@ -54,6 +56,7 @@ export class QasJSON2MarkdownParser {
     }
 
     // TODO: keep meta
+    //  Add to discuss
     if (ans_md) {
       if (result) {
         return `${result}${this.sep}${ans_md}`;
@@ -64,6 +67,7 @@ export class QasJSON2MarkdownParser {
       return result;
     }
     // TODO: get a list of ref?
+    //  Add to discuss
   }
 
   answers(objs) {
@@ -83,8 +87,7 @@ export class QasJSON2MarkdownParser {
   questions(objs) {
     if (objs) {
       const question_list = objs.map(obj => {
-        debugger;
-        return `${this.quesPrefix}${obj.text}`;
+        return `${obj.text.split('\n').map(line => `${this.quesPrefix} ${line}`).join('\n')}`;
       });
       return question_list.join(this.sep);
     } else {
