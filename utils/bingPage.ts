@@ -23,6 +23,13 @@ export class Page {
       .querySelectorAll("cib-chat-turn");
   };
 
+  static getFirstQuestion = () => {
+    return Page.getMain().querySelector("cib-chat-turn")
+      .shadowRoot.querySelector("cib-message-group:nth-child(1)")
+      .shadowRoot.querySelector("cib-message")
+      .shadowRoot.querySelector("cib-shared > div.content.text-message-content").textContent
+  }
+
   static handleRefs = (ansFrame: HTMLElement, setFontWeight = true, returnJSON = false) => {
     // ansFrame's css selector is cib-message[type="text"]
     if (ansFrame === null) return [];

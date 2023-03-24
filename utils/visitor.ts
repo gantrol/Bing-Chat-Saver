@@ -4,6 +4,7 @@ import { QasJSON2MarkdownParser } from "~utils/md/parser";
 import { handleExportSetting } from "~utils/viewmodel";
 import { exportTypes, exportWidthTemplateKeys, Messages } from "~utils/constants";
 import type { Options } from "modern-screenshot/options";
+import { getNowWithFormat } from "~utils/time";
 
 const DEFAULT_WITDH = 0;
 
@@ -46,7 +47,8 @@ export class DownloadVisitor {
       });
     } else {
       const link = document.createElement("a");
-      link.download = `my-image-name.${type}`;
+      const partOfFirstQuestion = Page.getFirstQuestion();
+      link.download = `Bing_${partOfFirstQuestion}${getNowWithFormat()}.${type}`;
       link.href = dataURL;
       link.click();
       link.remove();
@@ -82,8 +84,8 @@ export class DownloadVisitor {
     const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(result));
     const downloadAnchorNode = document.createElement("a");
     downloadAnchorNode.setAttribute("href", dataStr);
-    const timestamp = Date.now().toString();
-    downloadAnchorNode.setAttribute("download", `bing-chat-${timestamp}.json`);
+    downloadAnchorNode.setAttribute("download",
+      `Bing_${Page.getFirstQuestion()}${getNowWithFormat()}.json`);
     document.body.appendChild(downloadAnchorNode); // required for firefox
     downloadAnchorNode.click();
     downloadAnchorNode.remove();

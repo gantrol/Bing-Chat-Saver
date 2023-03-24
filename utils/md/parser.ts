@@ -4,6 +4,7 @@ export {};
 
 
 import TurndownService from "turndown";
+import { genTitle } from "~utils/filename";
 
 
 export class QasJSON2MarkdownParser {
@@ -40,9 +41,14 @@ export class QasJSON2MarkdownParser {
     //     `## ${i + 1}${this.sep}${turn_md_list[i]}`
     //   );
     // }
-    // TODO: modified title
-    const title = `Bing Chat at ${formatNow}`;
-    return [`# ${title}${this.sep}${sections.join(this.sep)}`, title];
+    console.log(sections);
+    let partOfFirstQuestion = "";
+    if (sections.length > 0 && sections[0] && sections[0].length > this.quesPrefix.length) {
+      partOfFirstQuestion = sections[0].substring(this.quesPrefix.length).trim();
+      partOfFirstQuestion = `${genTitle(partOfFirstQuestion)}...`;
+    }
+    const title = `Bing_${partOfFirstQuestion}${formatNow}`;
+    return [`# ${partOfFirstQuestion}${this.sep}${sections.join(this.sep)}`, title];
   }
 
   turn(obj) {
