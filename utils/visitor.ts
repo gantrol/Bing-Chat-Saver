@@ -5,6 +5,7 @@ import { handleExportSetting } from "~utils/viewmodel";
 import { exportTypes, exportWidthTemplateKeys, Messages } from "~utils/constants";
 import type { Options } from "modern-screenshot/options";
 import { getNowWithFormat } from "~utils/time";
+import { genTitle } from "~utils/filename";
 
 const DEFAULT_WITDH = 0;
 
@@ -47,7 +48,7 @@ export class DownloadVisitor {
       });
     } else {
       const link = document.createElement("a");
-      const partOfFirstQuestion = Page.getFirstQuestion();
+      const partOfFirstQuestion = genTitle(Page.getFirstQuestion());
       link.download = `Bing_${partOfFirstQuestion}${getNowWithFormat()}.${type}`;
       link.href = dataURL;
       link.click();
@@ -85,7 +86,7 @@ export class DownloadVisitor {
     const downloadAnchorNode = document.createElement("a");
     downloadAnchorNode.setAttribute("href", dataStr);
     downloadAnchorNode.setAttribute("download",
-      `Bing_${Page.getFirstQuestion()}${getNowWithFormat()}.json`);
+      `Bing_${genTitle(Page.getFirstQuestion())}${getNowWithFormat()}.json`);
     document.body.appendChild(downloadAnchorNode); // required for firefox
     downloadAnchorNode.click();
     downloadAnchorNode.remove();
