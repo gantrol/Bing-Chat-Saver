@@ -7,6 +7,9 @@ import TurndownService from "turndown";
 import { genTitle } from "~utils/filename";
 
 
+/**
+ * MarkdownParser for Question and answer JSON
+ */
 export class QasJSON2MarkdownParser {
   private qas: any;
   private toMD: TurndownService;
@@ -41,7 +44,6 @@ export class QasJSON2MarkdownParser {
     //     `## ${i + 1}${this.sep}${turn_md_list[i]}`
     //   );
     // }
-    console.log(sections);
     let partOfFirstQuestion = "";
     if (sections.length > 0 && sections[0] && sections[0].length > this.quesPrefix.length) {
       partOfFirstQuestion = sections[0].substring(this.quesPrefix.length).trim();
@@ -72,8 +74,6 @@ export class QasJSON2MarkdownParser {
     } else {
       return result;
     }
-    // TODO: get a list of ref?
-    //  Add to discuss
   }
 
   answers(objs) {
@@ -86,14 +86,25 @@ export class QasJSON2MarkdownParser {
   }
 
   // {"body": "Hello", "html": "<p>Hello</p>"} => Hello
+  // {"body": "Hello", "html": "<p>Hello</p>", "ref": [...]} => Hello
   answer(obj) {
-    return `${this.ansPrefix}${this.toMD.turndown(obj.html)}`;
+    const body = `${this.ansPrefix}${this.toMD.turndown(obj.html)}`;
+    const refs = obj.refs;
+    if (refs && refs.length > 0) {
+      const refs_md = refs.map(ref => {
+        return `1. [${ref.title}](${ref.href})`;
+      }).join("\n");
+      const refsText = refs_md;
+      return `${body}${this.sep}${refsText}`
+    } else {
+      return body;
+    }
   }
 
   questions(objs) {
     if (objs) {
       const question_list = objs.map(obj => {
-        return `${obj.text.split('\n').map(line => `${this.quesPrefix} ${line}`).join('\n')}`;
+        return `${obj.text.split('\n').map(line => `${this.quesPrefix}${line}`).join('\n')}`;
       });
       return question_list.join(this.sep);
     } else {

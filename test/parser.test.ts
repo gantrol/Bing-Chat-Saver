@@ -58,23 +58,23 @@ const qasp = new QasJSON2MarkdownParser(simpleDemoJSON);
 
 describe("test simple json", () => {
   it("answer", () => {
-    expect(qasp.answer(simpleDemoJSON[0].answers[0])).toBe("Bing: Hello");
+    expect(qasp.answer(simpleDemoJSON[0].answers[0])).toBe("Hello");
   });
   it("answers", () => {
-    expect(qasp.answers(simpleDemoJSON[0].answers)).toBe("Bing: Hello\n\nBing: Hello");
+    expect(qasp.answers(simpleDemoJSON[0].answers)).toBe("Hello\n\nHello");
     expect(qasp.answers(undefined)).toBe("");
   });
   it("questions", () => {
     expect(qasp.questions(
       simpleDemoJSON[simpleDemoJSON.length - 1].questions))
-      .toBe("Q: Goodbye\n\nQ: Bye");
+      .toBe("> Goodbye\n\n> Bye");
     expect(qasp.questions(undefined)).toBe("");
   });
   it("turn", () => {
     expect(qasp.turn(simpleDemoJSON[1]))
       .toBe(
-        "Q: What date is it today?\n\n" +
-        "Bing: Hello, this is Bing. Today is Wednesday, February 15, 2023.");
+        "> What date is it today?\n\n" +
+        "Hello, this is Bing. Today is Wednesday, February 15, 2023.");
   });
   it("turns", () => {
     // TODO: read a file to match

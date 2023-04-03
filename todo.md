@@ -15,8 +15,6 @@
 - [ ] record & content: copy text, copy code
 - [ ] refract: components the chat
 - [ ] add `github repo` to link? or footer?
-- [ ] 尝试往导出加一个微软图标
-- [ ] add to zip when download multiply
 - [ ] welcome page cancel hidden the "对话样式"，或者添加子选项？
 
 ## TODO
