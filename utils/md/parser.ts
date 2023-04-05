@@ -91,8 +91,8 @@ export class QasJSON2MarkdownParser {
     const body = `${this.ansPrefix}${this.toMD.turndown(obj.html)}`;
     const refs = obj.refs;
     if (refs && refs.length > 0) {
-      const refs_md = refs.map(ref => {
-        return `1. [${ref.title}](${ref.href})`;
+      const refs_md = refs.map((ref, index) => {
+        return `${index + 1}. [${ref.title}](${ref.href})`;
       }).join("\n");
       const refsText = refs_md;
       return `${body}${this.sep}${refsText}`
