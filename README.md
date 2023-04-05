@@ -57,7 +57,7 @@ Click the `CHAT RECORD` button on top of Links in the Popup. You can see:
 
 ## TODO
 
-1. auto cache the history session
+1. redisign: auto saving feature for performance and reliability
 
 Others: [bing-search-saver broad](https://github.com/users/gantrol/projects/5)
 
