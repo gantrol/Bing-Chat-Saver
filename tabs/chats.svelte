@@ -2,9 +2,10 @@
   // read data from db
   import { liveQuery } from "dexie";
   import { db } from "~utils/store/indexedDB";
-
+  import { toastStore } from "~utils/store/toast";
+  import Toast from "~components/Toast";
   // TODO: paging for list of chat
-  // TODO: add copy to bubbles...
+  // TODO: add copy button to bubbles...
   let selected_chat;
   let current_messages;
   let search = "";
@@ -37,13 +38,48 @@
     });
   }
 
+  const copyToClipboard = (text) => {
+    const el = document.createElement("textarea");
+    el.value = text;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand("copy");
+    document.body.removeChild(el);
+  };
+
+  const deleteChat = async (chatId) => {
+    if (confirm("Are you sure you want to delete this chat?")) {
+      await db.chats.delete(chatId);
+      toastStore.showToast("Chat deleted");
+    }
+  };
+
+  const editChatTitle = (chat) => {
+    const newTitle = prompt("Enter the new title:", chat.title);
+    if (newTitle && newTitle !== chat.title) {
+      db.chats.update(chat.id, { title: newTitle });
+      toastStore.showToast("Chat title updated");
+    }
+  };
+
 </script>
 
 <style>
     @tailwind base;
     @tailwind components;
     @tailwind utilities;
+     .btn-container .btn-ghost {
+         opacity: 0;
+         transition: opacity 0.3s;
+     }
 
+    .btn-container:hover .btn-ghost {
+        opacity: 1;
+    }
+
+    .bordered .btn-container {
+        border-left: none;
+    }
 </style>
 <div class="drawer drawer-mobile text-lg">
   <input class="drawer-toggle" id="chat-drawer" type="checkbox" />
@@ -63,14 +99,7 @@
           <h3 class="flex-1 md:prose-lg lg:prose-xl line-clamp-1">{selected_chat.title}</h3>
         </article>
       {/if}
-      <!--      <div class="flex-none hidden lg:block">-->
-      <!--        <ul class="menu menu-horizontal">-->
-      <!--          &lt;!&ndash;          TODO: ...&ndash;&gt;-->
-      <!--          &lt;!&ndash; Navbar menu content here &ndash;&gt;-->
-      <!--          &lt;!&ndash;          <li><a>Navbar Item 1</a></li>&ndash;&gt;-->
-      <!--          &lt;!&ndash;          <li><a>Navbar Item 2</a></li>&ndash;&gt;-->
-      <!--        </ul>-->
-      <!--      </div>-->
+
     </div>
     {#if selected_chat}
       <div class="detail">
@@ -79,9 +108,6 @@
             {#if message.is_bing}
               <div class="chat chat-start">
                 <div class="chat-bubble chat-bubble-info text-black">
-                  <!--                  TODO: add metas...-->
-                  <!--                  TODO: add refs, links...-->
-                  <!--                  TODO: overflow auto-->
                   {@html message.html}
                 </div>
               </div>
@@ -96,6 +122,9 @@
         {/if}
       </div>
     {/if}
+    {#each $toastStore as toast (toast.id)}
+      <Toast message={toast.message} />
+    {/each}
   </div>
   <div class="drawer-side">
     <label class="drawer-overlay" for="chat-drawer"></label>
@@ -125,19 +154,59 @@
       <!--      TODO: 删除-->
       {#if chats}
         {#each ($chats || []) as chat (chat.id)}
-          <li class="chat-title {selected_chat.id === chat.id? 'bordered': ''}"
+          <li class="chat-title {selected_chat.id === chat.id? 'bordered': ''} relative"
               on:click={() => {
                 selected_chat = chat;
           }}>
-            <a class="pt-2 {selected_chat.id === chat.id? 'line-clamp-none': 'line-clamp-1 leading-[3rem]'}">
+            <a class="pt-2 {selected_chat.id === chat.id? 'line-clamp-none': 'line-clamp-1 leading-[3rem]'} block">
               {chat.title}
             </a>
+            <div class="absolute right-0 top-1/2 transform -translate-y-1/2 flex items-center space-x-2 btn-container">
+              <svg
+                class="btn btn-xs btn-square btn-ghost"
+                on:click={(e) => {e.stopPropagation(); editChatTitle(chat);}}
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+              </svg>
+              <svg
+                class="btn btn-xs btn-square btn-ghost"
+                on:click={(e) => {e.stopPropagation(); deleteChat(chat.id);}}
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M3 6h18" />
+                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                <line x1="10" y1="11" x2="10" y2="17" />
+                <line x1="14" y1="11" x2="14" y2="17" />
+              </svg>
+            </div>
           </li>
         {/each}
+
       {:else }
         <progress class="progress w-72"></progress>
       {/if}
     </ul>
 
   </div>
+
+
 </div>
