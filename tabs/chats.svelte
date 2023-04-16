@@ -38,15 +38,6 @@
     });
   }
 
-  const copyToClipboard = (text) => {
-    const el = document.createElement("textarea");
-    el.value = text;
-    document.body.appendChild(el);
-    el.select();
-    document.execCommand("copy");
-    document.body.removeChild(el);
-  };
-
   const deleteChat = async (chatId) => {
     if (confirm("Are you sure you want to delete this chat?")) {
       await db.chats.delete(chatId);
@@ -61,6 +52,25 @@
       toastStore.showToast("Chat title updated");
     }
   };
+  const copyToClipboard = async (text, refs) => {
+    try {
+      let refText = "";
+
+      if (refs && refs.length) {
+        refText = refs
+          .map((ref, index) => `${index + 1}. ${ref.title}: ${ref.href}`)
+          .join("\n");
+      }
+
+      const fullText = `${text}\n\nReferences:\n${refText}`;
+
+      await navigator.clipboard.writeText(fullText);
+      toastStore.showToast("Copied to clipboard");
+    } catch (error) {
+      console.error("Error copying text: ", error);
+    }
+  };
+
 
 </script>
 
@@ -68,14 +78,24 @@
     @tailwind base;
     @tailwind components;
     @tailwind utilities;
-     .btn-container .btn-ghost {
-         opacity: 0;
-         transition: opacity 0.3s;
-     }
+    .btn-container .btn-ghost {
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
 
     .btn-container:hover .btn-ghost {
         opacity: 1;
     }
+
+    .chat-bubble .btn-container .btn-ghost {
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .chat-bubble:hover .btn-container .btn-ghost {
+        opacity: 1;
+    }
+
 
     .bordered .btn-container {
         border-left: none;
@@ -109,12 +129,62 @@
               <div class="chat chat-start">
                 <div class="chat-bubble chat-bubble-info text-black">
                   {@html message.html}
+                  <div class="divider"></div>
+                  {#if message.refs && message.refs.length}
+                    <ul class="refs-list">
+                      {#each message.refs as ref (ref.index)}
+                        <li>
+                          <a class="link link-hover" href={ref.href} target="_blank" rel="noopener noreferrer">
+                            {ref.index + 1}. {ref.title}
+                          </a>
+                        </li>
+                      {/each}
+                    </ul>
+                  {/if}
+                  <div
+                    class="absolute right-0 top-1/2 transform -translate-y-1/2 flex items-center space-x-2 btn-container">
+                    <svg
+                      class="btn btn-xs btn-square btn-ghost"
+                      on:click={(e) => {e.stopPropagation(); copyToClipboard(message.body, message.refs);}}
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                  </div>
                 </div>
               </div>
             {:else}
               <div class="chat chat-end">
                 <div class="chat-bubble">
                   {message.body}
+                  <div
+                    class="absolute right-0 top-1/2 transform -translate-y-1/2 flex items-center space-x-2 btn-container">
+                    <svg
+                      class="btn btn-xs btn-square btn-ghost"
+                      on:click={(e) => {e.stopPropagation(); copyToClipboard(message.body, []);}}
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                    </svg>
+                  </div>
                 </div>
               </div>
             {/if}
@@ -151,7 +221,6 @@
               focus:border-blue-500 focus:ring-sky-300 focus:ring-0.5"
           name="search" type="text" />
       </label>
-      <!--      TODO: 删除-->
       {#if chats}
         {#each ($chats || []) as chat (chat.id)}
           <li class="chat-title {selected_chat.id === chat.id? 'bordered': ''} relative"
