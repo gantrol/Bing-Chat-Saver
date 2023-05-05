@@ -23,7 +23,7 @@ And it can hide the welcome message or the feedback button.
 
 Bing Chat have history feature now, and this plugin will remove auto save feature.
 
-![image](https://user-images.githubusercontent.com/31330732/236377672-5f1bf604-b837-4fa4-8a97-12df566ba03a.png)
+![image](https://user-images.githubusercontent.com/31330732/236377875-6b114c92-d0dd-458a-98b9-5a80e4d000f0.png)
 
 
 ## Usage
