@@ -19,6 +19,12 @@ Export formats:
 
 And it can hide the welcome message or the feedback button.
 
+### Note
+
+Bing Chat have history feature now, and this plugin will remove auto save feature.
+
+![image](https://user-images.githubusercontent.com/31330732/236377672-5f1bf604-b837-4fa4-8a97-12df566ba03a.png)
+
 
 ## Usage
 
