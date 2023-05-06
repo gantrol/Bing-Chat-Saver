@@ -72,10 +72,10 @@ export class Page {
   };
 
   static getFeedbackBar = () => {
-    return <HTMLElement> Page.getWhole()
+    // document.querySelector("#b_sydConvCont > cib-serp").shadowRoot.querySelector("cib-serp-feedback").shadowRoot.querySelector("#fbpgbt")
+    return Page.getWhole()
       .querySelector("cib-serp-feedback")
-      .shadowRoot
-      .querySelector("div.root");
+      .shadowRoot;
   };
 
   static waitForElm = (selector) => {
