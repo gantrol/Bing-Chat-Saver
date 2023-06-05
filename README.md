@@ -21,6 +21,11 @@ And it can hide the welcome message or the feedback button.
 
 ### Note
 
+Bing Chat has export feature now, so this project may be archive soon: 
+
+![image](https://github.com/gantrol/Bing-Chat-Saver/assets/31330732/54213af1-3ad6-4b88-aca4-956e3ca91cb7)
+
+
 Bing Chat has history feature now.
 
 ![image](https://user-images.githubusercontent.com/31330732/236377875-6b114c92-d0dd-458a-98b9-5a80e4d000f0.png)
