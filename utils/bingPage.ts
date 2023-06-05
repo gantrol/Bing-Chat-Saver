@@ -27,8 +27,8 @@ export class Page {
     return Page.getMain().querySelector("cib-chat-turn")
       .shadowRoot.querySelector("cib-message-group:nth-child(1)")
       .shadowRoot.querySelector("cib-message")
-      .shadowRoot.querySelector("cib-shared > div.content.text-message-content").textContent
-  }
+      .shadowRoot.querySelector("cib-shared > div.content.text-message-content").textContent;
+  };
 
   static handleRefs = (ansFrame: HTMLElement, setFontWeight = true, returnJSON = false) => {
     // ansFrame's css selector is cib-message[type="text"]
@@ -105,9 +105,9 @@ export class Page {
   };
 
   static getCleanButton = () => {
-    return <HTMLElement> Page.getWhole().querySelector("#cib-action-bar-main")
+    return <HTMLElement>Page.getWhole().querySelector("#cib-action-bar-main")
       .shadowRoot.querySelector(".button-compose");
-  }
+  };
 }
 
 export class QAList {
@@ -135,6 +135,9 @@ export class QAList {
     for (let group of groups_root.querySelectorAll("cib-message-group")) {
       // check user or bot
 
+      // TODO: may be multiple
+      // querySelector("#cib-chat-main > cib-chat-turn:nth-child(4)").shadowRoot
+      //   .querySelector("cib-message-group.response-message-group").shadowRoot.querySelector("cib-message:nth-child(2)")
       if (group.getAttribute("source") === "bot") {
         // Answer
         const answer = {
@@ -154,18 +157,23 @@ export class QAList {
             .textContent?.trim();
         });
         // body, optional, e.g., meta is loading, but wss does not response
-        const ansFrame = <HTMLElement>messagesShadowRoot.querySelector("cib-message[type=\"text\"]");
-        if (ansFrame) {
-          const ansHTML = ansFrame
-            .shadowRoot.querySelector("div.ac-textBlock");
-          // fix:  Cannot read properties of null (reading 'innerHTML')
-          if (ansHTML) {
-            answer.html = ansHTML.innerHTML;
-            answer.text = ansHTML.textContent?.trim();
+        const ansFrames = messagesShadowRoot.querySelectorAll("cib-message[type=\"text\"]");
+        for (let ansFrame of ansFrames) {
+          debugger;
+          if (ansFrame) {
+            const ansHTML = ansFrame
+              .shadowRoot.querySelector("div.ac-textBlock");
+            // fix:  Cannot read properties of null (reading 'innerHTML')
+            if (ansHTML) {
+              // 间隔会不会有问题
+              answer.html += ansHTML.innerHTML;
+              answer.text += ansHTML.textContent?.trim();
+            }
+            // Note: refs is optional
+            answer.refs.concat(Page.handleRefs(<HTMLElement>ansFrame, false, true));
+
           }
         }
-        // Note: refs is optional
-        answer.refs = Page.handleRefs(ansFrame, false, true);
         if (answer.text !== "") {
           console.log(answer);
           QA.answers.push(answer);
